@@ -18,9 +18,20 @@
           rel="noopener noreferrer"
           class="button--grey"
         >
-          GitHub
+          github
+        </a>
+        <a
+          href="https://thayashi1988.github.io/nuxt-static-sample/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button--grey"
+        >
+          GitHubページへ移動
         </a>
       </div>
+      <p class="mt-5 border border-black border-solid text-red-500">
+        あああああああああ
+      </p>
     </div>
   </div>
 </template>
