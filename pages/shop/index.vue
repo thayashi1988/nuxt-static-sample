@@ -1,0 +1,9 @@
+<template>
+  <layout-wrraper>
+    <layout-visual
+      title="ショップ"
+      message="いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい"
+      visual="visual-shop"
+    />
+  </layout-wrraper>
+</template>

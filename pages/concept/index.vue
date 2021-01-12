@@ -1,0 +1,9 @@
+<template>
+  <layout-wrraper>
+    <layout-visual
+      title="コンセプト"
+      message="いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい"
+      visual="visual-concept"
+    />
+  </layout-wrraper>
+</template>

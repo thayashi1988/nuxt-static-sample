@@ -1,79 +1,89 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">nuxt-static-sample</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          github
-        </a>
-        <a
-          href="https://thayashi1988.github.io/nuxt-static-sample/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHubページへ移動
-        </a>
+  <layout-wrraper>
+    <a href="/index2">index2</a>
+    <layout-visual
+      title="NUXT SAMPLE SITE DEMO"
+      message="ああああああああああああああああああああああああああああああああああああああああああああああああああああ"
+    />
+    <div class="w-full md:max-w-3xl mx-auto pt-20 px-6 md:px-0">
+      <base-heading>MdN Cafeのおすすめメニュー</base-heading>
+      <div class="flex flex-wrap justify-between mb-20 md:mb-0">
+        <div class="md:w-56 mb-20 shadow-lg bg-gray-200">
+          <div class="max-w">
+            <img src="~/assets/img/menu01.jpg" alt="商品名" class="w-full" />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">アメリカンコーヒー</div>
+              <p class="text-gray-700 text-base mb-4">480円（税込）</p>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-56 mb-20 shadow-lg bg-gray-200">
+          <div class="max-w">
+            <img src="~/assets/img/menu01.jpg" alt="商品名" class="w-full" />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">アメリカンコーヒー</div>
+              <p class="text-gray-700 text-base mb-4">480円（税込）</p>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-56 mb-20 shadow-lg bg-gray-200">
+          <div class="max-w">
+            <img src="~/assets/img/menu01.jpg" alt="商品名" class="w-full" />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">アメリカンコーヒー</div>
+              <p class="text-gray-700 text-base mb-4">480円（税込）</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="mt-5 border border-black border-solid text-red-500">
-        あああああああああ
-      </p>
+      <base-button name="メニューの一覧" link="/menu/" />
+      <base-heading>MdN Cafeのお知らせ</base-heading>
+      <div class="mb-20">
+        <div
+          class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 shadow-md mb-5"
+        >
+          <a href="/information/detail" class="block px-4 py-3">
+            <time class="text-gray-700 text-base mb-1 block md:w-1/6">
+              2020.08.15
+            </time>
+            <div class="md:w-10/12">お知らせタイトル</div>
+          </a>
+        </div>
+        <div
+          class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 shadow-md mb-5"
+        >
+          <a href="/information/detail" class="block px-4 py-3">
+            <time class="text-gray-700 text-base mb-1 block md:w-1/6">
+              2020.08.15
+            </time>
+            <div class="md:w-10/12">お知らせタイトル</div>
+          </a>
+        </div>
+        <div
+          class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 shadow-md mb-5"
+        >
+          <a href="/information/detail" class="block px-4 py-3">
+            <time class="text-gray-700 text-base mb-1 block md:w-1/6">
+              2020.08.15
+            </time>
+            <div class="md:w-10/12">お知らせタイトル</div>
+          </a>
+        </div>
+      </div>
+      <base-button name="お知らせの一覧" link="/information/" />
     </div>
-  </div>
+  </layout-wrraper>
 </template>
 
 <script>
-export default {}
+import BaseHeading from '../components/BaseHeading.vue'
+export default {
+  components: { BaseHeading },
+  data() {
+    return {
+      name: 'あああああ',
+    }
+  },
+}
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
+<style></style>
