@@ -16,7 +16,8 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/nuxt-static-sample/favicon.ico' }],
   },
   router: {
-    base: '/nuxt-static-sample/',
+    base: '/',
+    // base: '/nuxt-static-sample/', //元の記述
     // extendRoutes(routes, resolve) {//ページが存在しない場合のリダイレクトの設定
     //   routes.push({
     //     nname: 'notfound',
