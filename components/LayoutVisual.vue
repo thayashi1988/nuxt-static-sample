@@ -74,6 +74,9 @@ export default {
 .visual-shop {
   background-image: url('~@/assets/img/visual-shop.jpg');
 }
+.visual-menu {
+  background-image: url('~@/assets/img/visual-menu.jpg');
+}
 .visual-information {
   background-image: url('~@/assets/img/visual-information.jpg');
 }
