@@ -1,18 +1,52 @@
 <template>
   <layout-wrraper>
     <layout-visual title="Menu" :height="40" visual="visual-menu" />
-    <div class="container w-full mx-auto pt-20 pb-20 px-6 md:px-0">
+    <div class="w-full md:max-w-3xl mx-auto pt-20 px-6 md:px-0">
       <div class="mb-20">
-        <layout-menu-list />
+        <layout-menu-list
+          v-for="(item, index) in items"
+          :key="index"
+          :image="item.image"
+          :image-url="item.image.url"
+          :name="item.name"
+          :body="item.body"
+          :price="item.price"
+        />
       </div>
+      <p v-for="(i, index) in test" :key="index">{{ i }}</p>
+      <base-button name="トップへ戻る" link="/" />
     </div>
-    <base-button name="トップへ戻る" link="/" />
   </layout-wrraper>
 </template>
 <script>
+import axios from 'axios'
 import LayoutMenuList from '../../components/LayoutMenuList.vue'
+
 export default {
   components: { LayoutMenuList },
+  async asyncData({ $config, error }) {
+    try {
+      const { data } = await axios.get(`${$config.apiUrl}menu`, {
+        headers: { 'X-API-KEY': $config.apiKey },
+      })
+      return {
+        items: data.contents,
+      }
+    } catch (err) {
+      error({
+        statusCode: err.response.status,
+        message: err.response.data.message,
+      })
+    }
+  },
+  data() {
+    return {
+      test: Array,
+    }
+  },
+  // mounted() {
+  //   console.log(this.items)
+  // },
   head() {
     return {
       title: 'メニュー',

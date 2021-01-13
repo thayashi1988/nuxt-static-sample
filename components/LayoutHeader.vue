@@ -16,7 +16,7 @@
           <button class="focus:outline-none" @click="isOpen = !isOpen">
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
               <path
-                v-show="isOpen"
+                v-show="!isOpen"
                 d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"
               />
               <path

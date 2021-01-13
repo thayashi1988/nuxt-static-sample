@@ -1,68 +1,19 @@
 <template>
-  <div :class="wrapClass">
-    <div :class="itemClass">
-      <div :class="blockClass">
-        <img
-          src="~/assets/img/menu04.jpg"
-          alt="MdNオリジナルパンケーキ"
-          :class="imageClass"
-        />
-        <div :class="dataClass">
-          <div class="font-bold text-xl mb-2">MdNオリジナルパンケーキ</div>
-          <p v-if="flagBody" class="text-base mb-2">
-            MdNカフェオリジナルパンケーキ。 自然素材にこだわったパンケーキです。
-          </p>
-          <p class="text-gray-700 text-base mb-4">300円（税込）</p>
-        </div>
-      </div>
-    </div>
-    <div :class="itemClass">
-      <div :class="blockClass">
-        <img
-          src="~/assets/img/menu03.jpg"
-          alt="カプチーノ"
-          :class="imageClass"
-        />
-        <div :class="dataClass">
-          <div class="font-bold text-xl mb-2">カプチーノ</div>
-          <p v-if="flagBody" class="text-base mb-2">
-            MdNカフェオリジナルのカプチーノです。
-          </p>
-          <p class="text-gray-700 text-base mb-4">500円（税込）</p>
-        </div>
-      </div>
-    </div>
-    <div :class="itemClass">
-      <div :class="blockClass">
-        <img
-          src="~/assets/img/menu02.jpg"
-          alt="モーニングセット：ベーコンとサラダと目玉焼きトーストセット"
-          :class="imageClass"
-        />
-        <div :class="dataClass">
-          <div class="font-bold text-xl mb-2">
-            モーニングセット：ベーコンとサラダと目玉焼きトーストセット
-          </div>
-          <p v-if="flagBody" class="text-base mb-2">
-            モーニングセットメニューです。
-            ベーコンとサラダと目玉焼きトーストセットで8時〜10時までのメニューです。
-          </p>
-          <p class="text-gray-700 text-base mb-4">500円（税込）</p>
-        </div>
-      </div>
-    </div>
-    <div :class="itemClass">
-      <div :class="blockClass">
-        <img
-          src="~/assets/img/menu01.jpg"
-          alt="アメリカンコーヒー"
-          :class="imageClass"
-        />
-        <div :class="dataClass">
-          <div class="font-bold text-xl mb-2">アメリカンコーヒー</div>
-          <p v-if="flagBody" class="text-base mb-2">アメリカンコーヒーです</p>
-          <p class="text-gray-700 text-base mb-4">450円（税込）</p>
-        </div>
+  <div :class="itemClass">
+    <div :class="blockClass">
+      <img v-if="image" :src="imageUrl" :alt="name" :class="imageClass" />
+      <img
+        v-else
+        src="~@/assets/img/dummy.jpg"
+        :alt="name"
+        :class="imageClass"
+      />
+      <div :class="dataClass">
+        <div class="font-bold text-xl mb-2">{{ name }}</div>
+        <p v-if="flagBody" class="text-base mb-2">
+          {{ body }}
+        </p>
+        <p class="text-gray-700 text-base mb-4">{{ price }}円（税込）</p>
       </div>
     </div>
   </div>
@@ -71,10 +22,30 @@
 export default {
   name: 'LayoutMenuList',
   props: {
-    wrapClass: {
-      type: String,
-      default: '',
+    image: {
+      type: Object,
+      required: true,
     },
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    body: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    // wrapClass: {
+    //   type: String,
+    //   default: '',
+    // },
     itemClass: {
       type: String,
       default: 'w-full mb-10 shadow-lg',
