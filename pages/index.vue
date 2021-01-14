@@ -1,6 +1,6 @@
 <template>
   <layout-wrraper>
-    <a href="/index2">index2</a>
+    <NuxtLink to="/index2">index2</NuxtLink>
     <layout-visual
       title="NUXT SAMPLE SITE DEMO"
       message="ああああああああああああああああああああああああああああああああああああああああああああああああああああ"
@@ -23,10 +23,16 @@
           :flag-body="false"
         />
       </div>
-      <base-button name="メニューの一覧" link="/menu/" />
+      <base-button name="メニューの一覧" link="/menu" />
       <base-heading>MdN Cafeのお知らせ</base-heading>
-      <layout-information-list />
-      <base-button name="お知らせの一覧" link="/information/" />
+      <layout-information-list
+        v-for="(information, key, index) in informationItems"
+        :id="information.id"
+        :key="index"
+        :date="information.date"
+        :title="information.title"
+      />
+      <base-button name="お知らせの一覧" link="/information" />
     </div>
   </layout-wrraper>
 </template>
@@ -40,14 +46,18 @@ export default {
   components: { BaseHeading, LayoutInformationList },
   async asyncData({ $config, error }) {
     try {
-      const { data } = await axios.get(
+      const menu = await axios.get(
         `${$config.apiUrl}menu?limit=3&filters=flag[equals]true`,
         {
           headers: { 'X-API-KEY': $config.apiKey },
         }
       )
+      const info = await axios.get(`${$config.apiUrl}information?limit=3`, {
+        headers: { 'X-API-KEY': $config.apiKey },
+      })
       return {
-        menuItems: data.contents,
+        menuItems: menu.data.contents,
+        informationItems: info.data.contents,
       }
     } catch (err) {
       error({

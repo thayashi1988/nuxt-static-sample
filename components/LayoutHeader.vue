@@ -5,12 +5,12 @@
         class="w-full md:flex mx-auto px-6 md:px-0 flex justify-between items-center h-16"
       >
         <h1>
-          <a
+          <NuxtLink
             class="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap"
-            href="/"
+            to="/"
           >
             MdN Cafe
-          </a>
+          </NuxtLink>
         </h1>
         <div class="text-white md:hidden">
           <button class="focus:outline-none" @click="isOpen = !isOpen">
@@ -33,31 +33,31 @@
       >
         <ul class="md:flex md:justify-end md:items-end">
           <li class="w-full md:w-auto md:ml-5">
-            <a
-              href="/concept/"
+            <NuxtLink
+              to="/concept"
               class="text-white md:block inline-block md:py-0 py-5 px-5 md:px-0 w-full"
-              >コンセプト</a
+              >コンセプト</NuxtLink
             >
           </li>
           <li class="w-full md:w-auto md:ml-5">
-            <a
-              href="/shop/"
+            <NuxtLink
+              to="/shop"
               class="text-white md:block inline-block md:py-0 py-5 px-5 md:px-0 w-full"
-              >店舗情報</a
+              >店舗情報</NuxtLink
             >
           </li>
           <li class="w-full md:w-auto md:ml-5">
-            <a
-              href="/menu/"
+            <NuxtLink
+              to="/menu"
               class="text-white md:block inline-block md:py-0 py-5 px-5 md:px-0 w-full"
-              >メニュー</a
+              >メニュー</NuxtLink
             >
           </li>
           <li class="w-full md:w-auto md:ml-5">
-            <a
-              href="/information/"
+            <NuxtLink
+              to="/information"
               class="text-white md:block inline-block md:py-0 py-5 px-5 md:px-0 w-full"
-              >お知らせ</a
+              >お知らせ</NuxtLink
             >
           </li>
         </ul>
