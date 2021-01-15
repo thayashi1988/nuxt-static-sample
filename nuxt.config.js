@@ -1,4 +1,5 @@
 const { API_KEY, API_URL } = process.env
+const axios = require("axios");
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -30,6 +31,20 @@ export default {
   //200.htmlを404.htmlに変更
   generate: {
     fallback: true,
+    routes() {
+      const information = axios
+        .get(`${process.env.API_URL}/information`, {
+          headers: { 'X-API-KEY': process.env.API_KEY },
+        })
+        .then((res) => {
+          return res.data.contents.map((information) => {
+            return '/information/' + information.id
+          })
+        })
+      return Promise.all([information]).then((values) => {
+        return values.join().split(',')
+      })
+    },
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
