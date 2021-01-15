@@ -39,7 +39,7 @@ export default {
     }
   },
   mounted() {
-    console.log(process.env.API_URL)
+    // console.log(process.env.API_URL)
   },
   head() {
     return {
