@@ -26,7 +26,7 @@ export default {
   components: { LayoutMenuList },
   async asyncData({ $config, error }) {
     try {
-      const { data } = await axios.get(`${$config.apiUrl}/menu`, {
+      const { data } = await axios.get(`${$config.apiUrl}menu`, {
         headers: { 'X-API-KEY': $config.apiKey },
       })
       return {
