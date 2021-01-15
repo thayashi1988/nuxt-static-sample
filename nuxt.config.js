@@ -1,5 +1,5 @@
+// const axios = require("axios")
 const { API_KEY, API_URL } = process.env
-const axios = require("axios");
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -18,8 +18,8 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/nuxt-static-sample/favicon.ico' }],
   },
   router: {
-    // base: '/',
-    base: '/nuxt-static-sample/', //元の記述
+    base: '/',
+    // base: '/nuxt-static-sample/', //元の記述
     // extendRoutes(routes, resolve) {//ページが存在しない場合のリダイレクトの設定
     //   routes.push({
     //     nname: 'notfound',
@@ -68,15 +68,19 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/proxy'
   ],
-  proxy: {
-    '/api/v1/': {
-      target: 'https://nuxtnews.microcms.io',
-      changeOrigin: true,
-      secure: false
-    }
-  },
+  // proxy: {
+  //   '/api/v1': {
+  //     target: API_URL,
+  //     pathRewrite: {
+  //       '^/api/v1': ''
+  //     },
+  //     changeOrigin: true,
+  //     secure: false
+  //   }
+  // },
   axios: {
-    proxy: true
+    proxy: true,
+    // prefix: '/api/v1',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
