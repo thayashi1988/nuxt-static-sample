@@ -25,7 +25,7 @@ export default {
   components: { LayoutInformationList },
   async asyncData({ $config, error }) {
     try {
-      const { data } = await axios.get(`${$config.apiUrl}information`, {
+      const { data } = await axios.get(`${$config.apiUrl}/information`, {
         headers: { 'X-API-KEY': $config.apiKey },
       })
       return {

@@ -27,7 +27,7 @@ export default {
   async asyncData({ $config, params, error }) {
     try {
       const { data } = await axios.get(
-        `${$config.apiUrl}information/${params.id}`,
+        `${$config.apiUrl}/information/${params.id}`,
         {
           headers: { 'X-API-KEY': $config.apiKey },
         }
