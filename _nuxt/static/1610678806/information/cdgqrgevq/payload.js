@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/information/cdgqrgevq", (function(a,b){return {data:[{item:{id:"cdgqrgevq",createdAt:a,updatedAt:b,publishedAt:a,revisedAt:b,title:"Nuxtで呼び出す二個目",date:"2021-01-13T15:00:00.000Z",body:"\u003Cp\u003E呼び出してみます！\u003C\u002Fp\u003E"}}],fetch:[],mutations:void 0}}("2021-01-14T13:33:35.613Z","2021-01-14T13:35:00.223Z")));

@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/information/78ewfaplq", (function(a){return {data:[{item:{id:"78ewfaplq",createdAt:a,updatedAt:a,publishedAt:a,revisedAt:a,title:"microCMSの初登録です。",date:"2021-01-12T15:00:00.000Z",body:"\u003Cp\u003EとうとうNuxt.jsでの静的サイトを作成しました。\u003C\u002Fp\u003E"}}],fetch:[],mutations:void 0}}("2021-01-13T03:25:04.897Z")));

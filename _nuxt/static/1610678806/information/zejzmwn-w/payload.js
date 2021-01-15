@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/information/zejzmwn-w", (function(a,b){return {data:[{item:{id:"zejzmwn-w",createdAt:a,updatedAt:b,publishedAt:a,revisedAt:b,title:"最新記事",date:"2021-01-14T15:00:00.000Z",body:"\u003Cp\u003E念のため3つおいてみました\u003C\u002Fp\u003E"}}],fetch:[],mutations:void 0}}("2021-01-15T01:16:30.919Z","2021-01-15T01:32:50.935Z")));
