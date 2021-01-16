@@ -47,12 +47,12 @@ export default {
   async asyncData({ $config, error }) {
     try {
       const menu = await axios.get(
-        `${$config.apiUrl}menu?limit=3&filters=flag[equals]true`,
+        `${$config.apiUrl}/menu?limit=3&filters=flag[equals]true`,
         {
           headers: { 'X-API-KEY': $config.apiKey },
         }
       )
-      const info = await axios.get(`${$config.apiUrl}information?limit=3`, {
+      const info = await axios.get(`${$config.apiUrl}/information?limit=3`, {
         headers: { 'X-API-KEY': $config.apiKey },
       })
       return {
