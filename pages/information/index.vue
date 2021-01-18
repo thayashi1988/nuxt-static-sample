@@ -24,19 +24,19 @@ import LayoutInformationList from '../../components/LayoutInformationList.vue.vu
 export default {
   components: { LayoutInformationList },
   async asyncData({ $config, error }) {
-    try {
-      const { data } = await axios.get(`${$config.apiUrl}/information`, {
-        headers: { 'X-API-KEY': $config.apiKey },
-      })
-      return {
-        informationItems: data.contents,
-      }
-    } catch (err) {
-      error({
-        statusCode: err.response.status,
-        message: err.response.data.message,
-      })
+    // try {
+    const { data } = await axios.get(`${$config.apiUrl}/information`, {
+      headers: { 'X-API-KEY': $config.apiKey },
+    })
+    return {
+      informationItems: data.contents,
     }
+    // } catch (err) {
+    //   error({
+    //     statusCode: err.response.status,
+    //     message: err.response.data.message,
+    //   })
+    // }
   },
   mounted() {
     // console.log(process.env.API_URL)

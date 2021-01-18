@@ -1,8 +1,24 @@
 // const axios = require("axios")
 const { API_KEY, API_URL } = process.env
 export default {
+  //200.htmlを404.htmlに変更
+  generate: {
+    fallback: true,
+    // async routes() {
+    //   const pages = await axios
+    //     .get(`https://nuxtnews.microcms.io/api/v1/information`, {
+    //       headers: { 'X-API-KEY': process.env.API_KEY }
+    //     })
+    //     .then((res) =>
+    //       res.data.contents.map((content) => ({
+    //         route: `/information/${content.id}`,
+    //         payload: content
+    //       }))
+    //     )
+    //   return pages
+    // }
+  },
   // Target (https://go.nuxtjs.dev/config-target)
-  mode: 'universal',
   target: 'static',
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -29,9 +45,6 @@ export default {
     //   })
     // }
   },
-  //200.htmlを404.htmlに変更
-  generate: {
-    fallback: true,
     // routes() {
     //   const information = axios
     //     .get(`${process.env.API_URL}/information`, {
@@ -46,7 +59,6 @@ export default {
     //     return values.join().split(',')
     //   })
     // },
-  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
@@ -80,7 +92,7 @@ export default {
   //   }
   // },
   axios: {
-    proxy: true,
+    // proxy: true,
     // prefix: '/api/v1',
   },
 

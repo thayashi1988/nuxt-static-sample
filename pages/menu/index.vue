@@ -19,14 +19,14 @@
   </layout-wrraper>
 </template>
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import LayoutMenuList from '../../components/LayoutMenuList.vue'
 
 export default {
   components: { LayoutMenuList },
-  async asyncData({ $config, error }) {
+  async asyncData({ $axios, $config, error }) {
     try {
-      const { data } = await axios.get(`${$config.apiUrl}/menu`, {
+      const { data } = await $axios.get(`${$config.apiUrl}/menu`, {
         headers: { 'X-API-KEY': $config.apiKey },
       })
       return {
