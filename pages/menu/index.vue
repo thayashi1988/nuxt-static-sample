@@ -13,40 +13,24 @@
           :price="item.price"
         />
       </div>
-      <p v-for="(i, index) in test" :key="index">{{ i }}</p>
       <base-button name="トップへ戻る" link="/" />
     </div>
   </layout-wrraper>
 </template>
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 import LayoutMenuList from '../../components/LayoutMenuList.vue'
 
 export default {
   components: { LayoutMenuList },
-  async asyncData({ $axios, $config, error }) {
-    try {
-      const { data } = await $axios.get(`${$config.apiUrl}/menu`, {
-        headers: { 'X-API-KEY': $config.apiKey },
-      })
-      return {
-        items: data.contents,
-      }
-    } catch (err) {
-      error({
-        statusCode: err.response.status,
-        message: err.response.data.message,
-      })
-    }
-  },
-  data() {
+  async asyncData({ $config, error }) {
+    const { data } = await axios.get(`${$config.apiUrl}/menu`, {
+      headers: { 'X-API-KEY': $config.apiKey },
+    })
     return {
-      test: [1, 2, 3, 4, 5],
+      items: data.contents,
     }
   },
-  // mounted() {
-  //   console.log(this.items)
-  // },
   head() {
     return {
       title: 'メニュー',

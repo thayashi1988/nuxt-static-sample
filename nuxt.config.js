@@ -1,22 +1,24 @@
-// const axios = require("axios")
+const axios = require("axios")
 const { API_KEY, API_URL } = process.env
 export default {
+  ssr: true,
   //200.htmlを404.htmlに変更
   generate: {
     fallback: true,
-    // async routes() {
-    //   const pages = await axios
-    //     .get(`https://nuxtnews.microcms.io/api/v1/information`, {
-    //       headers: { 'X-API-KEY': process.env.API_KEY }
+    // routes(callback) {
+    //   axios.get('https://nuxtnews.microcms.io/api/v1/information/',
+    //     { headers: { "X-API-KEY": process.env.API_KEY } })
+    //     .then((res) => {
+    //       const routes = res.data.contents.map(item => {
+    //         return {
+    //           route: `/information/${item.id}`,
+    //           payload: item
+    //         }
+    //       })
+    //       callback(null, routes)
     //     })
-    //     .then((res) =>
-    //       res.data.contents.map((content) => ({
-    //         route: `/information/${content.id}`,
-    //         payload: content
-    //       }))
-    //     )
-    //   return pages
-    // }
+    //     .catch(callback)
+    // },
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -45,20 +47,6 @@ export default {
     //   })
     // }
   },
-    // routes() {
-    //   const information = axios
-    //     .get(`${process.env.API_URL}/information`, {
-    //       headers: { 'X-API-KEY': process.env.API_KEY },
-    //     })
-    //     .then((res) => {
-    //       return res.data.contents.map((information) => {
-    //         return '/information/' + information.id
-    //       })
-    //     })
-    //   return Promise.all([information]).then((values) => {
-    //     return values.join().split(',')
-    //   })
-    // },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
@@ -81,19 +69,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/proxy'
   ],
-  // proxy: {
-  //   '/api/v1': {
-  //     target: API_URL,
-  //     pathRewrite: {
-  //       '^/api/v1': ''
-  //     },
-  //     changeOrigin: true,
-  //     secure: false
-  //   }
-  // },
   axios: {
-    // proxy: true,
-    // prefix: '/api/v1',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
