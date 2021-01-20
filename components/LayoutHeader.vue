@@ -29,7 +29,11 @@
       </div>
       <nav
         class="w-full md:block absolute left-0 md:static bg-black md:bg-none z-20 transition-all duration-300 ease-in"
-        :class="isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+        :class="
+          isOpen
+            ? 'opacity-100 visible'
+            : 'opacity-0 invisible md:opacity-100 md:visible'
+        "
       >
         <ul class="md:flex md:justify-end md:items-end">
           <li class="w-full md:w-auto md:ml-5">
