@@ -24,11 +24,18 @@ import LayoutMenuList from '../../components/LayoutMenuList.vue'
 export default {
   components: { LayoutMenuList },
   async asyncData({ $config, error }) {
-    const { data } = await axios.get(`${$config.apiUrl}/menu`, {
-      headers: { 'X-API-KEY': $config.apiKey },
-    })
-    return {
-      items: data.contents,
+    try {
+      const { data } = await axios.get(`${$config.apiUrl}/menu`, {
+        headers: { 'X-API-KEY': $config.apiKey },
+      })
+      return {
+        items: data.contents,
+      }
+    } catch (err) {
+      error({
+        statusCode: err.response.status,
+        message: err.response.data.message,
+      })
     }
   },
   head() {

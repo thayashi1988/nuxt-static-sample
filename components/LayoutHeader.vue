@@ -28,14 +28,15 @@
         </div>
       </div>
       <nav
-        class="w-full md:block absolute left-0 md:static bg-black md:bg-none z-20"
-        :class="isOpen ? 'block' : 'hidden'"
+        class="w-full md:block absolute left-0 md:static bg-black md:bg-none z-20 transition-all duration-300 ease-in"
+        :class="isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
       >
         <ul class="md:flex md:justify-end md:items-end">
           <li class="w-full md:w-auto md:ml-5">
             <nuxt-link
               to="/concept"
               class="text-white md:block inline-block md:py-0 py-5 px-5 md:px-0 w-full"
+              @click.native.prevent="menuTrigger"
               >コンセプト</nuxt-link
             >
           </li>
@@ -43,6 +44,7 @@
             <nuxt-link
               to="/shop"
               class="text-white md:block inline-block md:py-0 py-5 px-5 md:px-0 w-full"
+              @click.native.prevent="menuTrigger"
               >店舗情報</nuxt-link
             >
           </li>
@@ -50,6 +52,7 @@
             <nuxt-link
               to="/menu"
               class="text-white md:block inline-block md:py-0 py-5 px-5 md:px-0 w-full"
+              @click.native.prevent="menuTrigger"
               >メニュー</nuxt-link
             >
           </li>
@@ -57,6 +60,7 @@
             <nuxt-link
               to="/information"
               class="text-white md:block inline-block md:py-0 py-5 px-5 md:px-0 w-full"
+              @click.native.prevent="menuTrigger"
               >お知らせ</nuxt-link
             >
           </li>
@@ -72,6 +76,16 @@ export default {
     return {
       isOpen: false,
     }
+  },
+  methods: {
+    menuTrigger() {
+      if (this.isOpen) {
+        this.isOpen = false
+        this.$router.push({ path: event.target.pathname })
+      } else {
+        this.$router.push({ path: event.target.pathname })
+      }
+    },
   },
 }
 </script>
