@@ -44,6 +44,23 @@ export default {
   head() {
     return {
       title: this.item.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.item.title}の説明ページです。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `${this.item.title}の説明ページです。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${this.item.title} | github-nuxt-static-sample`,
+        },
+      ],
     }
   },
 }

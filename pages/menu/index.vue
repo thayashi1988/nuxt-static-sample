@@ -20,6 +20,7 @@
 <script>
 import axios from 'axios'
 import LayoutMenuList from '../../components/LayoutMenuList.vue'
+const title = 'メニュー'
 
 export default {
   components: { LayoutMenuList },
@@ -40,12 +41,22 @@ export default {
   },
   head() {
     return {
-      title: 'メニュー',
+      title: `${title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'メニューページの説明',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${title} | github-nuxt-static-sample`,
         },
       ],
     }

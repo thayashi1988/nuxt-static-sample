@@ -41,6 +41,7 @@
 import axios from 'axios'
 import BaseHeading from '../components/BaseHeading.vue'
 import LayoutInformationList from '../components/LayoutInformationList.vue'
+const title = 'Nuxt Sampleページ'
 
 export default {
   components: { BaseHeading, LayoutInformationList },
@@ -68,11 +69,22 @@ export default {
   },
   head() {
     return {
+      title: `${title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'Nuxt Sampleページのトップページです。',
+          content: `${title}のトップページです。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `${title}のトップページです。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${title} | github-nuxt-static-sample`,
         },
       ],
     }

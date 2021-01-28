@@ -20,6 +20,7 @@
 <script>
 import axios from 'axios'
 import LayoutInformationList from '../../components/LayoutInformationList.vue.vue'
+const title = 'インフォメーション'
 
 export default {
   components: { LayoutInformationList },
@@ -33,12 +34,22 @@ export default {
   },
   head() {
     return {
-      title: 'インフォメーション',
+      title: `${title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'インフォメーションページの説明',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${title}`,
         },
       ],
     }
