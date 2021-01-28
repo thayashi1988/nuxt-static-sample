@@ -19,6 +19,9 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'vue/max-attributes-per-line': 'off',
+    'no-unused-vars': 'off',
+    'vue/html-self-closing': 'off',
+    'prettier/prettier': ['error', { semi: false }],
     'no-restricted-syntax': [
       'error',
       {
