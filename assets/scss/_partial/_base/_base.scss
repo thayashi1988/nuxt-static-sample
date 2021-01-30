@@ -1,0 +1,53 @@
+/*------------------------
+  base css
+------------------------*/
+*{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-family: $font;
+  // font-family: $raleway;
+  font-size: 1.6rem;
+  color: $main;
+  line-height: 1.5;
+}
+
+a{
+  @include font-size(14);
+  text-decoration: none;
+  word-break: break-all;
+  transition: all .3s ease;
+  cursor: pointer;
+  @include mediaQuery(max,0,768){
+    @include font-size(12)
+  }
+  &:hover{
+    opacity: .7;
+    @include mediaQuery(max,0,768){
+      opacity: 1;
+    }
+  }
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+p{
+  @include font-size(16);
+  word-break: break-all;
+  @include mediaQuery(max,0,768){
+    @include font-size(14)
+  }
+}
+
+button{
+  @include transition();
+}
