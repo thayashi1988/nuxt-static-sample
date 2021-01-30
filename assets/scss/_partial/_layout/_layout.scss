@@ -4,16 +4,16 @@
 /*///////////////////////
 header
 ///////////////////////*/
-.l-header{
+.l-header {
   width: 100%;
-  position:  fixed;
+  position: fixed;
   top: 0;
   left: 0;
   padding: 0 10px;
   background: #fff;
   z-index: 1;
   border-bottom: 3px solid #03c4eb;
-  &-inner{
+  &-inner {
     max-width: $content_width;
     display: flex;
     flex-wrap: wrap;
@@ -21,13 +21,13 @@ header
     margin: 0 auto;
     padding: 20px 0;
   }
-  &-col{
+  &-col {
     flex: 0 1 auto;
     margin-right: 30px;
-    &:last-child{
+    &:last-child {
       flex: 1 0 auto;
       margin-right: 0;
-      @include mediaQuery(max,0,768){
+      @include mediaQuery(max, 0, 768) {
         // position: relative;
       }
     }
@@ -37,8 +37,8 @@ header
 /*///////////////////////
 menu
 ///////////////////////*/
-.l-menu{
-  @include mediaQuery(max,0,768){
+.l-menu {
+  @include mediaQuery(max, 0, 768) {
     position: absolute;
     top: 15px;
     right: 8px;
@@ -46,7 +46,7 @@ menu
     height: 45px;
     z-index: 1;
   }
-  @include mediaQuery(min,0,768){
+  @include mediaQuery(min, 0, 768) {
     display: none;
   }
 }
@@ -54,8 +54,8 @@ menu
 /*///////////////////////
 nav
 ///////////////////////*/
-.l-nav{
-  @include mediaQuery(max,0,768){
+.l-nav {
+  @include mediaQuery(max, 0, 768) {
     position: absolute;
     top: 0;
     right: 0;
@@ -63,40 +63,40 @@ nav
     height: 100%;
     transform: translateY(-400%);
   }
-  @include mediaQuery(min,0,768){
+  @include mediaQuery(min, 0, 768) {
   }
 }
 
 /*///////////////////////
 main
 ///////////////////////*/
-.l-main{
+.l-main {
   // padding: 0 10px;
 }
 
 /*///////////////////////
 mainvisul
 ///////////////////////*/
-.l-mainvisul{
+.l-mainvisul {
   background: url(#{$img_path}bg_main.jpg) no-repeat bottom center;
   background-size: cover;
   margin-top: 100px;
-  &-inner{
+  &-inner {
     position: relative;
     max-width: $content_width;
     min-height: 300px;
     margin: 0 auto;
-    @include mediaQuery(max,0,768){
-      background: rgba(0,0,0,.2);
+    @include mediaQuery(max, 0, 768) {
+      background: rgba(0, 0, 0, 0.2);
     }
   }
-  &-contents{
+  &-contents {
     width: 100%;
     // max-width: 90%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     padding: 0 2%;
   }
 }
@@ -104,48 +104,49 @@ mainvisul
 /*///////////////////////
 section
 ///////////////////////*/
-.l-section{
+.l-section {
   padding: 50px 0;
-  &:nth-child(odd){
+  &:nth-child(odd) {
     background: $bg_sub;
   }
-  &-inner{
+  &-inner {
     max-width: $content_width;
     margin: 0 auto;
     padding: 0 4%;
   }
-  &[data-bg="gray"]{
+  &[data-bg='gray'] {
     background: $bg_sub;
   }
-  &-last{
+  &-last {
     padding-top: 20px;
     padding-bottom: 20px;
-    background: #f8f9f9 !important;
+    // background: #f8f9f9 !important;
+    background: rgba(3, 196, 235, 0.1);
   }
 }
 
 /*///////////////////////
 underlayer
 ///////////////////////*/
-.l-underlayer{
+.l-underlayer {
   display: flex;
   background: $bg_sub;
   padding: 50px 2%;
-  @include mediaQuery(max,0,768){
+  @include mediaQuery(max, 0, 768) {
     display: block;
     padding: 50px 4%;
   }
-  .l-section{
+  .l-section {
     flex: 1 1 75%;
     max-width: 75%;
     padding: 0;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       max-width: 100%;
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       margin-right: 30px;
     }
-    .l-section-inner{
+    .l-section-inner {
       padding: 0;
     }
   }
@@ -154,29 +155,28 @@ underlayer
 /*///////////////////////
 side
 ///////////////////////*/
-.l-side{
+.l-side {
   flex: 1 1 25%;
   max-width: 100%;
-  @include mediaQuery(max,0,768){
+  @include mediaQuery(max, 0, 768) {
     max-width: 100%;
   }
 }
 
-
 /*///////////////////////
 progress
 ///////////////////////*/
-.l-progress{
+.l-progress {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   min-height: 200px;
-  opacity: 0;
-  visibility: hidden;
+  // opacity: 0;
+  // visibility: hidden;
   // background: rgba(0,0,0,.3);
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -184,7 +184,7 @@ progress
     margin: auto;
     width: 100%;
     height: 0;
-    background: rgba(3,196,235,.7);
+    background: rgba(3, 196, 235, 0.7);
     z-index: -1;
     // background: #03c4eb;
     @include transition();
@@ -219,28 +219,27 @@ progress
 /*///////////////////////
 media
 ///////////////////////*/
-.l-media{
-
+.l-media {
 }
 
 /*///////////////////////
 thumbnail
 ///////////////////////*/
-.l-thumbnail{
+.l-thumbnail {
   overflow: hidden;
 }
 
 /*///////////////////////
 list
 ///////////////////////*/
-.l-list{
+.l-list {
   margin-bottom: 30px;
 }
 
 /*///////////////////////
 btn
 ///////////////////////*/
-.l-btn{
+.l-btn {
   text-align: center;
   margin-bottom: 30px;
 }
@@ -248,14 +247,14 @@ btn
 /*///////////////////////
 card
 ///////////////////////*/
-.l-card{
+.l-card {
   background: #fff;
   border-radius: 10px;
   border: 1px solid $accent;
-  border-top: none;
-  &-body{
+  // border-top: none;
+  &-body {
     padding: 20px 15px;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       padding: 10px 10px 30px;
     }
   }
@@ -264,18 +263,18 @@ card
 /*///////////////////////
 img
 ///////////////////////*/
-.l-img{
+.l-img {
   margin-bottom: 40px;
 }
 
 /*///////////////////////
 tabel
 ///////////////////////*/
-.l-table{
+.l-table {
   width: 100%;
   margin-bottom: 30px;
-  &[data-table="sp-scroll"]{
-    @include mediaQuery(max,0,768){
+  &[data-table='sp-scroll'] {
+    @include mediaQuery(max, 0, 768) {
       display: block;
       overflow-x: scroll;
       white-space: nowrap;
@@ -287,28 +286,27 @@ tabel
 /*///////////////////////
 box
 ///////////////////////*/
-.l-box{
+.l-box {
   border-radius: 10px;
   background: #fff;
   margin-bottom: 50px;
-  @include mediaQuery(max,0,768){
+  @include mediaQuery(max, 0, 768) {
     margin-bottom: 30px;
   }
-  &:last-child{
+  &:last-child {
     margin-bottom: 0;
   }
-  &-inner{
+  &-inner {
     padding: 20px;
-    background: rgba(3,196,235,.2);
+    background: rgba(3, 196, 235, 0.2);
     border-radius: 10px;
   }
 }
 
-
 /*///////////////////////
 modal
 ///////////////////////*/
-.l-modal{
+.l-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -319,20 +317,20 @@ modal
   background: #fff;
   padding: 15px;
   z-index: 3;
-  @include mediaQuery(max,0,768){
+  @include mediaQuery(max, 0, 768) {
     max-width: 90%;
     // height: 80%;
     overflow-y: scroll;
     padding: 30px 20px 20px;
   }
-  &-layer{
+  &-layer {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     margin: auto;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 2;
     @include transition();
   }
@@ -341,7 +339,7 @@ modal
 /*///////////////////////
 footer
 ///////////////////////*/
-.l-footer{
+.l-footer {
   background: #222;
   padding: 35px 0;
 }
@@ -349,14 +347,14 @@ footer
 /*///////////////////////
 grid
 ///////////////////////*/
-.l-grid{
-  &-container{
+.l-grid {
+  &-container {
     width: 100%;
-    &[data-option="progress"]{
+    &[data-option='progress'] {
       // position: relative;
       // border-top: 1px solid #000;
       // border-bottom: 1px solid #000;
-      &::before{
+      &::before {
         // content: "100%";
         // position: absolute;
         // top: 0;
@@ -364,68 +362,68 @@ grid
       }
     }
   }
-  &-row{
+  &-row {
     display: flex;
     flex-wrap: wrap;
     // margin: -40px -10px 0;
-    &[data-align="center"]{
-      @include mediaQuery(max,0,768){
+    &[data-align='center'] {
+      @include mediaQuery(max, 0, 768) {
         justify-content: flex-start;
       }
-      @include mediaQuery(min,0,768){
+      @include mediaQuery(min, 0, 768) {
         justify-content: center;
         align-items: center;
       }
     }
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       margin: 0;
     }
   }
-  &-col{
+  &-col {
     @for $value from 1 through 12 {
-      &[data-col="#{$value}"] {
+      &[data-col='#{$value}'] {
         width: (100% / 12 * $value);
       }
     }
     @for $value from 1 through 12 {
-      &[data-col-sp="#{$value}"] {
-        @include mediaQuery(max,0,768){
+      &[data-col-sp='#{$value}'] {
+        @include mediaQuery(max, 0, 768) {
           width: (100% / 12 * $value);
         }
       }
     }
-    &[data-padding="true"]{
+    &[data-padding='true'] {
       padding-right: 10px;
       margin-bottom: 30px;
-      &:nth-child(3n){
-        @include mediaQuery(max,0,768) {
+      &:nth-child(3n) {
+        @include mediaQuery(max, 0, 768) {
           padding-right: 0;
         }
       }
-      &:nth-child(4n){
-        @include mediaQuery(min,0,768){
-          @include mediaQuery(min,0,768)
+      &:nth-child(4n) {
+        @include mediaQuery(min, 0, 768) {
+          @include mediaQuery(min, 0, 768);
         }
       }
     }
-    &[data-padding-sp="false"]{
-      @include mediaQuery(max,0,768){
+    &[data-padding-sp='false'] {
+      @include mediaQuery(max, 0, 768) {
         margin-bottom: (20 / 750) * 100vw;
         padding-right: 0;
       }
     }
-    &[data-marginp="true"]{
-      @include mediaQuery(min,0,768){
+    &[data-marginp='true'] {
+      @include mediaQuery(min, 0, 768) {
         margin-bottom: 30px;
       }
-      @include mediaQuery(max,0,768){
+      @include mediaQuery(max, 0, 768) {
         margin-bottom: 20px;
       }
-      &:last-child{
-        @include mediaQuery(min,0,768){
+      &:last-child {
+        @include mediaQuery(min, 0, 768) {
           margin-bottom: 0;
         }
-        @include mediaQuery(max,0,768){
+        @include mediaQuery(max, 0, 768) {
           margin-bottom: 50px;
         }
       }

@@ -4,65 +4,65 @@
 /*///////////////////////
 header
 ///////////////////////*/
-.m-header{
-  &-txtsub{
+.m-header {
+  &-txtsub {
     @include font-size(14);
-    opacity: .7;
+    opacity: 0.7;
   }
 }
 /*///////////////////////
 menu
 ///////////////////////*/
-%menuline{
-  content: "";
+%menuline {
+  content: '';
   position: absolute;
   width: 100%;
   height: 1px;
   background: #000;
 }
 
-.m-menu{
-  @include mediaQuery(max,0,768){
+.m-menu {
+  @include mediaQuery(max, 0, 768) {
     position: relative;
     width: auto;
     height: 100%;
-    &:before{
-      content: "";
+    &:before {
+      content: '';
       position: absolute;
       top: 7px;
       left: 2px;
       width: 90%;
       height: 2px;
       background: #000;
-      @include transition(.3s,.1s);
+      @include transition(0.3s, 0.1s);
     }
-    span{
+    span {
       @include font-size(10);
       display: flex;
       justify-content: center;
       align-items: flex-end;
       width: 100%;
       height: 100%;
-      @include transition(.3s,.4s);
-      &:before{
-        content: "";
+      @include transition(0.3s, 0.4s);
+      &:before {
+        content: '';
         position: absolute;
         top: 15px;
         left: 2px;
         width: 90%;
         height: 2px;
         background: #000;
-        @include transition(.3s);
+        @include transition(0.3s);
       }
-      &:after{
-        content: "";
+      &:after {
+        content: '';
         position: absolute;
         bottom: 20px;
         left: 2px;
         width: 90%;
         height: 2px;
         background: #000;
-        @include transition(.3s,.2s);
+        @include transition(0.3s, 0.2s);
       }
     }
   }
@@ -71,45 +71,45 @@ menu
 /*///////////////////////
 nav
 ///////////////////////*/
-.m-nav{
+.m-nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  @include mediaQuery(max,0,768){
+  @include mediaQuery(max, 0, 768) {
     flex-direction: column;
-    background: rgba(0,0,0,.6);
+    background: rgba(0, 0, 0, 0.6);
   }
-  li{
-    @include mediaQuery(max,0,768){
+  li {
+    @include mediaQuery(max, 0, 768) {
       color: #fff;
       border-bottom: 1px solid #fff;
     }
-    a{
+    a {
       position: relative;
       display: inline-block;
       text-transform: uppercase;
       letter-spacing: 1px;
-      @include mediaQuery(max,0,768){
+      @include mediaQuery(max, 0, 768) {
         width: 100%;
         padding: 15px 10px;
       }
-      &::before{
-        content: "";
+      &::before {
+        content: '';
         position: absolute;
         bottom: -5px;
         left: 0;
         width: 0;
         height: 2px;
         background: #000;
-        @include transition(.3s);
+        @include transition(0.3s);
         transform: translateY(0);
       }
-      @include mediaQuery(min,0,768){
-        &:hover::before{
+      @include mediaQuery(min, 0, 768) {
+        &:hover::before {
           width: 100%;
           // animation: nav-hover-border ease .5s forwards;
         }
-        &:hover{
+        &:hover {
           // transform: translateY(-5px);
           // animation: nav-hover-text ease .5s forwards;
         }
@@ -121,38 +121,38 @@ nav
 /*///////////////////////
 heading
 ///////////////////////*/
-.m-heading{
-  &-1{
+.m-heading {
+  &-1 {
     font-family: $raleway;
     text-align: center;
     color: #fff;
     font-weight: bold;
     letter-spacing: 2px;
-    text-shadow:0px 3px 3px #000;
-    @include mediaQuery(max,0,768){
+    text-shadow: 0px 3px 3px #000;
+    @include mediaQuery(max, 0, 768) {
       @include font-size(38);
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       @include font-size(48);
     }
-    & + *{
-      @include mediaQuery(max,0,768){
+    & + * {
+      @include mediaQuery(max, 0, 768) {
         margin-top: (30 / 768) * 100vw;
       }
-      @include mediaQuery(min,0,768){
+      @include mediaQuery(min, 0, 768) {
         margin-top: 50px;
       }
     }
-    &[data-type="article"]{
-      @include mediaQuery(max,0,768){
+    &[data-type='article'] {
+      @include mediaQuery(max, 0, 768) {
         @include font-size(24);
       }
-      @include mediaQuery(min,0,768){
+      @include mediaQuery(min, 0, 768) {
         @include font-size(28);
       }
     }
   }
-  &-2{
+  &-2 {
     font-family: $raleway;
     font-weight: bold;
     text-transform: uppercase;
@@ -160,87 +160,89 @@ heading
     text-align: center;
     display: flex;
     flex-direction: column;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       @include font-size(28);
       margin-bottom: (60 / 768) * 100vw;
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       color: $main;
       @include font-size(38);
       margin-bottom: 40px;
     }
-    &[data-type="cardttl"]{
+    &[data-type='cardttl'] {
       font-family: $font;
       text-align: left;
       letter-spacing: 0;
       text-transform: none;
-      margin-top: 20px;
+      // margin-top: 20px;
       margin-bottom: 20px;
-      @include mediaQuery(max,0,768){
+      @include mediaQuery(max, 0, 768) {
         // margin-bottom: (20 / 768) * 100vw;
       }
     }
-    &[data-type="article"]{
+    &[data-type='article'] {
       font-family: $font;
       text-align: left;
       letter-spacing: 0;
       text-transform: none;
       border-bottom: 1px solid #ccc;
       padding-bottom: 10px;
-      margin-top: 50px;
+      // margin-top: 50px;
       margin-bottom: 20px;
-      @include mediaQuery(min,0,768){
-        @include font-size(24)
+      @include mediaQuery(min, 0, 768) {
+        @include font-size(24);
       }
-      @include mediaQuery(max,0,768){
-        @include font-size(20)
+      @include mediaQuery(max, 0, 768) {
+        @include font-size(20);
       }
-      &:first-of-type{
+      &:first-of-type {
         // border-bottom: none;
         // margin-top: 0;
       }
     }
   }
-  &-3{
+  &-3 {
     font-family: $raleway;
     font-weight: bold;
     letter-spacing: 3px;
     text-align: center;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       @include font-size(20);
       margin-bottom: 30px;
       // margin-bottom: (30 / 768) * 100vw;
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       color: $main;
       @include font-size(24);
       margin-bottom: 25px;
     }
-    span{
+    span {
       display: inline-block;
       border-bottom: 3px solid #03c4eb;
       padding-bottom: 10px;
     }
-    &[data-type="article"]{
+    &[data-type='article'] {
       font-family: $font;
-      @include mediaQuery(min,0,768){
-        @include font-size(20)
+      @include mediaQuery(min, 0, 768) {
+        @include font-size(20);
       }
-      @include mediaQuery(max,0,768){
-        @include font-size(18)
+      @include mediaQuery(max, 0, 768) {
+        @include font-size(18);
       }
       text-align: left;
       letter-spacing: 0;
-      background:
-        linear-gradient(
+      background: linear-gradient(
           -45deg,
-          transparent 25%,#03c4eb 25%,
-          #03c4eb 50%,transparent 50%,
-          transparent 75%, #03c4eb 75%
+          transparent 25%,
+          #03c4eb 25%,
+          #03c4eb 50%,
+          transparent 50%,
+          transparent 75%,
+          #03c4eb 75%
         )
         left bottom/7px 7px repeat-y;
-        padding-left: 15px;
-        margin-top: 40px;
+      padding-left: 15px;
+      margin-top: 40px;
     }
   }
 }
@@ -248,17 +250,17 @@ heading
 /*///////////////////////
 txt
 ///////////////////////*/
-.m-txt{
-  @include mediaQuery(max,0,768){
+.m-txt {
+  @include mediaQuery(max, 0, 768) {
     margin-bottom: (30 / 768) * 100vw;
   }
-  @include mediaQuery(min,0,768){
+  @include mediaQuery(min, 0, 768) {
     margin-bottom: 15px;
   }
-  &[data-color="white"]{
+  &[data-color='white'] {
     color: #fff;
-    @include mediaQuery(max,0,768){
-      text-shadow:0px 3px 3px #000;
+    @include mediaQuery(max, 0, 768) {
+      text-shadow: 0px 3px 3px #000;
     }
   }
 }
@@ -266,12 +268,12 @@ txt
 /*///////////////////////
 label
 ///////////////////////*/
-.m-label{
+.m-label {
   display: inline-block;
   border: 1px solid $accent;
   margin-right: 10px;
   margin-bottom: 5px;
-  a{
+  a {
     display: block;
     font-weight: bold;
     @include font-size(12);
@@ -282,7 +284,7 @@ label
 /*///////////////////////
 date
 ///////////////////////*/
-.m-date{
+.m-date {
   display: inline-block;
   font-weight: bold;
 }
@@ -290,21 +292,21 @@ date
 /*///////////////////////
 list
 ///////////////////////*/
-.m-list{
-  li{
+.m-list {
+  li {
     display: table;
     @include font-size(12);
     vertical-align: middle;
   }
-  &-icon{
+  &-icon {
     display: table-cell;
     padding-right: 5px;
   }
-  &-body{
+  &-body {
     display: table-cell;
   }
-  &[data-font="middle"]{
-    li{
+  &[data-font='middle'] {
+    li {
       @include font-size(14);
     }
   }
@@ -313,16 +315,16 @@ list
 /*///////////////////////
 link
 ///////////////////////*/
-.m-link{
+.m-link {
   position: relative;
   // display: flex;
   // align-items: center;
   text-decoration: underline;
   @include transition();
-  &[data-icon="arrow"]{
-    &::before{
+  &[data-icon='arrow'] {
+    &::before {
       // position: absolute;
-      content: "";
+      content: '';
       display: inline-block;
       width: 8px;
       height: 8px;
@@ -332,12 +334,12 @@ link
       margin-right: 10px;
     }
   }
-  &[data-icon="blank"]{
-    &::before{
+  &[data-icon='blank'] {
+    &::before {
       position: absolute;
       bottom: 0;
       right: -3px;
-      content: "";
+      content: '';
       display: inline-block;
       width: 10px;
       height: 8px;
@@ -346,8 +348,8 @@ link
       border-left-color: transparent;
       margin-left: 10px;
     }
-    &::after{
-      content: "";
+    &::after {
+      content: '';
       display: inline-block;
       width: 10px;
       height: 8px;
@@ -360,7 +362,7 @@ link
 /*///////////////////////
 btn
 ///////////////////////*/
-.m-btn{
+.m-btn {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -372,28 +374,28 @@ btn
   margin: 0 auto;
   box-shadow: 0px 6px 0px -2px #000;
   transform: translateY(0);
-  @include mediaQuery(min,0,768){
+  @include mediaQuery(min, 0, 768) {
   }
-  &[data-width="small"]{
+  &[data-width='small'] {
     color: #000;
     max-width: 200px;
   }
-  &[data-width="middle"]{
+  &[data-width='middle'] {
     max-width: 300px;
   }
-  &:hover{
-    @include mediaQuery(min,0,768){
+  &:hover {
+    @include mediaQuery(min, 0, 768) {
       opacity: 1;
       box-shadow: none;
       transform: translateY(10px);
     }
   }
-  &[data-btn-icon="arrow"]{
-    &::after{
+  &[data-btn-icon='arrow'] {
+    &::after {
       position: absolute;
       top: calc(50% - 5px);
       right: 2px;
-      content: "";
+      content: '';
       display: inline-block;
       width: 10px;
       height: 10px;
@@ -403,12 +405,12 @@ btn
       margin-right: 10px;
     }
   }
-  &[data-btn-icon="blank"]{
-    &::before{
+  &[data-btn-icon='blank'] {
+    &::before {
       position: absolute;
       top: calc(50% - 3px);
       right: 12px;
-      content: "";
+      content: '';
       display: inline-block;
       width: 14px;
       height: 12px;
@@ -416,11 +418,11 @@ btn
       border-top-color: transparent;
       border-left-color: transparent;
     }
-    &::after{
+    &::after {
       position: absolute;
       top: calc(50% - 5px);
       right: 15px;
-      content: "";
+      content: '';
       display: inline-block;
       width: 14px;
       height: 12px;
@@ -432,44 +434,45 @@ btn
 /*///////////////////////
 progress
 ///////////////////////*/
-.m-progress{
-  &-txt{
+.m-progress {
+  &-txt {
     font-family: $raleway;
     color: $main;
     text-align: center;
     font-weight: bold;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       @include font-size(18);
       margin-bottom: 15px;
       // font-size: (20 / 768) * 100vw;
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       @include font-size(24);
       margin-bottom: 20px;
     }
   }
-  &-ttl{
+  &-ttl {
     position: relative;
     text-align: center;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       margin-bottom: 15px;
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       margin-bottom: 20px;
     }
-    img{
+    img {
+      display: inline-block;
       width: 50px;
       height: 50px;
     }
   }
-  &-value{
+  &-value {
     position: relative;
     text-align: center;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       @include font-size(20);
       // font-size: (20 / 768) * 100vw;
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       @include font-size(24);
     }
   }
@@ -478,25 +481,25 @@ progress
 /*///////////////////////
 media
 ///////////////////////*/
-.m-media{
-  &-img{
+.m-media {
+  &-img {
     text-align: center;
     margin-bottom: 25px;
-    img{
-      @include mediaQuery(max,0,768){
+    img {
+      @include mediaQuery(max, 0, 768) {
         max-width: 25%;
       }
       max-width: 35%;
       // min-height: 70%;
     }
   }
-  &-txt{
+  &-txt {
     text-align: center;
     margin-bottom: 25px;
     // @include mediaQuery(max,0,768){
     //   margin-bottom: (20 / 750) * 100vw;
     // }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       @include font-size(16);
     }
   }
@@ -505,11 +508,11 @@ media
 /*///////////////////////
 thumbnail
 ///////////////////////*/
-.m-thumbnail{
-  &-img{
+.m-thumbnail {
+  &-img {
     position: relative;
     // @include transition(.8s);
-    a{
+    a {
       // &::before{
       //   content: "";
       //   position: absolute;
@@ -550,7 +553,7 @@ thumbnail
       //     }
       //   }
       // }
-      &:hover{
+      &:hover {
         opacity: 1;
         // @include mediaQuery(min,0,768){
         //   &[data-icon="modal"]::before{
@@ -570,8 +573,8 @@ thumbnail
 /*///////////////////////
 card
 ///////////////////////*/
-.m-card{
-  &-thumb{
+.m-card {
+  &-thumb {
     overflow: hidden;
     // height: 300px;
     // border: 1px solid $accent;
@@ -580,68 +583,74 @@ card
     border-top: 1px solid $accent;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       height: auto;
     }
-    a{
-      &:hover{
-        @include mediaQuery(min,0,768){
-          opacity: .9;
+    a {
+      &:hover {
+        @include mediaQuery(min, 0, 768) {
+          opacity: 0.9;
         }
       }
-      img{
-        &:hover{
-          @include mediaQuery(min,0,768){
+      img {
+        &:hover {
+          @include mediaQuery(min, 0, 768) {
             opacity: 1;
             transform: scale(1.2);
           }
         }
       }
     }
-    img{
+    img {
       width: 100%;
       height: 100%;
       @include transition();
     }
   }
-  &-ttl{
+  &-ttl {
     display: inline-block;
     color: #000;
     word-break: break-all;
     @include font-size(20);
     margin-bottom: 5px;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       @include font-size(18);
     }
   }
-  &-type{
+  &-type {
     font-weight: bold;
     margin-bottom: 20px;
   }
-  &-date{
+  &-date {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #333;
     display: inline-block;
     margin-right: 15px;
-
   }
-  &-txt{
+  &-txt {
+    font-size: 1.4rem;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     margin-bottom: 20px;
   }
-  &-btn{
-
+  &-btn {
   }
 }
 
 /*///////////////////////
 img
 ///////////////////////*/
-.m-img{
-  &[data-align="left"]{
+.m-img {
+  &[data-align='left'] {
     text-align: left;
   }
-  &[data-align="center"]{
+  &[data-align='center'] {
     text-align: center;
   }
-  &[data-align="right"]{
+  &[data-align='right'] {
     text-align: right;
   }
 }
@@ -649,27 +658,27 @@ img
 /*///////////////////////
 tabel
 ///////////////////////*/
-.m-table{
+.m-table {
   font-family: $font;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
   border: 1px solid $main;
-  th{
+  th {
     text-align: center;
     vertical-align: middle;
     border: 1px solid $main;
     background: rgba(3, 196, 235, 0.4);
     padding: 10px;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       @include font-size(14);
     }
   }
-  td{
+  td {
     vertical-align: middle;
     border: 1px solid $main;
     padding: 10px;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       @include font-size(14);
     }
   }
@@ -678,26 +687,26 @@ tabel
 /*///////////////////////
 box
 ///////////////////////*/
-.m-box{
-  &-ttl{
+.m-box {
+  &-ttl {
     font-weight: bold;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       @include font-size(16);
       margin-bottom: 10px;
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       @include font-size(18);
       margin-bottom: 20px;
     }
   }
-  &-txt{
+  &-txt {
     @include font-size(14);
   }
-  &-list{
-    li{
+  &-list {
+    li {
       @include font-size(14);
       margin-bottom: 15px;
-      a{
+      a {
         @include font-size(14);
         font-weight: normal;
       }
@@ -708,7 +717,7 @@ box
 /*///////////////////////
 copyright
 ///////////////////////*/
-.m-copy{
+.m-copy {
   color: #fff;
   text-align: center;
   @include font-size(14);
@@ -717,7 +726,7 @@ copyright
 /*///////////////////////
 pagetop
 ///////////////////////*/
-.m-pagetop{
+.m-pagetop {
   width: 45px;
   height: 45px;
   position: fixed;
@@ -725,13 +734,13 @@ pagetop
   bottom: 35px;
   z-index: 1;
   border-radius: 50%;
-  @include mediaQuery(max,0,768){
+  @include mediaQuery(max, 0, 768) {
     width: 35px;
     height: 35px;
     right: 10px;
     bottom: 15px;
   }
-  a{
+  a {
     width: 45px;
     height: 45px;
     color: #fff;
@@ -739,24 +748,24 @@ pagetop
     overflow: hidden;
     position: relative;
     z-index: 1;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       width: 35px;
       height: 35px;
     }
   }
-  &::before{
+  &::before {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    opacity: .7;
-    @include transition(.3s);
+    opacity: 0.7;
+    @include transition(0.3s);
     border-radius: 50%;
     background: #666;
     content: '';
   }
-  &::after{
+  &::after {
     width: 14px;
     height: 14px;
     position: absolute;
@@ -766,7 +775,7 @@ pagetop
     border-right: 3px solid #fff;
     transform: rotate(-45deg);
     content: '';
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       top: 15px;
       left: 13px;
       width: 10px;
@@ -774,24 +783,23 @@ pagetop
       border-width: 2px;
     }
   }
-  span{
+  span {
     text-indent: -999em;
     position: absolute;
   }
-
 }
 
 /*///////////////////////
 modal
 ///////////////////////*/
-.m-modal{
-  &-link{
+.m-modal {
+  &-link {
     display: inline-block;
     width: 100%;
     height: 100%;
-    &[data-icon="modal"]{
-      &::before{
-        content: "";
+    &[data-icon='modal'] {
+      &::before {
+        content: '';
         position: absolute;
         top: 75%;
         left: 80%;
@@ -804,56 +812,55 @@ modal
         background-size: 20px 20px;
         cursor: pointer;
         z-index: 1;
-        @include transition(.6s);
+        @include transition(0.6s);
       }
-      &::after{
-        content: "";
+      &::after {
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
         cursor: pointer;
-        @include transition(.8s);
+        @include transition(0.8s);
       }
-      &:hover{
-        @include mediaQuery(min,0,768){
-
+      &:hover {
+        @include mediaQuery(min, 0, 768) {
         }
-        &::before{
-          @include mediaQuery(min,0,768){
+        &::before {
+          @include mediaQuery(min, 0, 768) {
             top: 52%;
             left: 52%;
             transform: translate(-50%, -50%) scale(2);
           }
         }
-        &::after{
-          @include mediaQuery(min,0,768){
+        &::after {
+          @include mediaQuery(min, 0, 768) {
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,.1);
+            background-color: rgba(0, 0, 0, 0.1);
           }
         }
       }
     }
   }
-  &-img{
-    @include mediaQuery(max,0,768){
+  &-img {
+    @include mediaQuery(max, 0, 768) {
       margin-bottom: (30 / 750) * 100vw;
     }
   }
-  &-lead{
+  &-lead {
     font-weight: bold;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       margin-bottom: (20 / 750) * 100vw;
     }
-    @include mediaQuery(min,0,768){
+    @include mediaQuery(min, 0, 768) {
       margin-bottom: 15px;
     }
   }
-  &-txt{
+  &-txt {
     margin-bottom: 20px;
     // margin-bottom: (20 / 750) * 100vw;
   }
-  &-close{
+  &-close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -861,104 +868,100 @@ modal
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       top: 8px;
       right: 8px;
     }
-    &::after{
-      content: "";
+    &::after {
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
       width: 60%;
       height: 2px;
       background: #fff;
-      transform: translate(-50%,-50%) rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
     }
-    &::before{
-      content: "";
+    &::before {
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
       width: 60%;
       height: 2px;
       background: #fff;
-      transform: translate(-50%,-50%) rotate(-45deg);
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
 
-    @include mediaQuery(min,0,768){
-
+    @include mediaQuery(min, 0, 768) {
     }
-    @include mediaQuery(max,0,768){
-
+    @include mediaQuery(max, 0, 768) {
     }
 
-    span{
+    span {
       position: absolute;
       text-indent: -999em;
     }
-
   }
 }
 
 /*///////////////////////
 state
 ///////////////////////*/
-.is{
-  &-fadein{
+.is {
+  &-fadein {
     opacity: 0;
-    animation: fadein-bottom 1s ease .3s forwards;
+    animation: fadein-bottom 1s ease 0.3s forwards;
   }
-  &-hide{
+  &-hide {
     opacity: 0;
     visibility: hidden;
   }
-  &-transition{
-    @include transition(.3s);
+  &-transition {
+    @include transition(0.3s);
   }
-  &-show{
-    &-top{
+  &-show {
+    &-top {
       // @include transition(1.5s);
-      animation: fade-top .8s linear forwards;
+      animation: fade-top 0.8s linear forwards;
     }
-    &-bottom{
+    &-bottom {
       // @include transition(1.5s);
-      animation: fade-bottom .8s ease-in-out forwards;
+      animation: fade-bottom 0.8s ease-in-out forwards;
     }
-    &-left{
+    &-left {
       // @include transition(1.5s);
-      animation: fade-left .8s ease-in-out forwards;
+      animation: fade-left 0.8s ease-in-out forwards;
     }
-    &-right{
+    &-right {
       // @include transition(1.5s);
-      animation: fade-right .8s ease-in-out forwards;
+      animation: fade-right 0.8s ease-in-out forwards;
     }
   }
-  &-open{
-    &::before{
+  &-open {
+    &::before {
       top: 13px;
       transform: rotate(45deg);
     }
-    span{
+    span {
       white-space: nowrap;
       overflow: hidden;
       // transform: translateX(150%);
       // animation: fadein-txt ease .5s forwards;
-      &::before{
+      &::before {
         overflow: hidden;
         transform: translateX(150%) rotate(120deg);
       }
-      &::after{
+      &::after {
         bottom: 30px;
         transform: rotate(-45deg);
       }
     }
-    &-nav{
+    &-nav {
       transform: translateY(103%);
     }
   }
-  &-fixed{
-
+  &-fixed {
   }
 }
 
@@ -966,32 +969,32 @@ state
 adjust
 ///////////////////////*/
 /* text-align */
-.m-ac{
+.m-ac {
   text-align: center !important;
 }
-.m-al{
+.m-al {
   text-align: left !important;
 }
-.m-ar{
+.m-ar {
   text-align: right !important;
 }
 
 /* text-decoration */
-.m-bold{
+.m-bold {
   font-weight: bold !important;
 }
 
 /* display */
-.m-hide{
-  &-pc{
+.m-hide {
+  &-pc {
     display: none;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       display: block;
     }
   }
-  &-sp{
+  &-sp {
     display: block;
-    @include mediaQuery(max,0,768){
+    @include mediaQuery(max, 0, 768) {
       display: none;
     }
   }
@@ -999,21 +1002,21 @@ adjust
 
 /* width */
 @for $i from 1 through 20 {
-  .m-w-#{$i * 5}{
+  .m-w-#{$i * 5} {
     width: #{$i * 5}% !important;
   }
 }
 
 /* margin-top */
 @for $i from 1 through 12 {
-  .m-mt-#{$i * 5}{
+  .m-mt-#{$i * 5} {
     margin-top: #{$i * 5}px !important;
   }
 }
 
 /* margin-bottom */
 @for $i from 1 through 12 {
-  .m-mb-#{$i * 5}{
+  .m-mb-#{$i * 5} {
     margin-bottom: #{$i * 5}px !important;
   }
 }
