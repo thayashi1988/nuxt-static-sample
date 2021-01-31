@@ -1,6 +1,8 @@
 <template>
   <li
+    v-scroll="handleScroll"
     class="l-grid-col is-hide"
+    :class="[{ 'is-show-bottom': scrollFlag }]"
     data-col="4"
     data-col-sp="12"
     data-padding="true"
@@ -25,6 +27,18 @@ export default {
   props: {
     // eslint-disable-next-line
     serviceData: Object,
+  },
+  data() {
+    return {
+      scrollFlag: false,
+    }
+  },
+  methods: {
+    handleScroll(evt, el) {
+      const top = el.getBoundingClientRect().top
+      const wh = window.innerHeight
+      if (top < wh / 1.5) this.scrollFlag = true
+    },
   },
 }
 </script>

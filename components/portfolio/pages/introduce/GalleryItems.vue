@@ -1,6 +1,8 @@
 <template>
   <li
-    class="l-grid-col is-hid"
+    v-scroll="handleScroll"
+    :class="[{ 'is-show-bottom': scrollFlag }]"
+    class="l-grid-col is-hide"
     data-col="3"
     data-col-sp="6"
     data-padding="true"
@@ -28,10 +30,20 @@ export default {
     // eslint-disable-next-line
     galleryData: Object,
   },
+  data() {
+    return {
+      scrollFlag: false,
+    }
+  },
   methods: {
     onModalTriggerClick() {
       const open = true
       this.$emit('onModalTriggerClick', open)
+    },
+    handleScroll(evt, el) {
+      const top = el.getBoundingClientRect().top
+      const wh = window.innerHeight
+      if (top < wh / 1.5) this.scrollFlag = true
     },
   },
 }
