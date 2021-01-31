@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       navTitles: [
-        { title: 'introduce', link: 'introduce' },
+        { title: 'introduce', link: '/introduce' },
         { title: 'skills', link: '#skills' },
         { title: 'service', link: '#service' },
         { title: 'gallery', link: '#gallery' },
