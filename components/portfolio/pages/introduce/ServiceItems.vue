@@ -1,6 +1,6 @@
 <template>
   <li
-    class="l-grid-col is-hid"
+    class="l-grid-col is-hide"
     data-col="4"
     data-col-sp="12"
     data-padding="true"

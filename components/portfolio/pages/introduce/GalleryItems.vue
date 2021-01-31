@@ -8,9 +8,14 @@
   >
     <div class="l-thumbnail">
       <div class="m-thumbnail-img">
-        <a class="m-modal-link js-modal" data-icon="modal">
+        <button
+          type="button"
+          class="m-modal-link js-modal"
+          data-icon="modal"
+          @click="onModalTriggerClick"
+        >
           <img :src="galleryData.img" alt="" />
-        </a>
+        </button>
       </div>
     </div>
     <!-- ./l-thumbnail -->
@@ -22,6 +27,12 @@ export default {
   props: {
     // eslint-disable-next-line
     galleryData: Object,
+  },
+  methods: {
+    onModalTriggerClick() {
+      const open = true
+      this.$emit('onModalTriggerClick', open)
+    },
   },
 }
 </script>

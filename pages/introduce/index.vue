@@ -66,6 +66,7 @@
               v-for="(galleryData, key) in galleryDatas"
               :key="key"
               :gallery-data="galleryData"
+              @onModalTriggerClick="modalOpen"
             ></gallery-items>
           </gallery>
         </div>
@@ -79,15 +80,46 @@
             heading-second-title="CONTACT"
             heading-second-sub-title="お問い合わせ"
           ></heading-2>
+          <text-normal
+            >Webページコーディングに関しては、以下のお問い合わせからご連絡ください。</text-normal
+          >
+          <link-arrow link="/contact">お問い合わせはこちらから</link-arrow>
+        </div>
+        <!-- ./l-section-inner -->
+      </section>
+      <!-- ./l-section -->
+      <section class="l-section">
+        <div class="l-section-inner">
+          <heading-2
+            id="blog"
+            heading-second-title="BLOG"
+            heading-second-sub-title="ブログ"
+          ></heading-2>
+          <text-normal
+            >技術に関することや、日々の出来事をゆる〜く発信しています。</text-normal
+          >
+          <link-arrow link="/">Blogはこちらから</link-arrow>
         </div>
         <!-- ./l-section-inner -->
       </section>
       <!-- ./l-section -->
     </the-main>
     <!-- <the-bread-crumb></the-bread-crumb> -->
+    <modal-gallery
+      v-for="(modalData, key) in modalDatas"
+      :key="key"
+      :modal-data="modalData"
+      :modal-show="show"
+      @onModalTriggerClose="modalClose"
+    ></modal-gallery>
+    <transition name="modal">
+      <div
+        v-if="show"
+        class="l-modal-layer js-modal-close"
+        @click="modalLayerClose"
+      ></div>
+    </transition>
   </div>
-
-  <!-- ./l-section -->
 </template>
 <script>
 const title = 'ぱくもぐを管理している人'
@@ -108,7 +140,9 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      show: false,
+    }
   },
   computed: {
     heading1() {
@@ -207,6 +241,29 @@ export default {
       ]
       return galleryDatas
     },
+    modalDatas() {
+      const modalDatas = [
+        {
+          img: require('~/assets/img/icon/icon.png'),
+          title: 'タイトル',
+          body: '準備中です。。',
+        },
+      ]
+      return modalDatas
+    },
+  },
+  methods: {
+    modalOpen(open) {
+      console.log(open)
+      this.show = open
+    },
+    modalClose(close) {
+      console.log(close)
+      this.show = close
+    },
+    modalLayerClose() {
+      this.show = false
+    },
   },
   head() {
     return {
@@ -232,3 +289,21 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.modal {
+  &-enter {
+    opacity: 0;
+    &-active {
+      transition: all 0.5s ease;
+    }
+  }
+  &-leave {
+    &-to {
+      opacity: 0;
+    }
+    &-active {
+      transition: all 0.5s ease;
+    }
+  }
+}
+</style>
