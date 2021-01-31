@@ -26,8 +26,8 @@
                       <p class="m-card-type">
                         <span class="m-card-date">{{
                           articles.date | formatDate
-                        }}</span
-                        ><span class="m-label"><a href="#">ラベル</a></span>
+                        }}</span>
+                        <!-- <span class="m-label"><a href="#">ラベル</a></span> -->
                       </p>
                       <!-- eslint-disable-next-line vue/no-v-html-->
                       <p class="m-card-txt" v-html="articles.body">
@@ -74,7 +74,7 @@
           <div class="l-box">
             <div class="l-box-inner">
               <p class="m-box-ttl">最新記事</p>
-              <ul class="m-box-list">
+              <!-- <ul class="m-box-list">
                 <li>
                   <dl>
                     <dt><span class="m-date">2020/07/22</span></dt>
@@ -87,19 +87,19 @@
                     <dd><a href="#">intorduce</a></dd>
                   </dl>
                 </li>
-              </ul>
+              </ul> -->
             </div>
           </div>
           <!-- ./l-box -->
           <div class="l-box">
             <div class="l-box-inner">
               <p class="m-box-ttl">カテゴリー</p>
-              <p>
+              <!-- <p>
                 <span class="m-label"><a href="#">ラベルラベル</a></span
                 ><span class="m-label"
                   ><a href="#">ラベルラベルラベルラベル</a></span
                 >
-              </p>
+              </p> -->
             </div>
           </div>
           <!-- ./l-box -->
@@ -108,7 +108,7 @@
       </div>
       <!-- ./l-underlayer -->
     </the-main>
-    <the-bread-crumb></the-bread-crumb>
+    <!-- <the-bread-crumb></the-bread-crumb> -->
   </div>
 </template>
 <script>

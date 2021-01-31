@@ -10,8 +10,12 @@ export default {
   props: {
     // eslint-disable-next-line
     tableData: Object,
-    // require: false,
-    // default: () => ({ header: '', data: '' }),
+    // default: () => [
+    //   {
+    //     header: '',
+    //     data: '',
+    //   },
+    // ],
   },
 }
 </script>

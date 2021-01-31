@@ -489,6 +489,7 @@ media
       @include mediaQuery(max, 0, 768) {
         max-width: 25%;
       }
+      display: inline-block;
       max-width: 35%;
       // min-height: 70%;
     }

@@ -7,8 +7,8 @@
     </div>
     <div class="l-card-body">
       <p class="m-card-type">
-        <span class="m-card-date">{{ articleDate | formatDate }}</span
-        ><span class="m-label"><a href="/single/">ラベル</a></span>
+        <span class="m-card-date">{{ articleDate | formatDate }}</span>
+        <!-- <span class="m-label"><a href="/single/">ラベル</a></span> -->
       </p>
       <h2 class="m-heading-2" data-type="cardttl">
         <nuxt-link :to="'/article/' + articleId" class="m-card-ttl">{{

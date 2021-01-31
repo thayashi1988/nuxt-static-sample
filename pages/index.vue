@@ -28,7 +28,7 @@
       </section>
       <!-- ./l-section -->
     </the-main>
-    <the-bread-crumb></the-bread-crumb>
+    <!-- <the-bread-crumb></the-bread-crumb> -->
   </div>
 </template>
 
