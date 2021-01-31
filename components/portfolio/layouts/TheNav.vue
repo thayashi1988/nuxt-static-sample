@@ -1,5 +1,5 @@
 <template>
-  <nav class="l-nav">
+  <nav class="l-nav is-transition" :class="{ 'is-open-nav': layerToggleClass }">
     <ul class="m-nav">
       <li v-for="(item, key) in navTitles" :key="key">
         <nuxt-link :to="item.link" class="js-scroll">{{
@@ -12,6 +12,12 @@
 <script>
 export default {
   name: 'TheNav',
+  props: {
+    layerToggleClass: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       navTitles: [

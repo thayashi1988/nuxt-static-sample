@@ -5,8 +5,12 @@
         <the-logo link="/" />
       </div>
       <div class="l-header-col">
-        <the-hamburger-menu>MENU</the-hamburger-menu>
-        <the-nav></the-nav>
+        <the-hamburger-menu
+          :menu-toggle-class="menuTrigger"
+          @onMenuTriggerClick="menuOpen"
+          >{{ menuTxt }}</the-hamburger-menu
+        >
+        <the-nav :layer-toggle-class="menuTrigger"></the-nav>
       </div>
     </div>
     <!-- ./l-header-inner -->
@@ -17,17 +21,20 @@
 export default {
   data() {
     return {
-      isOpen: false,
+      menuTxt: 'MENU',
+      menuToggleTxt: {
+        open: 'MENU',
+        close: 'CLOSE',
+      },
+      menuTrigger: false,
     }
   },
   methods: {
-    menuTrigger() {
-      if (this.isOpen) {
-        this.isOpen = false
-        this.$router.push({ path: event.target.pathname })
-      } else {
-        this.$router.push({ path: event.target.pathname })
-      }
+    menuOpen() {
+      this.menuTrigger = !this.menuTrigger
+      this.menuTxt = this.menuTrigger
+        ? this.menuToggleTxt.close
+        : this.menuToggleTxt.open
     },
   },
 }
