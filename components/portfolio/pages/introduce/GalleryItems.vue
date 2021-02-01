@@ -1,8 +1,8 @@
 <template>
   <li
     v-scroll="handleScroll"
-    :class="[{ 'is-show-bottom': scrollFlag }]"
-    class="l-grid-col is-hide"
+    :class="[scrollFlag ? 'is-show-bottom' : 'is-hide']"
+    class="l-grid-col"
     data-col="3"
     data-col-sp="6"
     data-padding="true"
