@@ -3,9 +3,10 @@
     <div
       :id="progressData.skill"
       v-scroll="handleScroll"
-      :class="[{ 'is-show-bottom': scrollFlag }]"
+      :class="[{ 'is-show-bottom': scrollFlag }, { addClassData: scrollFlag }]"
       class="l-progress js-progress"
     >
+      {{ addClassData }}
       <p class="m-progress-txt">{{ progressData.skill }}</p>
       <p class="m-progress-ttl">
         <img :src="progressData.iconPath" :alt="progressData.skill" />
@@ -21,11 +22,17 @@ export default {
   props: {
     // eslint-disable-next-line
     progressData: Object,
+    addClassData: {
+      type: String,
+    },
   },
   data() {
     return {
       scrollFlag: false,
     }
+  },
+  created() {
+    // console.log(this.addClassData)
   },
   methods: {
     handleScroll(evt, el) {

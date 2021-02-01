@@ -29,7 +29,9 @@
             <progress-items
               v-for="(progressData, key) in progressDatas"
               :key="key"
+              ref="test"
               :progress-data="progressData"
+              :add-class-data="addClassData[key]"
             ></progress-items>
           </Progress>
         </div>
@@ -146,6 +148,7 @@ export default {
   data() {
     return {
       show: false,
+      addClassData: [],
     }
   },
   computed: {
@@ -172,17 +175,17 @@ export default {
     progressDatas() {
       const progressDatas = [
         {
-          skill: 'HTML',
+          skill: 'html',
           iconPath: require('@/assets/img/icon/icon_html.svg'),
           skillValue: '100%',
         },
         {
-          skill: 'CSS',
+          skill: 'css',
           iconPath: require('@/assets/img/icon/icon_css.svg'),
           skillValue: '80%',
         },
         {
-          skill: 'jQuery',
+          skill: 'jquery',
           iconPath: require('@/assets/img/icon/icon_jquery.svg'),
           skillValue: '70%',
         },
@@ -192,12 +195,12 @@ export default {
           skillValue: '50%',
         },
         {
-          skill: 'Photoshop',
+          skill: 'photoshop',
           iconPath: require('@/assets/img/icon/icon_ps.svg'),
           skillValue: '60%',
         },
         {
-          skill: 'XD',
+          skill: 'xd',
           iconPath: require('@/assets/img/icon/icon_xd.svg'),
           skillValue: '70%',
         },
@@ -256,13 +259,25 @@ export default {
       return modalDatas
     },
   },
+  mounted() {
+    let aaa = []
+    aaa = this.$refs.test
+    for (let num = 0; num < aaa.length; num++) {
+      this.addClassData.push(
+        // "'is-progress-" + aaa[num].$el.firstElementChild.id + "'"
+        aaa[num].$el.firstElementChild.id
+      )
+    }
+    // console.log(this.addClassData)
+    return this.addClassData
+  },
   methods: {
     modalOpen(open) {
-      console.log(open)
+      // console.log(open)
       this.show = open
     },
     modalClose(close) {
-      console.log(close)
+      // console.log(close)
       this.show = close
     },
     modalLayerClose() {
