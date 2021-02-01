@@ -9,9 +9,5 @@
 <script>
 export default {
   name: 'Gallery',
-  props: {
-    // eslint-disable-next-line
-    galleryData: Object,
-  },
 }
 </script>

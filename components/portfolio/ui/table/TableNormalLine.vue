@@ -8,14 +8,10 @@
 export default {
   name: 'TableNormalLine',
   props: {
-    // eslint-disable-next-line
-    tableData: Object,
-    // default: () => [
-    //   {
-    //     header: '',
-    //     data: '',
-    //   },
-    // ],
+    tableData: {
+      type: Object,
+      default: () => {},
+    },
   },
 }
 </script>

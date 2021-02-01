@@ -27,8 +27,10 @@
 export default {
   name: 'GalleryItems',
   props: {
-    // eslint-disable-next-line
-    galleryData: Object,
+    galleryData: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
     return {

@@ -54,8 +54,10 @@
 export default {
   name: 'ModalGallery',
   props: {
-    // eslint-disable-next-line
-    modalData: Object,
+    modalData: {
+      type: Object,
+      default: () => {},
+    },
     modalShow: {
       type: Boolean,
       default: false,
@@ -69,21 +71,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.modal {
-  &-enter {
-    opacity: 0;
-    &-active {
-      transition: all 0.5s ease;
-    }
-  }
-  &-leave {
-    &-to {
-      opacity: 0;
-    }
-    &-active {
-      transition: all 0.5s ease;
-    }
-  }
-}
-</style>

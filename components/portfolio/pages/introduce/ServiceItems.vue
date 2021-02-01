@@ -25,8 +25,10 @@
 export default {
   name: 'ServiceItems',
   props: {
-    // eslint-disable-next-line
-    serviceData: Object,
+    serviceData: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
     return {

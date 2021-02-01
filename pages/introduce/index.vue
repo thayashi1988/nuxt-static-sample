@@ -245,6 +245,10 @@ export default {
           // link: '/',
           img: require('~/assets/img/icon/icon.png'),
         },
+        {
+          // link: '/',
+          img: require('~/assets/img/icon/icon.png'),
+        },
       ]
       return galleryDatas
     },
@@ -260,24 +264,20 @@ export default {
     },
   },
   mounted() {
-    let aaa = []
-    aaa = this.$refs.test
-    for (let num = 0; num < aaa.length; num++) {
+    let progressIds = []
+    progressIds = this.$refs.test
+    for (let num = 0; num < progressIds.length; num++) {
       this.addClassData.push(
-        // "'is-progress-" + aaa[num].$el.firstElementChild.id + "'"
-        aaa[num].$el.firstElementChild.id
+        'is-progress-' + progressIds[num].$el.firstElementChild.id
       )
     }
-    // console.log(this.addClassData)
     return this.addClassData
   },
   methods: {
     modalOpen(open) {
-      // console.log(open)
       this.show = open
     },
     modalClose(close) {
-      // console.log(close)
       this.show = close
     },
     modalLayerClose() {
@@ -308,21 +308,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.modal {
-  &-enter {
-    opacity: 0;
-    &-active {
-      transition: all 0.5s ease;
-    }
-  }
-  &-leave {
-    &-to {
-      opacity: 0;
-    }
-    &-active {
-      transition: all 0.5s ease;
-    }
-  }
-}
-</style>
