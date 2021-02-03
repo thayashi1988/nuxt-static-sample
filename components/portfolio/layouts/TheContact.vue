@@ -1,6 +1,8 @@
 <template>
   <div class="l-contact">
-    <form
+    <validation-observer
+      ref="observer"
+      tag="form"
       class="l-contact"
       name="contact"
       method="POST"
@@ -9,12 +11,10 @@
       @submit.prevent="onSubmit"
     >
       <input type="hidden" name="form-name" value="contact" />
-      <dl class="m-contact-item">
-        <slot name="formparts"></slot>
-      </dl>
+      <slot name="formparts"></slot>
       <slot name="formspam"></slot>
       <slot name="formbtn"></slot>
-    </form>
+    </validation-observer>
   </div>
 </template>
 <script>
