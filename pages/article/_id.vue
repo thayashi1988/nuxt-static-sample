@@ -30,9 +30,9 @@
                         <!-- <span class="m-label"><a href="#">ラベル</a></span> -->
                       </p>
                       <!-- eslint-disable-next-line vue/no-v-html-->
-                      <p class="m-card-txt" v-html="articles.body">
+                      <div class="m-card-txt" v-html="articles.body">
                         <!-- {{ articles.body }} -->
-                      </p>
+                      </div>
                       <h3 class="m-heading-3" data-type="article">
                         あああああああああああああああああああ
                       </h3>
@@ -108,7 +108,7 @@
       </div>
       <!-- ./l-underlayer -->
     </the-main>
-    <!-- <the-bread-crumb></the-bread-crumb> -->
+    <the-bread-crumb :bread-crumb-title="heading1"></the-bread-crumb>
   </div>
 </template>
 <script>
