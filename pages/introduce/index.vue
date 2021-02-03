@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-main :title="heading1" sub-title="管理人の自己紹介ページです。">
+    <the-main :title="heading1" :sub-title="heading1Sub">
       <section class="l-section">
         <div class="l-section-inner is-fadein">
           <heading-2
@@ -110,7 +110,7 @@
       </section>
       <!-- ./l-section -->
     </the-main>
-    <!-- <the-bread-crumb></the-bread-crumb> -->
+    <the-bread-crumb :bread-crumb-title="heading1"></the-bread-crumb>
     <modal-gallery
       v-for="(modalData, key) in modalDatas"
       :key="key"
@@ -128,33 +128,16 @@
   </div>
 </template>
 <script>
-const title = 'ぱくもぐを管理している人'
-
 export default {
-  props: {
-    breadCrumbLink: {
-      type: String,
-      default: '',
-    },
-    breadCrumbTitle: {
-      type: String,
-      default: '',
-    },
-    breadCrumbNum: {
-      type: Number,
-      default: 1,
-    },
-  },
   data() {
     return {
       show: false,
       addClassData: [],
+      heading1: 'ぱくもぐを管理している人',
+      heading1Sub: '管理人の自己紹介ページです。',
     }
   },
   computed: {
-    heading1() {
-      return title
-    },
     tableDatas() {
       const tableDatas = [
         {
@@ -286,22 +269,22 @@ export default {
   },
   head() {
     return {
-      title: `${title}`,
+      title: `${this.heading1}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `${title}のトップページです。`,
+          content: `${this.heading1}のトップページです。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `${title}のトップページです。`,
+          content: `${this.heading1}のトップページです。`,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${title} | github-nuxt-static-sample`,
+          content: `${this.heading1} | github-nuxt-static-sample`,
         },
       ],
     }
