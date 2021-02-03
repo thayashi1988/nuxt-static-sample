@@ -119,6 +119,33 @@ nav
 }
 
 /*///////////////////////
+breadcrumbs
+///////////////////////*/
+.m-breadcrumbs {
+  &-item {
+    font-size: 1.4rem;
+    &:first-of-type {
+    }
+    &:not(:first-of-type) {
+      margin-left: 10px;
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid $main;
+        border-right: 2px solid $main;
+        transform: rotate(45deg);
+        margin-right: 10px;
+      }
+    }
+    &:not(:last-of-type) {
+      text-decoration: underline;
+    }
+  }
+}
+
+/*///////////////////////
 heading
 ///////////////////////*/
 .m-heading {
