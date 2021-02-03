@@ -74,6 +74,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '~/plugins/filter.js',
+    '~/plugins/vee-validate',
     // '~plugins/ui'
     { src: '~/plugins/animatescroll.js', mode: 'client' },
   ],
@@ -104,6 +105,7 @@ export default {
         })
       }
     },
+    transpile: ['vee-validate/dist/rules'],
   },
   publicRuntimeConfig: {
     apiUrl: API_URL,
