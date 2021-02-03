@@ -1,13 +1,20 @@
 <template>
-  <h2 id="intorduce" class="m-heading-2">
+  <h2 class="m-heading-2" :data-type="dataType">
     {{ headingSecondTitle
-    }}<span class="m-header-txtsub">{{ headingSecondSubTitle }}</span>
+    }}<span v-if="dataType !== ''" class="m-header-txtsub">{{
+      headingSecondSubTitle
+    }}</span>
   </h2>
 </template>
 <script>
 export default {
   name: 'Heading2',
   props: {
+    dataType: {
+      type: String,
+      default: '',
+      require: false,
+    },
     headingSecondTitle: {
       type: String,
       default: '',
