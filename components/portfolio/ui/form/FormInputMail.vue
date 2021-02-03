@@ -1,12 +1,13 @@
 <template>
   <dl class="m-contact-item">
     <dd class="m-contact-item-label">
-      <label for="detail"><slot></slot></label>
+      <label for="email"><slot></slot></label>
     </dd>
     <dt class="m-contact-item-parts">
-      <textarea
-        id="detail"
-        name="detail"
+      <input
+        id="email"
+        type="text"
+        name="email"
         @input="$emit('input', $event.target.value)"
       />
     </dt>
@@ -14,9 +15,9 @@
 </template>
 <script>
 export default {
-  name: 'FormTextArea',
+  name: 'FormInputMail',
   props: {
-    detailModel: {
+    mailModel: {
       type: String,
       default: '',
     },

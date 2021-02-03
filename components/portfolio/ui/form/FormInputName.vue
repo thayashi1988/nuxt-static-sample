@@ -1,12 +1,14 @@
 <template>
   <dl class="m-contact-item">
     <dd class="m-contact-item-label">
-      <label for="detail"><slot></slot></label>
+      <label for="name"><slot></slot></label>
     </dd>
     <dt class="m-contact-item-parts">
-      <textarea
-        id="detail"
-        name="detail"
+      <input
+        id="name"
+        type="text"
+        name="name"
+        autocomplete="autocomplete"
         @input="$emit('input', $event.target.value)"
       />
     </dt>
@@ -14,9 +16,9 @@
 </template>
 <script>
 export default {
-  name: 'FormTextArea',
+  name: 'FormInputName',
   props: {
-    detailModel: {
+    nameModel: {
       type: String,
       default: '',
     },

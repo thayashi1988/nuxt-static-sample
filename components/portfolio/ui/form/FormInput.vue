@@ -5,7 +5,13 @@
         <label :for="id"><slot></slot></label>
       </dd>
       <dt class="m-contact-item-parts">
-        <input :type="type" :id="id" :name="id" :autocomplete="autocomplete" />
+        <input
+          :type="type"
+          :id="id"
+          :name="id"
+          :autocomplete="autocomplete"
+          @input="$emit('input', $event.target.value)"
+        />
       </dt>
     </dl>
   </div>
