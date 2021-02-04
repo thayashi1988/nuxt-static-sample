@@ -34,15 +34,27 @@
   </layout-wrraper>
 </template>
 <script>
+const title = 'コンセプト'
+
 export default {
   head() {
     return {
-      title: 'コンセプト',
+      title: `${title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'コンセプトページの説明',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${title} | github-nuxt-static-sample`,
         },
       ],
     }

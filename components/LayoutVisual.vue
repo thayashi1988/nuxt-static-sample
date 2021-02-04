@@ -67,20 +67,26 @@ export default {
 <style>
 .visual-home {
   background-image: url('~@/assets/img/visual-home.jpg');
+  min-height: 75vh;
 }
 .visual-concept {
   background-image: url('~@/assets/img/visual-concept.jpg');
+  min-height: 40vh;
 }
 .visual-shop {
   background-image: url('~@/assets/img/visual-shop.jpg');
+  min-height: 40vh;
 }
 .visual-menu {
   background-image: url('~@/assets/img/visual-menu.jpg');
+  min-height: 40vh;
 }
 .visual-information {
   background-image: url('~@/assets/img/visual-information.jpg');
+  min-height: 40vh;
 }
 .visual-error {
   background-image: url('~@/assets/img/visual-error.jpg');
+  min-height: 40vh;
 }
 </style>

@@ -13,7 +13,6 @@
           :price="item.price"
         />
       </div>
-      <p v-for="(i, index) in test" :key="index">{{ i }}</p>
       <base-button name="トップへ戻る" link="/" />
     </div>
   </layout-wrraper>
@@ -21,12 +20,13 @@
 <script>
 import axios from 'axios'
 import LayoutMenuList from '../../components/LayoutMenuList.vue'
+const title = 'メニュー'
 
 export default {
   components: { LayoutMenuList },
   async asyncData({ $config, error }) {
     try {
-      const { data } = await axios.get(`${$config.apiUrl}menu`, {
+      const { data } = await axios.get(`${$config.apiUrl}/menu`, {
         headers: { 'X-API-KEY': $config.apiKey },
       })
       return {
@@ -39,22 +39,24 @@ export default {
       })
     }
   },
-  data() {
-    return {
-      test: Array,
-    }
-  },
-  // mounted() {
-  //   console.log(this.items)
-  // },
   head() {
     return {
-      title: 'メニュー',
+      title: `${title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'メニューページの説明',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${title} | github-nuxt-static-sample`,
         },
       ],
     }

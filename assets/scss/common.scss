@@ -1,0 +1,18 @@
+//variables
+@import './_partial/_variable/variables';
+
+//mixin
+@import './_partial/_mixin/mixin';
+
+//base
+@import './_partial/_base/reset';
+@import './_partial/_base/base';
+
+//layout
+@import './_partial/_layout/layout';
+
+//animation
+@import './_partial/_animation/animation';
+
+//ui
+@import './_partial/_ui/module';

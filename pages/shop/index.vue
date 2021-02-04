@@ -52,15 +52,27 @@
   </layout-wrraper>
 </template>
 <script>
+const title = '店舗情報'
+
 export default {
   head() {
     return {
-      title: 'ショップ',
+      title: `${title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'ショップページの説明',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `${title}の説明ページです。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${title} | github-nuxt-static-sample`,
         },
       ],
     }

@@ -1,0 +1,208 @@
+/*------------------------
+  animation
+------------------------*/
+//navhover
+// @keyframes nav-hover-border{
+//   0% {
+//     width: 0;
+//   }
+//   100% {
+//     width: 100%;
+//   }
+// }
+
+//menu
+// @keyframes menu-close{
+//   0% {
+//     transform: translate(-30px,20px) rotate(45deg);
+//   }
+//   25% {
+//     transform: translate(-20px,0) rotate(90deg);
+//   }
+//   50% {
+//     transform: translate(0,-10px) rotate(120deg);
+//   }
+//   100% {
+//     transform: translate(150%) rotate(200deg);
+//   }
+// }
+
+//textanimation
+@keyframes fadein-bottom{
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+//progress fade
+@keyframes fade-top{
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-bottom{
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-right{
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+@keyframes fade-left{
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+
+
+$speed: 2.5s;
+$delay: .2s;
+//progress skillbar
+@keyframes progress-html{
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+.is-progress-html{
+  &::before{
+    animation: progress-html $speed ease forwards;
+  }
+}
+
+@keyframes progress-css{
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 80%;
+  }
+}
+.is-progress-css{
+  &::before{
+    animation: progress-css $speed ease $delay*2 forwards;
+  }
+}
+
+@keyframes progress-jquery{
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 80%;
+  }
+}
+.is-progress-jquery{
+  &::before{
+    animation: progress-jquery $speed ease $delay*3 forwards;
+  }
+}
+
+@keyframes progress-javascript{
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 60%;
+  }
+}
+.is-progress-javascript{
+  &::before{
+    animation: progress-javascript $speed ease $delay*4 forwards;
+  }
+}
+
+@keyframes progress-photoshop{
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 60%;
+  }
+}
+.is-progress-photoshop{
+  &::before{
+    animation: progress-photoshop $speed ease $delay*5 forwards;
+  }
+}
+
+@keyframes progress-xd{
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 70%;
+  }
+}
+.is-progress-xd{
+  &::before{
+    animation: progress-xd $speed ease $delay*6 forwards;
+  }
+}
+
+@keyframes progress-git{
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 70%;
+  }
+}
+.is-progress-git{
+  &::before{
+    animation: progress-git $speed ease $delay*7 forwards;
+  }
+}
+
+@keyframes progress-gulp{
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 60%;
+  }
+}
+.is-progress-gulp{
+  &::before{
+    animation: progress-gulp $speed ease $delay*8 forwards;
+  }
+}

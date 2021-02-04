@@ -16,5 +16,19 @@ module.exports = {
   ],
   plugins: ['prettier'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'no-console': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'no-unused-vars': 'off',
+    'vue/html-self-closing': 'off',
+    'prettier/prettier': ['error', { semi: false }],
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector:
+          "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+        message: 'Unexpected property on console object was called',
+      },
+    ],
+  },
 }
