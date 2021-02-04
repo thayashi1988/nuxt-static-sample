@@ -8,12 +8,11 @@
               ref="observer"
               v-slot="{ invalid, validated }"
               tag="form"
-              class="l-contact"
               name="contact"
               method="POST"
               data-netlify="true"
+              netlify
               data-netlify-honeypot="bot-field"
-              @submit.prevent="onSubmit"
             >
               <input type="hidden" name="form-name" value="contact" />
 
