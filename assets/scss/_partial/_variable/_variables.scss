@@ -1,0 +1,26 @@
+////////////////
+//  variables
+////////////////
+//画面幅
+$content_width: 1140px;
+
+//フォント
+$font: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
+  Meiryo, sans-serif;
+$raleway: 'Raleway', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+  'Hiragino Sans', Meiryo, sans-serif;
+
+//カラー
+$main: #333;
+$sub: #777;
+$accent: #aaa;
+$bg_main: #fff;
+$bg_sub: #f8f9f9;
+
+//パス
+$img_path: '~@/assets/img/';
+$icon_path: '~assets/img/icon/';
+$logo_path: '/assets/img/logo/';
+
+//ブレイクポイント
+$bp-md: 'screen and (max-width: 800px)';

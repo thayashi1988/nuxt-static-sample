@@ -1,71 +1,54 @@
 <template>
-  <layout-wrraper>
-    <NuxtLink to="/index2">index2</NuxtLink>
-    <layout-visual
-      title="NUXT SAMPLE SITE DEMO"
-      message="ああああああああああああああああああああああああああああああああああああああああああああああああああああ"
-    />
-    <div class="w-full md:max-w-3xl mx-auto pt-20 px-6 md:px-0">
-      <base-heading>MdN Cafeのおすすめメニュー</base-heading>
-      <div class="block md:flex md:flex-wrap md:justify-between mb-20 md:mb-0">
-        <layout-menu-list
-          v-for="(item, index) in menuItems"
-          :key="index"
-          :image="item.image"
-          :image-url="item.image.url"
-          :name="item.name"
-          :body="item.body"
-          :price="item.price"
-          item-class="md:w-56 mb-20 shadow-lg bg-gray-200"
-          block-class="max-w"
-          image-class="w-full"
-          data-class="px-6 py-4"
-          :flag-body="false"
-        />
-      </div>
-      <base-button name="メニューの一覧" link="/menu" />
-      <base-heading>MdN Cafeのお知らせ</base-heading>
-      <layout-information-list
-        v-for="(information, key, index) in informationItems"
-        :id="information.id"
-        :key="index"
-        :date="information.date"
-        :title="information.title"
-      />
-      <base-button name="お知らせの一覧" link="/information" />
-    </div>
-  </layout-wrraper>
+  <div>
+    <the-main :title="heading1" sub-title="WEB技術や日常などを発信しています">
+      <section class="l-section">
+        <div class="l-section-inner">
+          <div class="l-grid-container">
+            <ul class="l-grid-row">
+              <li
+                v-for="(article, key) in articleItems"
+                :key="key"
+                class="l-grid-col"
+                data-col="4"
+                data-col-sp="12"
+                data-marginp="true"
+                data-padding="true"
+              >
+                <card
+                  :article-title="article.title"
+                  :article-date="article.date"
+                  :article-id="article.id"
+                  :article-body="article.body"
+                ></card>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- ./l-section-inner -->
+      </section>
+      <!-- ./l-section -->
+    </the-main>
+    <!-- <the-bread-crumb></the-bread-crumb> -->
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
-import BaseHeading from '../components/BaseHeading.vue'
-import LayoutInformationList from '../components/LayoutInformationList.vue'
-const title = 'Nuxt Sampleページ'
+const title = 'ぱくもぐブログ'
 
 export default {
-  components: { BaseHeading, LayoutInformationList },
   async asyncData({ $config, error }) {
-    try {
-      const menu = await axios.get(
-        `${$config.apiUrl}/menu?limit=3&filters=flag[equals]true`,
-        {
-          headers: { 'X-API-KEY': $config.apiKey },
-        }
-      )
-      const info = await axios.get(`${$config.apiUrl}/information?limit=3`, {
-        headers: { 'X-API-KEY': $config.apiKey },
-      })
-      return {
-        menuItems: menu.data.contents,
-        informationItems: info.data.contents,
-      }
-    } catch (err) {
-      error({
-        statusCode: err.response.status,
-        message: err.response.data.message,
-      })
+    const { data } = await axios.get(`${$config.apiUrl}/information`, {
+      headers: { 'X-API-KEY': $config.apiKey },
+    })
+    return {
+      articleItems: data.contents,
     }
+  },
+  computed: {
+    heading1() {
+      return title
+    },
   },
   head() {
     return {
@@ -91,4 +74,3 @@ export default {
   },
 }
 </script>
-<style></style>

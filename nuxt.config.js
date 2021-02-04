@@ -51,6 +51,10 @@ export default {
         type: 'image/x-icon',
         href: '/favicon.ico',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Raleway&display=swap',
+      },
     ],
   },
   router: {
@@ -68,7 +72,12 @@ export default {
   css: [{ src: '~/assets/scss/common.scss', lang: 'scss' }],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/filter.js'],
+  plugins: [
+    '~/plugins/filter.js',
+    { src: '~/plugins/vee-validate', ssr: true },
+    // '~plugins/ui'
+    { src: '~/plugins/animatescroll.js', mode: 'client' },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -96,12 +105,13 @@ export default {
         })
       }
     },
+    transpile: ['vee-validate/dist/rules'],
   },
   publicRuntimeConfig: {
     apiUrl: API_URL,
     apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined,
   },
   privateRuntimeConfig: {
-    apiKey: API_KEY
+    apiKey: API_KEY,
   },
 }

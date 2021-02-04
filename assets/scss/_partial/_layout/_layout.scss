@@ -1,0 +1,441 @@
+/*------------------------
+  layout
+------------------------*/
+/*///////////////////////
+header
+///////////////////////*/
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 10px;
+  background: #fff;
+  z-index: 1;
+  border-bottom: 3px solid #03c4eb;
+  &-inner {
+    max-width: $content_width;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  &-col {
+    flex: 0 1 auto;
+    margin-right: 30px;
+    &:last-child {
+      flex: 1 0 auto;
+      margin-right: 0;
+      @include mediaQuery(max, 0, 768) {
+        // position: relative;
+      }
+    }
+  }
+}
+
+/*///////////////////////
+menu
+///////////////////////*/
+.l-menu {
+  @include mediaQuery(max, 0, 768) {
+    position: absolute;
+    top: 15px;
+    right: 8px;
+    width: 30px;
+    height: 45px;
+    z-index: 1;
+  }
+  @include mediaQuery(min, 0, 768) {
+    display: none;
+  }
+}
+
+/*///////////////////////
+nav
+///////////////////////*/
+.l-nav {
+  @include mediaQuery(max, 0, 768) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-400%);
+  }
+  @include mediaQuery(min, 0, 768) {
+  }
+}
+
+/*///////////////////////
+breadcrumbs
+///////////////////////*/
+.l-breadcrumbs {
+  &-list {
+    display: flex;
+  }
+}
+
+/*///////////////////////
+main
+///////////////////////*/
+.l-main {
+  // padding: 0 10px;
+}
+
+/*///////////////////////
+mainvisul
+///////////////////////*/
+.l-mainvisul {
+  background: url(#{$img_path}bg_main.jpg) no-repeat bottom center;
+  background-size: cover;
+  margin-top: 100px;
+  &-inner {
+    position: relative;
+    max-width: $content_width;
+    min-height: 300px;
+    margin: 0 auto;
+    @include mediaQuery(max, 0, 768) {
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+  &-contents {
+    width: 100%;
+    // max-width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 2%;
+  }
+}
+
+/*///////////////////////
+section
+///////////////////////*/
+.l-section {
+  padding: 50px 0;
+  &:nth-child(odd) {
+    background: $bg_sub;
+  }
+  &-inner {
+    max-width: $content_width;
+    margin: 0 auto;
+    padding: 0 4%;
+  }
+  &[data-bg='gray'] {
+    background: $bg_sub;
+  }
+  &-last {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    // background: #f8f9f9 !important;
+    background: rgba(3, 196, 235, 0.1);
+  }
+}
+
+/*///////////////////////
+underlayer
+///////////////////////*/
+.l-underlayer {
+  display: flex;
+  background: $bg_sub;
+  padding: 50px 2%;
+  @include mediaQuery(max, 0, 768) {
+    display: block;
+    padding: 50px 4%;
+  }
+  .l-section {
+    flex: 1 1 75%;
+    max-width: 75%;
+    padding: 0;
+    @include mediaQuery(max, 0, 768) {
+      max-width: 100%;
+    }
+    @include mediaQuery(min, 0, 768) {
+      margin-right: 30px;
+    }
+    .l-section-inner {
+      padding: 0;
+    }
+  }
+}
+
+/*///////////////////////
+side
+///////////////////////*/
+.l-side {
+  flex: 1 1 25%;
+  max-width: 100%;
+  @include mediaQuery(max, 0, 768) {
+    max-width: 100%;
+  }
+}
+
+/*///////////////////////
+progress
+///////////////////////*/
+.l-progress {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 200px;
+  opacity: 0;
+  visibility: hidden;
+  // background: rgba(0, 0, 0, 0.3);
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 0;
+    background: rgba(3, 196, 235, 0.7);
+    z-index: -1;
+    // background: #03c4eb;
+    @include transition();
+  }
+  // .st0{fill:#03c4eb;}
+}
+
+// /*///////////////////////
+// service
+// ///////////////////////*/
+// .l-service{
+//   opacity: 0;
+//   visibility: hidden;
+// }
+
+// /*///////////////////////
+// gallery
+// ///////////////////////*/
+// .l-gallery{
+//   opacity: 0;
+//   visibility: hidden;
+// }
+
+// /*///////////////////////
+// contact
+// ///////////////////////*/
+// .l-contact{
+//   opacity: 0;
+//   visibility: hidden;
+// }
+
+/*///////////////////////
+media
+///////////////////////*/
+.l-media {
+}
+
+/*///////////////////////
+thumbnail
+///////////////////////*/
+.l-thumbnail {
+  overflow: hidden;
+}
+
+/*///////////////////////
+list
+///////////////////////*/
+.l-list {
+  margin-bottom: 30px;
+}
+
+/*///////////////////////
+btn
+///////////////////////*/
+.l-btn {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/*///////////////////////
+card
+///////////////////////*/
+.l-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid $accent;
+  // border-top: none;
+  &-body {
+    padding: 20px 15px;
+    @include mediaQuery(max, 0, 768) {
+      padding: 10px 10px 30px;
+    }
+  }
+}
+
+/*///////////////////////
+img
+///////////////////////*/
+.l-img {
+  margin-bottom: 40px;
+}
+
+/*///////////////////////
+tabel
+///////////////////////*/
+.l-table {
+  width: 100%;
+  margin-bottom: 30px;
+  &[data-table='sp-scroll'] {
+    @include mediaQuery(max, 0, 768) {
+      display: block;
+      overflow-x: scroll;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+/*///////////////////////
+box
+///////////////////////*/
+.l-box {
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 50px;
+  @include mediaQuery(max, 0, 768) {
+    margin-bottom: 30px;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &-inner {
+    padding: 20px;
+    background: rgba(3, 196, 235, 0.2);
+    border-radius: 10px;
+  }
+}
+
+/*///////////////////////
+modal
+///////////////////////*/
+.l-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 65%;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 15px;
+  z-index: 3;
+  @include mediaQuery(max, 0, 768) {
+    max-width: 90%;
+    // height: 80%;
+    overflow-y: scroll;
+    padding: 30px 20px 20px;
+  }
+  &-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    @include transition();
+  }
+}
+
+/*///////////////////////
+footer
+///////////////////////*/
+.l-footer {
+  background: #222;
+  padding: 35px 0;
+}
+
+/*///////////////////////
+grid
+///////////////////////*/
+.l-grid {
+  &-container {
+    width: 100%;
+    &[data-option='progress'] {
+      // position: relative;
+      // border-top: 1px solid #000;
+      // border-bottom: 1px solid #000;
+      &::before {
+        // content: "100%";
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+      }
+    }
+  }
+  &-row {
+    display: flex;
+    flex-wrap: wrap;
+    // margin: -40px -10px 0;
+    &[data-align='center'] {
+      @include mediaQuery(max, 0, 768) {
+        justify-content: flex-start;
+      }
+      @include mediaQuery(min, 0, 768) {
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    @include mediaQuery(max, 0, 768) {
+      margin: 0;
+    }
+  }
+  &-col {
+    @for $value from 1 through 12 {
+      &[data-col='#{$value}'] {
+        width: (100% / 12 * $value);
+      }
+    }
+    @for $value from 1 through 12 {
+      &[data-col-sp='#{$value}'] {
+        @include mediaQuery(max, 0, 768) {
+          width: (100% / 12 * $value);
+        }
+      }
+    }
+    &[data-padding='true'] {
+      padding-right: 10px;
+      margin-bottom: 30px;
+      &:nth-child(3n) {
+        @include mediaQuery(max, 0, 768) {
+          padding-right: 0;
+        }
+      }
+      &:nth-child(4n) {
+        @include mediaQuery(min, 0, 768) {
+          @include mediaQuery(min, 0, 768);
+        }
+      }
+    }
+    &[data-padding-sp='false'] {
+      @include mediaQuery(max, 0, 768) {
+        margin-bottom: (20 / 750) * 100vw;
+        padding-right: 0;
+      }
+    }
+    &[data-marginp='true'] {
+      @include mediaQuery(min, 0, 768) {
+        margin-bottom: 30px;
+      }
+      @include mediaQuery(max, 0, 768) {
+        margin-bottom: 20px;
+      }
+      &:last-child {
+        @include mediaQuery(min, 0, 768) {
+          margin-bottom: 0;
+        }
+        @include mediaQuery(max, 0, 768) {
+          margin-bottom: 50px;
+        }
+      }
+    }
+  }
+}
