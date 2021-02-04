@@ -4,7 +4,6 @@
     v-scroll="handleScroll"
     class="l-grid-col"
     :class="[scrollFlag ? 'is-show-bottom' : 'is-hide']"
-    :style="scrollFlag ? delay : ''"
     data-col="4"
     data-col-sp="12"
     data-padding="true"
@@ -44,13 +43,13 @@ export default {
   watch: {
     // この関数は question が変わるごとに実行されます。
     scrollFlag() {
-      console.log('フラグがtrueになったよーー')
-      console.log(this.aaa)
+      // console.log('フラグがtrueになったよーー')
+      // console.log(this.aaa)
     },
   },
   mounted() {
     this.aaa = this.$refs.sss
-    console.log(this.aaa)
+    // console.log(this.aaa)
   },
   // computed: {
   //   aaa() {
