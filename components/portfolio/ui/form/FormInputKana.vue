@@ -3,8 +3,8 @@
     v-slot="{ errors }"
     tag="dl"
     class="m-contact-item"
-    rules="required|katakana"
-    name="フリガナ"
+    :rules="rules"
+    :name="name"
   >
     <dd class="m-contact-item-label">
       <label for="namekana"><slot></slot></label>
@@ -12,11 +12,12 @@
     <dt class="m-contact-item-parts">
       <input
         id="namekana"
+        v-model.trim="innerValue"
         type="text"
         name="namekana"
-        @input="$emit('input', $event.target.value)"
+        required
       />
-      <p v-show="errors.length" class="p-contact__error">
+      <p v-show="errors.length" class="m-contact-validate-error">
         {{ errors[0] }}
       </p>
     </dt>
@@ -29,6 +30,28 @@ export default {
     nameKanaModel: {
       type: String,
       default: '',
+    },
+    rules: {
+      type: String,
+      default: '',
+    },
+    name: {
+      type: String,
+      default: '',
+    },
+    value: {
+      type: String,
+      required: true,
+    },
+  },
+  computed: {
+    innerValue: {
+      get() {
+        return this.$props.value
+      },
+      set(val) {
+        this.$emit('input', val)
+      },
     },
   },
 }

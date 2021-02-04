@@ -1,6 +1,12 @@
 <template>
   <div class="m-ac m-mt-30">
-    <button type="submit" class="m-btn" :data-width="dataWidth">
+    <button
+      type="submit"
+      class="m-btn"
+      :class="classes"
+      :data-width="dataWidth"
+      :disabled="disabled"
+    >
       <slot></slot>
     </button>
   </div>
@@ -12,6 +18,14 @@ export default {
     dataWidth: {
       type: String,
       default: '',
+    },
+    classes: {
+      type: Object,
+      default: () => {},
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 }

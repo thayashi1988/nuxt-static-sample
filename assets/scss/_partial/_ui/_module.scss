@@ -745,23 +745,32 @@ box
 /*///////////////////////
 contact
 ///////////////////////*/
-.m-contact-item {
-  &:not(:first-of-type) {
-    margin-top: 30px;
-  }
-  &-label {
-    margin-bottom: 10px;
-  }
-  &-parts {
-    input,
-    textarea {
-      width: 100%;
-      border: 1px solid #000;
-      border-radius: 3px;
-      padding: 5px;
+.m-contact {
+  &-item {
+    &:not(:first-of-type) {
+      margin-top: 30px;
     }
-    textarea {
-      height: 200px;
+    &-label {
+      margin-bottom: 10px;
+    }
+    &-parts {
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid #000;
+        border-radius: 3px;
+        padding: 5px;
+      }
+      textarea {
+        height: 200px;
+      }
+    }
+  }
+  &-validate {
+    &-error {
+      color: #ff0000;
+      @include font-size(12);
+      margin-bottom: 15px;
     }
   }
 }
@@ -1029,6 +1038,11 @@ state
     &-nav {
       transform: translateY(103%);
     }
+  }
+  &-disable {
+    border: none;
+    box-shadow: none;
+    background: #ccc;
   }
   &-fixed {
   }

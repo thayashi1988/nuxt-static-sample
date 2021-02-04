@@ -14,10 +14,24 @@ localize('ja', ja)
 
 // 必須
 extend('required', required)
+
+// テスト
+// extend('aaa', {
+//   message: (field) => {
+//     return field + 'は入力必須項目です'
+//   },
+//   validate: (value) => {
+//     console.log(value !== '')
+//     return value !== ''
+//   },
+// })
+
 // メールアドレス
 extend('email', email)
+
 // 文字数上限
 extend('max', max)
+
 // カタカナのみ
 extend('katakana', {
   message: (field) => {
@@ -27,5 +41,6 @@ extend('katakana', {
     return /^[ァ-ン]+$/.test(value)
   },
 })
+
 Vue.component('validation-provider', ValidationProvider)
 Vue.component('validation-observer', ValidationObserver)
