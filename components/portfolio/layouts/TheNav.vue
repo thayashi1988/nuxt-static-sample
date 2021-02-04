@@ -26,7 +26,7 @@ export default {
         { title: 'service', link: '/introduce#service' },
         { title: 'gallery', link: '/introduce#gallery' },
         { title: 'contact', link: '/contact' },
-        { title: 'blog', link: '/blog' },
+        // { title: 'blog', link: '/blog' },
       ],
     }
   },

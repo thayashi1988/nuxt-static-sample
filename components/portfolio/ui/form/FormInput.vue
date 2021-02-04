@@ -6,8 +6,8 @@
       </dd>
       <dt class="m-contact-item-parts">
         <input
-          :type="type"
           :id="id"
+          :type="type"
           :name="id"
           :autocomplete="autocomplete"
           @input="$emit('input', $event.target.value)"
