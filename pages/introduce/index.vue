@@ -68,7 +68,7 @@
               v-for="(galleryData, key) in galleryDatas"
               :key="key"
               :gallery-data="galleryData"
-              @onModalTriggerClick="modalOpen"
+              @onModalTriggerClick="modalOpen(key)"
             ></gallery-items>
           </gallery>
         </div>
@@ -112,9 +112,7 @@
     </the-main>
     <the-bread-crumb :bread-crumb-title="heading1"></the-bread-crumb>
     <modal-gallery
-      v-for="(modalData, key) in modalDatas"
-      :key="key"
-      :modal-data="modalData"
+      :modal-data="galleryDatas[modalId]"
       :modal-show="show"
       @onModalTriggerClose="modalClose"
     ></modal-gallery>
@@ -132,6 +130,7 @@ export default {
   data() {
     return {
       show: false,
+      modalId: 0,
       addClassData: [],
       heading1: 'ぱくもぐを管理している人',
       heading1Sub: '管理人の自己紹介ページです。',
@@ -225,25 +224,19 @@ export default {
     galleryDatas() {
       const galleryDatas = [
         {
-          // link: '/',
           img: require('~/assets/img/icon/icon.png'),
+          modalImg: require('~/assets/img/icon/icon.png'),
+          modalTitle: 'タイトル1',
+          modalBody: '実績掲載は準備中です。。',
         },
         {
-          // link: '/',
           img: require('~/assets/img/icon/icon.png'),
+          modalImg: require('~/assets/img/icon/icon.png'),
+          modalTitle: 'タイトル2',
+          modalBody: '実績掲載は準備中です。。',
         },
       ]
       return galleryDatas
-    },
-    modalDatas() {
-      const modalDatas = [
-        {
-          img: require('~/assets/img/icon/icon.png'),
-          title: 'タイトル',
-          body: '準備中です。。',
-        },
-      ]
-      return modalDatas
     },
   },
   mounted() {
@@ -257,8 +250,9 @@ export default {
     return this.addClassData
   },
   methods: {
-    modalOpen(open) {
-      this.show = open
+    modalOpen(key) {
+      this.show = true
+      this.modalId = key
     },
     modalClose(close) {
       this.show = close

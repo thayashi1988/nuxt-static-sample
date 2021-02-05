@@ -6,34 +6,30 @@
       /></nuxt-link>
     </div>
     <div class="l-card-body">
-      <p class="m-card-type">
-        <span class="m-card-date">{{ articleDate | formatDate }}</span>
-        <!-- <span class="m-label"><a href="/single/">ラベル</a></span> -->
-      </p>
-      <h2 class="m-heading-2" data-type="cardttl">
+      <card-date :up-date-boolean="articleDate !== articleDateUpDate">
+        <template #date>
+          {{ articleDate | formatDate }}
+        </template>
+        <template #upDate>
+          {{ articleDateUpDate | formatDate }}
+        </template>
+      </card-date>
+      <heading-2 data-type="cardttl">
         <nuxt-link :to="'/article/' + articleId" class="m-card-ttl">{{
           articleTitle
         }}</nuxt-link>
-      </h2>
-      <p class="m-card-txt">
-        {{ articleBody }}
-      </p>
-      <p class="m-ac">
-        <nuxt-link
-          :to="'/article/' + articleId"
-          class="m-btn m-card-btn"
-          data-width="small"
-          >この記事を読む</nuxt-link
-        >
-      </p>
+      </heading-2>
+      <!-- eslint-disable-next-line vue/no-v-html-->
+      <div class="m-card-txt" v-html="articleBody"></div>
+      <card-btn :to="'/article/' + articleId" data-width="small"
+        >この記事を読む</card-btn
+      >
     </div>
     <!-- ./l-card-body -->
   </div>
   <!-- ./l-card -->
 </template>
 <script>
-import axios from 'axios'
-
 export default {
   name: 'Card',
   props: {
@@ -46,6 +42,10 @@ export default {
       required: true,
     },
     articleDate: {
+      type: String,
+      required: true,
+    },
+    articleDateUpDate: {
       type: String,
       required: true,
     },
