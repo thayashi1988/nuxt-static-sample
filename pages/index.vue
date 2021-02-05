@@ -17,6 +17,7 @@
                 <card
                   :article-title="article.title"
                   :article-date="article.date"
+                  :article-date-up-date="article.updatedAt"
                   :article-id="article.id"
                   :article-body="article.body"
                 ></card>
