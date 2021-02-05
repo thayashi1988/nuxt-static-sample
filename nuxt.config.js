@@ -1,4 +1,5 @@
 const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
+import axios from 'axios'
 export default {
   // 200.htmlを404.htmlに変更
   generate: {
@@ -96,10 +97,34 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/google-gtag',
+    '@nuxtjs/sitemap',
   ],
   'google-gtag': {
     id: GA_ID_G,  //サイトのID
-    // debug: true,  // 開発環境でも表示したい場合
+    debug: true,  // 開発環境でも表示したい場合
+  },
+  sitemap: {
+    // サイトマップが作成される場所
+    path: '/sitemap.xml',
+    // サイトのURL
+    hostname: 'https://nervous-franklin-aa026b.netlify.app/',
+    // サイトマップの更新頻度（ms）
+    cacheTime: 1000 * 60 * 60 * 24,
+    routes (callback) {
+      axios.get(API_URL + '/information', {
+        headers: { 'X-API-KEY': API_KEY },
+      })
+      .then((response) => {
+        const articles = response.data
+        // console.log('articles:', articles)
+        const routes = articles.contents.map((article) => {
+          // console.log('articleaaaaaaaaa:', article)
+          return article.id
+        })
+        callback(null, routes)
+      })
+      .catch(callback)
+    }
   },
   axios: {},
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -119,8 +144,8 @@ export default {
   publicRuntimeConfig: {
     apiUrl: API_URL,
     apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined,
-    gaIdUa: GA_ID_UA,
-    gaIdG: GA_ID_G
+    gaIdUa: process.env.NODE_ENV !== 'production' ? GA_ID_UA : undefined,
+    gaIdG: process.env.NODE_ENV !== 'production' ? GA_ID_G : undefined
   },
   privateRuntimeConfig: {
     apiKey: API_KEY,
