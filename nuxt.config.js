@@ -80,6 +80,7 @@ export default {
     { src: '~/plugins/vee-validate', ssr: true },
     // '~plugins/ui'
     { src: '~/plugins/animatescroll.js', mode: 'client' },
+    // { src: '~/plugins/gtag.js', mode: 'client' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -91,17 +92,17 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-gtag'
+    '@nuxtjs/google-analytics',
   ],
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/google-gtag',
     '@nuxtjs/sitemap',
+    '@nuxtjs/google-analytics'
   ],
-  'google-gtag': {
-    id: GA_ID_G,  //サイトのID
-    debug: true,  // 開発環境でも表示したい場合
+  googleAnalytics: {
+    id: GA_ID_UA,
+    checkDuplicatedScript: true
   },
   sitemap: {
     // サイトマップが作成される場所
@@ -119,7 +120,7 @@ export default {
         // console.log('articles:', articles)
         const routes = articles.contents.map((article) => {
           // console.log('articleaaaaaaaaa:', article)
-          return article.id
+          return 'article/' + article.id
         })
         callback(null, routes)
       })
