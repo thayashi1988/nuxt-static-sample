@@ -57,17 +57,22 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `${title}のトップページです。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${title}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `${title}のトップページです。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${title}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。`,
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'website',
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${title} | github-nuxt-static-sample`,
+          content: `${title}`,
         },
       ],
     }

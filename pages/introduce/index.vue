@@ -274,17 +274,17 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `${this.heading1}のトップページです。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `${this.heading1}のトップページです。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${this.heading1} | github-nuxt-static-sample`,
+          content: `${this.heading1}`,
         },
       ],
     }
