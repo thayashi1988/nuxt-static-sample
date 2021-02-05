@@ -39,8 +39,7 @@ export default {
   },
   methods: {
     onModalTriggerClick() {
-      const open = true
-      this.$emit('onModalTriggerClick', open)
+      this.$emit('onModalTriggerClick')
     },
     handleScroll(evt, el) {
       const top = el.getBoundingClientRect().top
