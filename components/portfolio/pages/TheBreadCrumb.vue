@@ -70,7 +70,7 @@ export default {
       // console.log(pathsArray)
       const pathsOrthopaedy = pathsArray.filter((str) => str !== '')
       const paths = pathsOrthopaedy.filter((str) => str !== 'article')
-      console.log(paths)
+      // console.log(paths)
       return paths
     },
   },

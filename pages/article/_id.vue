@@ -139,22 +139,22 @@ export default {
   },
   head() {
     return {
-      title: this.articles.title,
+      title: `${this.articles.title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `${this.articles.title}の説明ページです。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.articles.title}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `${this.articles.title}の説明ページです。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.articles.title}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${this.articles.title} | github-nuxt-static-sample`,
+          content: `${this.articles.title}`,
         },
       ],
     }

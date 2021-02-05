@@ -4,9 +4,7 @@
   </the-main>
 </template>
 <script>
-import BtnBase from '~/components/portfolio/ui/btn/BtnBase.vue'
 export default {
-  components: { BtnBase },
   data() {
     return {
       heading1: 'お問い合わせ完了',
