@@ -1,4 +1,4 @@
-const { API_KEY, API_URL } = process.env
+const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
 export default {
   // 200.htmlを404.htmlに変更
   generate: {
@@ -14,9 +14,9 @@ export default {
       prefix: 'og: http://ogp.me/ns#',
     },
     titleTemplate(title) {
-      return (title ? `${title} | ` : '') + process.env.npm_package_name
+      return (title ? `${title} | ` : '') + 'ぱくもぐブログ'
     },
-    title: process.env.npm_package_name || '',
+    title: 'ぱくもぐブログ' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -28,10 +28,10 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: 'github-nuxt-static-sample',
+        content: 'ぱくもぐブログ',
       },
-      { hid: 'og:type', property: 'og:type', content: 'website' },
-      { hid: 'og:url', property: 'og:url', content: 'サイトのURL' },
+      { hid: 'og:type', property: 'og:type', content: 'article' },
+      { hid: 'og:url', property: 'og:url', content: 'https://nervous-franklin-aa026b.netlify.app/' },
       {
         hid: 'og:title',
         property: 'og:title',
@@ -40,10 +40,12 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: '共通ディスクリプション',
+        content: '沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${title}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。',
       },
-      { hid: 'og:image', property: 'og:image', content: '画像のURL' },
+      { hid: 'og:image', property: 'og:image', content: 'https://nervous-franklin-aa026b.netlify.app/assets/img/ogp/ogp.png' },
+      { hid: 'og:locale', content: 'ja_jp' },
       { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@ぱくもぐ' },
     ],
     link: [
       {
@@ -88,10 +90,17 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-gtag'
   ],
-
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['@nuxtjs/axios'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/google-gtag',
+  ],
+  'google-gtag': {
+    id: GA_ID_G,  //サイトのID
+    // debug: true,  // 開発環境でも表示したい場合
+  },
   axios: {},
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
@@ -110,8 +119,12 @@ export default {
   publicRuntimeConfig: {
     apiUrl: API_URL,
     apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined,
+    gaIdUa: GA_ID_UA,
+    gaIdG: GA_ID_G
   },
   privateRuntimeConfig: {
     apiKey: API_KEY,
+    gaIdUa: GA_ID_UA,
+    gaIdG: GA_ID_G
   },
 }

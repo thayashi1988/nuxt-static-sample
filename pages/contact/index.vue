@@ -124,5 +124,27 @@ export default {
       //   this.$refs.observer.reset()
     },
   },
+  head() {
+    return {
+      title: `${this.heading1}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${this.heading1}`,
+        },
+      ],
+    }
+  },
 }
 </script>
