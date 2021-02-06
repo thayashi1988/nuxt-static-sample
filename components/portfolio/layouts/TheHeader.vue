@@ -2,7 +2,7 @@
   <header class="l-header">
     <div class="l-header-inner">
       <div class="l-header-col">
-        <the-logo link="/" />
+        <the-logo @menuCloseTrrigerLogo="closeHamburgerMenu" link="/" />
       </div>
       <div class="l-header-col">
         <the-hamburger-menu
@@ -10,7 +10,10 @@
           @onMenuTriggerClick="menuOpen"
           >{{ menuTxt }}</the-hamburger-menu
         >
-        <the-nav :layer-toggle-class="menuTrigger"></the-nav>
+        <the-nav
+          @menuCloseTrrigerGnavi="closeHamburgerMenu"
+          :layer-toggle-class="menuTrigger"
+        ></the-nav>
       </div>
     </div>
     <!-- ./l-header-inner -->
@@ -35,6 +38,11 @@ export default {
       this.menuTxt = this.menuTrigger
         ? this.menuToggleTxt.close
         : this.menuToggleTxt.open
+    },
+    closeHamburgerMenu(menuCloseBooleanGnavi, menuCloseBooleanLogo) {
+      this.menuTrigger = menuCloseBooleanGnavi
+      this.menuTrigger = menuCloseBooleanLogo
+      this.menuTxt = this.menuToggleTxt.open
     },
   },
 }
