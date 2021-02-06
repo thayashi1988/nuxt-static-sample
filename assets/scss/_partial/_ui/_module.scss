@@ -670,6 +670,7 @@ card
   }
   &-html {
     blockquote {
+      color: #666;
       @include font-size(14);
       position: relative;
       border-left: 3px solid #da8596;
@@ -696,6 +697,14 @@ blockquote
     position: relative;
     padding-left: 30px;
   }
+}
+
+/*///////////////////////
+code
+///////////////////////*/
+.m-code {
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 
 /*///////////////////////
