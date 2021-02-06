@@ -131,15 +131,23 @@ export default {
         }
       )
       const $ = cheerio.load(data.body)
+      const listText = $('li').html()
       $('h2').attr('data-type', 'article').addClass('m-heading-2')
       $('h3').attr('data-type', 'article').addClass('m-heading-3')
-      $('a').attr('data-icon', 'blank').addClass('m-link')
-      $('blockquote').addClass('m-blockquote')
+      $('p').each((index, elem) => {
+        if ($(elem).html().includes('<img')) {
+          const img = $(elem).find('img')
+          $(elem).find('img').remove()
+          $(elem).after('<p class="m-txt">' + img + '</p>')
+        }
+      })
+      $('p').addClass('m-txt')
+
       $('ul').addClass('m-list').attr('data-font', 'middle')
-      const listText = $('li').html()
       $('li').html('<span class="m-list-body">' + listText + '</span>')
       $('li').prepend('<span class="m-list-icon">・</span>')
-      $('p').addClass('m-txt')
+      $('a').attr('data-icon', 'blank').addClass('m-link')
+      $('blockquote').addClass('m-blockquote')
       const result = $('body').html()
       return {
         latestArticles: info.data.contents,
