@@ -113,6 +113,8 @@
 <script>
 import axios from 'axios'
 import cheerio from 'cheerio'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/arta.css'
 
 export default {
   async asyncData({ $config, params, error }) {
@@ -142,12 +144,16 @@ export default {
         }
       })
       $('p').addClass('m-txt')
-
       $('ul').addClass('m-list').attr('data-font', 'middle')
       $('li').html('<span class="m-list-body">' + listText + '</span>')
       $('li').prepend('<span class="m-list-icon">・</span>')
       $('a').attr('data-icon', 'blank').addClass('m-link')
       $('blockquote').addClass('m-blockquote')
+      $('pre code').each((_, elm) => {
+        const result = hljs.highlightAuto($(elm).text())
+        $(elm).html(result.value)
+        $(elm).addClass('hljs m-code js')
+      })
       const result = $('body').html()
       return {
         latestArticles: info.data.contents,
