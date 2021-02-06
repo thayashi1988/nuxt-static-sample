@@ -2,9 +2,12 @@
   <nav class="l-nav is-transition" :class="{ 'is-open-nav': layerToggleClass }">
     <ul class="m-nav">
       <li v-for="(item, key) in navTitles" :key="key">
-        <nuxt-link :to="item.link" class="js-scroll">{{
-          item.title
-        }}</nuxt-link>
+        <nuxt-link
+          @click.native.prevent="menuCloseTrrigerGnavi"
+          :to="item.link"
+          class="js-scroll"
+          >{{ item.title }}</nuxt-link
+        >
       </li>
     </ul>
   </nav>
@@ -29,6 +32,13 @@ export default {
         // { title: 'blog', link: '/blog' },
       ],
     }
+  },
+  methods: {
+    menuCloseTrrigerGnavi() {
+      const menuCloseBooleanGnavi = false
+      this.$emit('menuCloseTrrigerGnavi', menuCloseBooleanGnavi)
+      this.$router.push({ path: event.target.pathname })
+    },
   },
 }
 </script>
