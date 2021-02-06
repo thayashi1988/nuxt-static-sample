@@ -13,6 +13,7 @@
                 data-col-sp="12"
                 data-marginp="true"
                 data-padding="true"
+                data-padding-sp="false"
               >
                 <card
                   :article-title="article.title"
