@@ -21,29 +21,23 @@
                     </div> -->
                     <div class="l-card-body">
                       <heading-2 data-type="article">
-                        {{ articles.title }}
+                        {{ currentArticle.title }}
                       </heading-2>
                       <card-date
-                        :up-date-boolean="articles.date !== articles.updatedAt"
+                        :up-date-boolean="
+                          currentArticle.date !== currentArticle.updatedAt
+                        "
                       >
                         <template #date>
-                          {{ articles.date | formatDate }}
+                          {{ currentArticle.date | formatDate }}
                         </template>
                         <template #upDate>
-                          {{ articles.updatedAt | formatDate }}
+                          {{ currentArticle.updatedAt | formatDate }}
                         </template>
                       </card-date>
                       <!-- eslint-disable-next-line vue/no-v-html-->
-                      <div v-html="articles.body"></div>
-                      <!-- <h3 class="m-heading-3" data-type="article">
-                        あああああああああああああああああああ
-                      </h3>
-                      <p class="m-card-txt">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Molestias aliquam quos quisquam voluptatibus vero
-                        facere fuga voluptates amet autem. Omnis doloribus autem
-                        nemo. Dolorem et vitae accusantium nihil, quae ut?
-                      </p> -->
+                      <div class="m-card-html" v-html="parseArticleData"></div>
+                      <!-- eslint-disable-next-line vue/no-v-html-->
                       <card-btn class="" to="/" data-width="middle"
                         >記事一覧へ</card-btn
                       >
@@ -62,8 +56,11 @@
           <div class="l-box">
             <div class="l-box-inner">
               <p class="m-box-ttl">プロフィール</p>
+              <div class="m-box-profile">
+                <p class="m-box-label">管理人：じぃ</p>
+                <img src="~/assets/img/icon/icon.png" alt="" />
+              </div>
               <p class="m-box-txt">
-                <span class="m-box-label">管理人：じぃ</span><br />
                 沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのブログで発信していきいます！
               </p>
             </div>
@@ -115,6 +112,7 @@
 </template>
 <script>
 import axios from 'axios'
+import cheerio from 'cheerio'
 
 export default {
   async asyncData({ $config, params, error }) {
@@ -132,10 +130,21 @@ export default {
           headers: { 'X-API-KEY': $config.apiKey },
         }
       )
-      console.log('info:', info.data.contents[6])
+      const $ = cheerio.load(data.body)
+      $('h2').attr('data-type', 'article').addClass('m-heading-2')
+      $('h3').attr('data-type', 'article').addClass('m-heading-3')
+      $('a').attr('data-icon', 'blank').addClass('m-link')
+      $('blockquote').addClass('m-blockquote')
+      $('ul').addClass('m-list').attr('data-font', 'middle')
+      const listText = $('li').html()
+      $('li').html('<span class="m-list-body">' + listText + '</span>')
+      $('li').prepend('<span class="m-list-icon">・</span>')
+      $('p').addClass('m-txt')
+      const result = $('body').html()
       return {
         latestArticles: info.data.contents,
-        articles: data,
+        currentArticle: data,
+        parseArticleData: result,
       }
     } catch (err) {
       error({
@@ -145,27 +154,27 @@ export default {
   },
   computed: {
     heading1() {
-      return this.articles.title
+      return this.currentArticle.title
     },
   },
   head() {
     return {
-      title: `${this.articles.title}`,
+      title: `${this.currentArticle.title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.articles.title}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.currentArticle.title}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.articles.title}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.currentArticle.title}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${this.articles.title}`,
+          content: `${this.currentArticle.title}`,
         },
       ],
     }

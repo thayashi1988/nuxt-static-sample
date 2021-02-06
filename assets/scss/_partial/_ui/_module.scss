@@ -333,6 +333,7 @@ list
     display: table-cell;
   }
   &[data-font='middle'] {
+    margin-bottom: 15px;
     li {
       @include font-size(14);
     }
@@ -667,6 +668,34 @@ card
     -webkit-box-orient: vertical;
     margin-bottom: 20px;
   }
+  &-html {
+    blockquote {
+      @include font-size(14);
+      position: relative;
+      border-left: 3px solid #da8596;
+      padding: 15px;
+      background: #e5e6f4;
+      & > * {
+        position: relative;
+        padding-left: 30px;
+      }
+    }
+  }
+}
+
+/*///////////////////////
+blockquote
+///////////////////////*/
+.m-blockquote {
+  position: relative;
+  border-left: 3px solid #da8596;
+  padding-left: 10px;
+  background: #e5e6f4;
+  margin-bottom: 15px;
+  & > * {
+    position: relative;
+    padding-left: 30px;
+  }
 }
 
 /*///////////////////////
@@ -728,12 +757,24 @@ box
       margin-bottom: 20px;
     }
   }
+  &-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    img {
+      display: inline-block;
+      width: 50px;
+      margin-left: auto;
+      @include mediaQuery(max, 0, 768) {
+        margin-left: 5%;
+      }
+    }
+  }
   &-txt {
     @include font-size(14);
   }
   &-label {
     display: inline-block;
-    margin-bottom: 20px;
   }
   &-list {
     li {
