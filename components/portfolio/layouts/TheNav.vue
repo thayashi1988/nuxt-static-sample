@@ -3,9 +3,9 @@
     <ul class="m-nav">
       <li v-for="(item, key) in navTitles" :key="key">
         <nuxt-link
-          @click.native.prevent="menuCloseTrrigerGnavi"
           :to="item.link"
           class="js-scroll"
+          @click.native.prevent="menuCloseTrrigerGnavi"
           >{{ item.title }}</nuxt-link
         >
       </li>
