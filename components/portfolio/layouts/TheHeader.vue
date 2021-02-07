@@ -2,7 +2,7 @@
   <header class="l-header">
     <div class="l-header-inner">
       <div class="l-header-col">
-        <the-logo @menuCloseTrrigerLogo="closeHamburgerMenu" link="/" />
+        <the-logo link="/" @menuCloseTrrigerLogo="closeHamburgerMenu" />
       </div>
       <div class="l-header-col">
         <the-hamburger-menu
@@ -11,8 +11,8 @@
           >{{ menuTxt }}</the-hamburger-menu
         >
         <the-nav
-          @menuCloseTrrigerGnavi="closeHamburgerMenu"
           :layer-toggle-class="menuTrigger"
+          @menuCloseTrrigerGnavi="closeHamburgerMenu"
         ></the-nav>
       </div>
     </div>

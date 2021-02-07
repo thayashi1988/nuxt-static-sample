@@ -773,11 +773,12 @@ box
     margin-bottom: 20px;
     img {
       display: inline-block;
-      width: 50%;
-      // width: 50px;
-      // margin-left: auto;
+      width: 100%;
+      max-width: 30%;
+      margin: 0 auto;
       @include mediaQuery(max, 0, 768) {
-        margin-left: 5%;
+        // margin-left: 5%;
+        // width: 35%;
       }
     }
   }

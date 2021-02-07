@@ -120,18 +120,21 @@ export default {
   async asyncData({ $config, params, error }) {
     try {
       const { data } = await axios.get(
+        // 記事データ
         `${$config.apiUrl}/information/${params.id}`,
         {
           headers: { 'X-API-KEY': $config.apiKey },
         }
       )
       const info = await axios.get(
+        // 最新記事データ
         `${$config.apiUrl}/information?limit=3`,
 
         {
           headers: { 'X-API-KEY': $config.apiKey },
         }
       )
+      // 記事データにモジュールクラスをつける
       const $ = cheerio.load(data.body)
       const listText = $('li').html()
       $('h2').attr('data-type', 'article').addClass('m-heading-2')
@@ -155,6 +158,13 @@ export default {
         $(elm).addClass('hljs m-code js')
       })
       const result = $('body').html()
+
+      // 最新記事データを最初のテキストのみに整形
+      info.data.contents.forEach((element, index) => {
+        const $ = cheerio.load(element.body)
+        element.body = $('p').html()
+        console.log('element.body:', element.body)
+      })
       return {
         latestArticles: info.data.contents,
         currentArticle: data,
