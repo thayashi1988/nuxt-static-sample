@@ -703,7 +703,7 @@ blockquote
 code
 ///////////////////////*/
 .m-code {
-  font-size: 14px;
+  @include font-size(13);
   margin-bottom: 15px;
 }
 
