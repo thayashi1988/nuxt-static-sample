@@ -36,12 +36,19 @@
 
 <script>
 import axios from 'axios'
+import cheerio from 'cheerio'
+
 const title = 'ぱくもぐブログ'
 
 export default {
   async asyncData({ $config, error }) {
     const { data } = await axios.get(`${$config.apiUrl}/information`, {
       headers: { 'X-API-KEY': $config.apiKey },
+    })
+    // 記事データを最初のテキストのみに整形
+    data.contents.forEach((element, index) => {
+      const $ = cheerio.load(element.body)
+      element.body = $('p').html()
     })
     return {
       articleItems: data.contents,
