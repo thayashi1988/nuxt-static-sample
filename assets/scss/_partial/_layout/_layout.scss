@@ -5,6 +5,7 @@
 header
 ///////////////////////*/
 .l-header {
+  display: none;
   width: 100%;
   position: fixed;
   top: 0;
@@ -350,6 +351,7 @@ modal
 footer
 ///////////////////////*/
 .l-footer {
+  display: none;
   background: #222;
   padding: 35px 0;
 }
