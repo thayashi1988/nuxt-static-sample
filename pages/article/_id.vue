@@ -163,7 +163,6 @@ export default {
       info.data.contents.forEach((element, index) => {
         const $ = cheerio.load(element.body)
         element.body = $('p').html()
-        console.log('element.body:', element.body)
       })
       return {
         latestArticles: info.data.contents,
