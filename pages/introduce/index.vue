@@ -25,15 +25,15 @@
             heading-second-title="skills"
             heading-second-sub-title="スキル"
           ></heading-2>
-          <Progress>
-            <progress-items
-              v-for="(progressData, key) in progressDatas"
+          <skill>
+            <skill-items
+              v-for="(skillData, key) in SkillDatas"
               :key="key"
-              ref="test"
-              :progress-data="progressData"
+              ref="skillItemsDom"
+              :skill-data="skillData"
               :add-class-data="addClassData[key]"
-            ></progress-items>
-          </Progress>
+            ></skill-items>
+          </skill>
         </div>
         <!-- ./l-section-inner -->
       </section>
@@ -140,82 +140,82 @@ export default {
     tableDatas() {
       const tableDatas = [
         {
-          header: 'エリア',
-          data: '沖縄',
+          tableHeader: 'エリア',
+          tableCellData: '沖縄',
         },
         {
-          header: '経歴',
-          data: '専門学校講師→Web制作会社',
+          tableHeader: '経歴',
+          tableCellData: '専門学校講師→Web制作会社',
         },
         {
-          header: '趣味',
-          data: '食べ飲み歩き・映画を見る',
+          tableHeader: '趣味',
+          tableCellData: '食べ飲み歩き・映画を見る',
         },
       ]
       return tableDatas
     },
-    progressDatas() {
-      const progressDatas = [
+    SkillDatas() {
+      const SkillDatas = [
         {
-          skill: 'html',
-          iconPath: require('@/assets/img/icon/icon_html.svg'),
+          skillName: 'html',
+          skillIconPath: require('@/assets/img/icon/icon_html.svg'),
           skillValue: '100%',
         },
         {
-          skill: 'css',
-          iconPath: require('@/assets/img/icon/icon_css.svg'),
+          skillName: 'css',
+          skillIconPath: require('@/assets/img/icon/icon_css.svg'),
           skillValue: '80%',
         },
         {
-          skill: 'jquery',
-          iconPath: require('@/assets/img/icon/icon_jquery.svg'),
+          skillName: 'jquery',
+          skillIconPath: require('@/assets/img/icon/icon_jquery.svg'),
           skillValue: '70%',
         },
         {
-          skill: 'javascript',
-          iconPath: require('@/assets/img/icon/icon_js.svg'),
+          skillName: 'javascript',
+          skillIconPath: require('@/assets/img/icon/icon_js.svg'),
           skillValue: '50%',
         },
         {
-          skill: 'photoshop',
-          iconPath: require('@/assets/img/icon/icon_ps.svg'),
+          skillName: 'photoshop',
+          skillIconPath: require('@/assets/img/icon/icon_ps.svg'),
           skillValue: '60%',
         },
         {
-          skill: 'xd',
-          iconPath: require('@/assets/img/icon/icon_xd.svg'),
+          skillName: 'xd',
+          skillIconPath: require('@/assets/img/icon/icon_xd.svg'),
           skillValue: '70%',
         },
         {
-          skill: 'git',
-          iconPath: require('@/assets/img/icon/icon_git.svg'),
+          skillName: 'git',
+          skillIconPath: require('@/assets/img/icon/icon_git.svg'),
           skillValue: '70%',
         },
         {
-          skill: 'gulp',
-          iconPath: require('@/assets/img/icon/icon_gulp.svg'),
+          skillName: 'gulp',
+          skillIconPath: require('@/assets/img/icon/icon_gulp.svg'),
           skillValue: '60%',
         },
       ]
-      return progressDatas
+      return SkillDatas
     },
     serviceDatas() {
       const serviceDatas = [
         {
-          title: 'コーディング',
-          img: require('~/assets/img/icon/icon_pc.svg'),
-          body:
+          serviceTitle: 'コーディング',
+          serviceImg: require('@/assets/img/icon/icon_pc.svg'),
+          serviceBody:
             'HTML/CSS、jQuery、javascriptによるコーディングを行います。<br>ワイヤーフレームに沿ってHTMLの文書構造に沿い、再利用性・メンテナンス性が高いCSS設計を行います。',
         },
         {
-          title: 'SEO対策',
-          img: require('~/assets/img/icon/icon_seo.svg'),
-          body: '検索順位を高めるSEO対策を行います。',
+          serviceTitle: 'SEO対策',
+          serviceImg: require('@/assets/img/icon/icon_seo.svg'),
+          serviceBody: '検索順位を高めるSEO対策を行います。',
         },
         {
-          title: 'コミュニケーション',
-          img: require('~/assets/img/icon/icon_communication.svg'),
-          body:
+          serviceTitle: 'コミュニケーション',
+          serviceImg: require('@/assets/img/icon/icon_communication.svg'),
+          serviceBody:
             'チャット、オンラインMTGを密に行い、認識齟齬が無いようにお仕事を進めていきます。',
         },
       ]
@@ -224,29 +224,28 @@ export default {
     galleryDatas() {
       const galleryDatas = [
         {
-          img: require('~/assets/img/icon/icon.png'),
-          modalImg: require('~/assets/img/icon/icon.png'),
-          modalTitle: 'タイトル1',
-          modalBody: '実績掲載は準備中です。。',
+          galleryImg: require('@/assets/img/icon/icon.png'),
+          galleryModalImg: require('@/assets/img/icon/icon.png'),
+          galleryModalTitle: 'タイトル1',
+          galleryModalBody: '実績掲載は準備中です。。',
         },
         {
-          img: require('~/assets/img/icon/icon.png'),
-          modalImg: require('~/assets/img/icon/icon.png'),
-          modalTitle: 'タイトル2',
-          modalBody: '実績掲載は準備中です。。',
+          galleryImg: require('@/assets/img/icon/icon.png'),
+          galleryModalImg: require('@/assets/img/icon/icon.png'),
+          galleryModalTitle: 'タイトル2',
+          galleryModalBody: '実績掲載は準備中です。。',
         },
       ]
       return galleryDatas
     },
   },
   mounted() {
-    let progressIds = []
-    progressIds = this.$refs.test
-    for (let num = 0; num < progressIds.length; num++) {
-      this.addClassData.push(
-        'is-progress-' + progressIds[num].$el.firstElementChild.id
-      )
-    }
+    // スキルのclass付与
+    let skillItemElems = []
+    skillItemElems = this.$refs.skillItemsDom
+    skillItemElems.forEach((elem, index) => {
+      this.addClassData.push('is-progress-' + elem.$el.firstElementChild.id)
+    })
     return this.addClassData
   },
   methods: {

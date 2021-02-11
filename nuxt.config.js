@@ -62,10 +62,17 @@ export default {
   },
   router: {
     base: '/',
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/articles/:slug',
+        component: resolve(__dirname, 'pages/index.vue'),
+        name: 'articles',
+      })
+    },
     // base: '/nuxt-static-sample/', //元の記述
     // extendRoutes(routes, resolve) {//ページが存在しない場合のリダイレクトの設定
     //   routes.push({
-    //     nname: 'notfound',
+    //     name: 'notfound',
     //     path: '*',
     //     component: resolve(__dirname, 'pages/index2.vue')
     //   })

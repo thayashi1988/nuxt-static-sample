@@ -16,21 +16,32 @@
                 data-padding-sp="false"
               >
                 <card
+                  :article-href="`/articles/article/` + article.id"
+                  :article-img="
+                    require(`@/assets/img/article/thumb/thumb_01.jpg`)
+                  "
                   :article-title="article.title"
                   :article-date="article.date"
                   :article-date-up-date="article.updatedAt"
-                  :article-id="article.id"
                   :article-body="article.body"
                 ></card>
               </li>
             </ul>
           </div>
+          <pager>
+            <pager-items
+              v-for="(pages, key) in articleLen"
+              :key="key"
+              :pager-num="pagerNum"
+              :pages="pages"
+              :href="`/articles/${pages}`"
+            ></pager-items>
+          </pager>
         </div>
         <!-- ./l-section-inner -->
       </section>
       <!-- ./l-section -->
     </the-main>
-    <!-- <the-bread-crumb></the-bread-crumb> -->
   </div>
 </template>
 
@@ -38,40 +49,52 @@
 import axios from 'axios'
 import cheerio from 'cheerio'
 
-const title = 'ぱくもぐブログ'
-
 export default {
-  async asyncData({ $config, error }) {
-    const { data } = await axios.get(`${$config.apiUrl}/information`, {
-      headers: { 'X-API-KEY': $config.apiKey },
-    })
-    // 記事データを最初のテキストのみに整形
+  async asyncData({ params, $config, error }) {
+    const pageParams = params.slug || '1'
+    const articleslimit = 3 // 記事表示件数
+    console.log('pageParams:', pageParams)
+    const { data } = await axios.get(
+      `${$config.apiUrl}/information?limit=${articleslimit}&offset=${
+        (pageParams - 1) * articleslimit
+      }`,
+      {
+        headers: { 'X-API-KEY': $config.apiKey },
+      }
+    )
+    const totalPages = data.totalCount // 記事総数
+    const articlesArray = []
+
+    // 記事データを最初のテキストのみに整形し配列に格納
     data.contents.forEach((element, index) => {
       const $ = cheerio.load(element.body)
       element.body = $('p').html()
+      articlesArray.push(element)
     })
     return {
-      articleItems: data.contents,
+      articleItems: articlesArray,
+      articleLen: Math.ceil(totalPages / articleslimit),
+      pagerNum: parseInt(pageParams),
     }
   },
-  computed: {
-    heading1() {
-      return title
-    },
+  data() {
+    return {
+      heading1: 'ぱくもぐブログ',
+    }
   },
   head() {
     return {
-      title: `${title}`,
+      title: `${this.heading1}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${title}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${title}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。`,
         },
         {
           hid: 'og:type',
@@ -81,7 +104,7 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${title}`,
+          content: `${this.heading1}`,
         },
       ],
     }

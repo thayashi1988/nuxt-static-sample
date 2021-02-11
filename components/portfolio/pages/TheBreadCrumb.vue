@@ -38,10 +38,7 @@
           </li>
         </ol>
       </div>
-      <!-- <p>{{ breadCrumbTitle }}</p> -->
-      <!-- <p>{{ this.$route.path }}</p>
-      <p>{{ this.$route.name }}</p>
-      <p>{{ createBreadCrumb }}</p> -->
+
       <!-- #breadcrumbs.breadcrumbs -->
     </div>
   </div>
@@ -66,10 +63,12 @@ export default {
   computed: {
     createBreadCrumb() {
       const path = this.$route.path
+      // console.log(path)
       const pathsArray = path.split('/')
       // console.log(pathsArray)
       const pathsOrthopaedy = pathsArray.filter((str) => str !== '')
-      const paths = pathsOrthopaedy.filter((str) => str !== 'article')
+      let paths = pathsOrthopaedy.filter((str) => str !== 'article')
+      paths = paths.filter((str) => str !== 'articles')
       // console.log(paths)
       return paths
     },

@@ -12,7 +12,10 @@
               data-padding-sp="false"
             >
               <div class="m-modal-img">
-                <img :src="modalData.modalImg" alt="" />
+                <img
+                  :src="modalData.galleryModalImg"
+                  :alt="modalData.galleryModalTitle"
+                />
               </div>
             </div>
             <div
@@ -22,8 +25,8 @@
               data-padding="true"
               data-padding-sp="false"
             >
-              <p class="m-modal-lead">{{ modalData.modalTitle }}</p>
-              <p class="m-modal-txt">{{ modalData.modalBody }}</p>
+              <p class="m-modal-lead">{{ modalData.galleryModalTitle }}</p>
+              <p class="m-modal-txt">{{ modalData.galleryModalBody }}</p>
             </div>
           </div>
         </div>
