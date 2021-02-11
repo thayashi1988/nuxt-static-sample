@@ -1,7 +1,7 @@
 <template>
   <li class="l-grid-col" data-col="3" data-col-sp="4" data-padding="true">
     <div
-      :id="progressData.skill"
+      :id="skillData.skillName"
       v-scroll="handleScroll"
       :class="[
         { 'is-show-bottom': scrollFlag },
@@ -9,20 +9,20 @@
       ]"
       class="l-progress js-progress"
     >
-      <p class="m-progress-txt">{{ progressData.skill }}</p>
+      <p class="m-progress-txt">{{ skillData.skillName }}</p>
       <p class="m-progress-ttl">
-        <img :src="progressData.iconPath" :alt="progressData.skill" />
+        <img :src="skillData.skillIconPath" :alt="skillData.skillName" />
       </p>
-      <p class="m-progress-value">{{ progressData.skillValue }}</p>
+      <p class="m-progress-value">{{ skillData.skillValue }}</p>
     </div>
     <!-- ./l-progress -->
   </li>
 </template>
 <script>
 export default {
-  name: 'ProgressItems',
+  name: 'SkillItems',
   props: {
-    progressData: {
+    skillData: {
       type: Object,
       default: () => {},
     },

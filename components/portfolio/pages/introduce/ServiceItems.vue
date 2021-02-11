@@ -1,6 +1,6 @@
 <template>
   <li
-    ref="sss"
+    ref="serviceItemsDom"
     v-scroll="handleScroll"
     class="l-grid-col"
     :class="[scrollFlag ? 'is-show-bottom' : 'is-hide']"
@@ -11,13 +11,15 @@
   >
     <div class="l-media">
       <h3 class="m-heading-3">
-        <span>{{ serviceData.title }}</span>
+        <span>{{ serviceData.serviceTitle }}</span>
       </h3>
       <p class="m-media-img">
-        <span><img :src="serviceData.img" alt="" /></span>
+        <span
+          ><img :src="serviceData.serviceImg" :alt="serviceData.serviceTitle"
+        /></span>
       </p>
       <!-- eslint-disable-next-line -->
-      <p class="m-media-txt" v-html="serviceData.body"></p>
+      <p class="m-media-txt" v-html="serviceData.serviceBody"></p>
     </div>
     <!-- ./l-media -->
   </li>
@@ -37,39 +39,19 @@ export default {
       delay: {
         'animation-delay': '0.3s',
       },
-      aaa: [],
+      serviceItemelems: [],
     }
   },
-  watch: {
-    // この関数は question が変わるごとに実行されます。
-    scrollFlag() {
-      // console.log('フラグがtrueになったよーー')
-      // console.log(this.aaa)
-    },
-  },
   mounted() {
-    this.aaa = this.$refs.sss
-    // console.log(this.aaa)
+    this.serviceItemelems = this.$refs.serviceItemsDom
+    // console.log('this.serviceItemelems:', this.serviceItemelems)
   },
-  // computed: {
-  //   aaa() {
-  //     if (this.scrollFlag) {
-  //       this.test()
-  //     }
-  //     return this.test()
-  //   },
-  // },
   methods: {
     handleScroll(evt, el) {
       const top = el.getBoundingClientRect().top
       const wh = window.innerHeight
       if (top < wh / 1.5) this.scrollFlag = true
     },
-    // test() {
-    //   setTimeout(() => {
-    //     console.log('aaaaaaaaaaaa')
-    //   }, 1000)
-    // },
   },
 }
 </script>

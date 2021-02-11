@@ -16,7 +16,7 @@
           data-icon="modal"
           @click="onModalTriggerClick"
         >
-          <img :src="galleryData.img" alt="" />
+          <img :src="galleryData.galleryImg" alt="" />
         </button>
       </div>
     </div>
