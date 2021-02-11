@@ -24,6 +24,7 @@
                   :article-date="article.date"
                   :article-date-up-date="article.updatedAt"
                   :article-body="article.body"
+                  btn-txt="この記事を見る"
                 ></card>
               </li>
             </ul>
