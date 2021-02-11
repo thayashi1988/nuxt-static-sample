@@ -347,6 +347,17 @@ modal
 }
 
 /*///////////////////////
+pager
+///////////////////////*/
+.l-pager {
+  margin-top: 40px;
+  &-list {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/*///////////////////////
 footer
 ///////////////////////*/
 .l-footer {

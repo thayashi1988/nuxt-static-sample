@@ -1,7 +1,7 @@
 <template>
   <tr>
-    <th>{{ tableData.header }}</th>
-    <td>{{ tableData.data }}</td>
+    <th>{{ tableData.tableHeader }}</th>
+    <td>{{ tableData.tableCellData }}</td>
   </tr>
 </template>
 <script>

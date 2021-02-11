@@ -83,47 +83,11 @@ export default {
       }
     },
   },
-  methods: {
-    onSubmit() {
-      alert('aaaaaaa')
-      //   if (this.isSending) {
-      //     return
-      //   }
-      //   this.isSending = true
-      //   this.completeMessage = '送信処理中…'
-      //   const params = new URLSearchParams()
-      //   params.append('form-name', 'contact')
-      //   params.append('name', this.nameModel)
-      //   params.append('nameKana', this.nameKanaModel)
-      //   params.append('mail', this.mailModel)
-      //   params.append('detail', this.textareaModel)
-      //   if (this.botField) {
-      //     params.append('bot-field', this.botField)
-      //   }
-      //   this.$axios
-      //     .$post('/', params)
-      //     .then(() => {
-      //       this.completeMessage = 'お問い合わせを送信しました！'
-      //       this.resetForm()
-      //       this.isSubmit = true
-      //     })
-      //     .catch(() => {
-      //       this.completeMessage = 'お問い合わせの送信が失敗しました'
-      //       this.isError = true
-      //     })
-      //     .finally(() => {
-      //       this.isSending = false
-      //     })
-      // },
-      // resetForm() {
-      //   this.username = ''
-      //   this.katakana = ''
-      //   this.useremail = ''
-      //   this.message = ''
-      //   this.isError = false
-      //   this.$refs.observer.reset()
-    },
-  },
+  // methods: {
+  //   onSubmit() {
+  //     alert('aaaaaaa')
+  //   },
+  // },
   head() {
     return {
       title: `${this.heading1}`,
