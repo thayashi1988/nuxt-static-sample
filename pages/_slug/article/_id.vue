@@ -58,7 +58,7 @@
               <p class="m-box-ttl">プロフィール</p>
               <div class="m-box-profile">
                 <p class="m-box-label">管理人：じぃ</p>
-                <img src="~/assets/img/icon/icon.png" alt="" />
+                <img src="~/assets/img/icon/icon.png" alt="じぃ" />
               </div>
               <p class="m-box-txt">
                 沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのブログで発信していきいます！
