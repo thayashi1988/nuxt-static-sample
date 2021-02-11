@@ -19,7 +19,7 @@
       </heading-2>
       <!-- eslint-disable-next-line vue/no-v-html-->
       <div class="m-card-txt" v-html="articleBody"></div>
-      <card-btn :to="articleHref" data-width="small">この記事を読む</card-btn>
+      <card-btn :to="articleHref" data-width="small">{{ btnTxt }}</card-btn>
     </div>
     <!-- ./l-card-body -->
   </div>
@@ -52,6 +52,10 @@ export default {
     articleHref: {
       type: String,
       required: true,
+    },
+    btnTxt: {
+      type: String,
+      default: '',
     },
   },
 }

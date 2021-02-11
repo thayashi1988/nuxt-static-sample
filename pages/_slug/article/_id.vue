@@ -12,39 +12,11 @@
                   data-col-sp="12"
                   data-marginp="true"
                 >
-                  <div class="l-card">
-                    <!-- <div class="m-card-thumb">
-                      <img
-                        src="~@/assets/img/article/thumb/thumb_01.jpg"
-                        alt=""
-                      />
-                    </div> -->
-                    <div class="l-card-body">
-                      <heading-2 data-type="article">
-                        {{ currentArticle.title }}
-                      </heading-2>
-                      <card-date
-                        :up-date-boolean="
-                          currentArticle.date !== currentArticle.updatedAt
-                        "
-                      >
-                        <template #date>
-                          {{ currentArticle.date | formatDate }}
-                        </template>
-                        <template #upDate>
-                          {{ currentArticle.updatedAt | formatDate }}
-                        </template>
-                      </card-date>
-                      <!-- eslint-disable-next-line vue/no-v-html-->
-                      <div class="m-card-html" v-html="parseArticleData"></div>
-                      <!-- eslint-disable-next-line vue/no-v-html-->
-                      <card-btn class="" to="/" data-width="middle"
-                        >記事一覧へ</card-btn
-                      >
-                    </div>
-                    <!-- ./l-card-body -->
-                  </div>
-                  <!-- ./l-card -->
+                  <card-detail
+                    :current-article="currentArticle"
+                    :parse-article-data="parseArticleData"
+                    btn-txt="記事一覧を戻る"
+                  ></card-detail>
                 </li>
               </ul>
             </div>
