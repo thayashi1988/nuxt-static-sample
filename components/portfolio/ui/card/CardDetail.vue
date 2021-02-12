@@ -7,7 +7,7 @@
       />
     </div> -->
     <div class="l-card-body">
-      <heading-2 data-type="article">
+      <heading-2 class="m-mt-0" data-type="article">
         {{ currentArticle.title }}
       </heading-2>
       <card-date

@@ -207,6 +207,11 @@ heading
         // margin-bottom: (20 / 768) * 100vw;
       }
     }
+    // &:not(:first-of-type) {
+    //   &[data-type='article'] {
+    //     margin-top: 40px;
+    //   }
+    // }
     &[data-type='article'] {
       font-family: $font;
       text-align: left;
@@ -214,7 +219,7 @@ heading
       text-transform: none;
       border-bottom: 1px solid #ccc;
       padding-bottom: 10px;
-      // margin-top: 50px;
+      margin-top: 40px;
       margin-bottom: 20px;
       @include mediaQuery(min, 0, 768) {
         @include font-size(24);
@@ -1189,14 +1194,14 @@ adjust
 }
 
 /* margin-top */
-@for $i from 1 through 12 {
+@for $i from 0 through 12 {
   .m-mt-#{$i * 5} {
     margin-top: #{$i * 5}px !important;
   }
 }
 
 /* margin-bottom */
-@for $i from 1 through 12 {
+@for $i from 0 through 12 {
   .m-mb-#{$i * 5} {
     margin-bottom: #{$i * 5}px !important;
   }
