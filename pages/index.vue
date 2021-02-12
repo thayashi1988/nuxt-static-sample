@@ -17,9 +17,7 @@
               >
                 <card
                   :article-href="`/articles/article/` + article.id"
-                  :article-img="
-                    require(`@/assets/img/article/thumb/thumb_01.jpg`)
-                  "
+                  :article-eye-catch="article.eyecatch"
                   :article-title="article.title"
                   :article-date="article.date"
                   :article-date-up-date="article.updatedAt"
@@ -65,13 +63,22 @@ export default {
     )
     const totalPages = data.totalCount // 記事総数
     const articlesArray = []
-
+    let eyeCatchImg = ''
+    // console.log('data.contents:', data.contents)
     // 記事データを最初のテキストのみに整形し配列に格納
     data.contents.forEach((element, index) => {
       const $ = cheerio.load(element.body)
+      // 記事データに画像があれば、それをアイキャッチに設定
+      if ($('img').attr('src')) {
+        eyeCatchImg = $('img').attr('src')
+        element.eyecatch = eyeCatchImg
+      } else {
+        element.eyecatch = require(`@/assets/img/article/thumb/thumb_01.jpg`)
+      }
       element.body = $('p').html()
       articlesArray.push(element)
     })
+    console.log('articlesArray:', articlesArray)
     return {
       articleItems: articlesArray,
       articleLen: Math.ceil(totalPages / articleslimit),
