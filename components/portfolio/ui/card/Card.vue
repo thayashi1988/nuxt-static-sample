@@ -1,7 +1,9 @@
 <template>
   <div class="l-card">
     <div class="m-card-thumb">
-      <nuxt-link :to="articleHref"><img :src="articleImg" alt="" /></nuxt-link>
+      <nuxt-link :to="articleHref">
+        <img :src="articleEyeCatch" alt="" />
+      </nuxt-link>
     </div>
     <div class="l-card-body">
       <card-date :up-date-boolean="articleDate !== articleDateUpDate">
@@ -45,7 +47,7 @@ export default {
       type: String,
       required: true,
     },
-    articleImg: {
+    articleEyeCatch: {
       type: String,
       required: true,
     },
