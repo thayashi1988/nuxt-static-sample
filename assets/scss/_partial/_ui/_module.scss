@@ -295,6 +295,10 @@ txt
       text-shadow: 0px 3px 3px #000;
     }
   }
+  img {
+    display: inline-block;
+    max-width: 50%;
+  }
 }
 
 /*///////////////////////
@@ -610,13 +614,11 @@ card
 .m-card {
   &-thumb {
     overflow: hidden;
-    // height: 300px;
+    height: 260px;
     // border: 1px solid $accent;
-    // border-top-left-radius: 10px;
-    // border-top-right-radius: 10px;
     border-top: 1px solid $accent;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
     @include mediaQuery(max, 0, 768) {
       height: auto;
     }
@@ -638,6 +640,7 @@ card
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
       @include transition();
     }
   }
@@ -683,7 +686,7 @@ card
       background: #e5e6f4;
       & > * {
         position: relative;
-        padding-left: 30px;
+        // padding-left: 30px;
       }
     }
   }
@@ -700,7 +703,7 @@ blockquote
   margin-bottom: 15px;
   & > * {
     position: relative;
-    padding-left: 30px;
+    // padding-left: 30px;
   }
 }
 

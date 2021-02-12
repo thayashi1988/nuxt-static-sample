@@ -37,7 +37,7 @@ export default {
     },
     articleBody: {
       type: String,
-      required: true,
+      required: null,
     },
     articleDate: {
       type: String,

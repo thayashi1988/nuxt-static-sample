@@ -78,7 +78,7 @@ export default {
       element.body = $('p').html()
       articlesArray.push(element)
     })
-    console.log('articlesArray:', articlesArray)
+    // console.log('articlesArray:', articlesArray)
     return {
       articleItems: articlesArray,
       articleLen: Math.ceil(totalPages / articleslimit),
