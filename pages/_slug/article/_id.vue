@@ -107,6 +107,7 @@ export default {
         }
       )
       // 記事データにモジュールクラスをつける処理
+      // console.log('data:', data)
       const $ = cheerio.load(data.body)
       // 複数のリストタグをm-list-bodyを入れる処理
       $('li').each(function (listIndex, listElem) {
@@ -115,11 +116,15 @@ export default {
       $('h2').attr('data-type', 'article').addClass('m-heading-2')
       $('h3').attr('data-type', 'article').addClass('m-heading-3')
       // 画像が挿入された場合、前後の文章内のpタグに入るため、画像だけ一つのpタグに入れる処理
+      // $('p').each(function (listIndex, listElem) {
+      // console.log(`$(this):${listIndex}`, $(this).html())
+      // })
+      // console.log('$("p").html():', $('p').html())
       $('p').each((ParagraphIndex, ParagraphElem) => {
         if ($(ParagraphElem).html().includes('<img')) {
           const img = $(ParagraphElem).find('img')
           $(ParagraphElem).find('img').remove()
-          $(ParagraphElem).after('<p class="m-txt">' + img + '</p>')
+          $(ParagraphElem).before('<p class="m-txt m-ac">' + img + '</p>')
         }
       })
       $('p').addClass('m-txt')
@@ -143,6 +148,7 @@ export default {
         latestArticles: info.data.contents,
         currentArticle: data,
         parseArticleData: result,
+        test: data.content[0].html,
       }
     } catch (err) {
       error({
