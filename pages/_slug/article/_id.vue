@@ -15,7 +15,7 @@
                   <card-detail
                     :current-article="currentArticle"
                     :parse-article-data="parseArticleData"
-                    btn-txt="記事一覧を戻る"
+                    btn-txt="記事一覧に戻る"
                   ></card-detail>
                 </li>
               </ul>
@@ -106,21 +106,24 @@ export default {
           headers: { 'X-API-KEY': $config.apiKey },
         }
       )
-      // 記事データにモジュールクラスをつける
+      // 記事データにモジュールクラスをつける処理
       const $ = cheerio.load(data.body)
-      const listText = $('li').html()
+      // 複数のリストタグをm-list-bodyを入れる処理
+      $('li').each(function (listIndex, listElem) {
+        $(this).html('<span class="m-list-body">' + $(this).text() + '</span>')
+      })
       $('h2').attr('data-type', 'article').addClass('m-heading-2')
       $('h3').attr('data-type', 'article').addClass('m-heading-3')
-      $('p').each((index, elem) => {
-        if ($(elem).html().includes('<img')) {
-          const img = $(elem).find('img')
-          $(elem).find('img').remove()
-          $(elem).after('<p class="m-txt">' + img + '</p>')
+      // 画像が挿入された場合、前後の文章内のpタグに入るため、画像だけ一つのpタグに入れる処理
+      $('p').each((ParagraphIndex, ParagraphElem) => {
+        if ($(ParagraphElem).html().includes('<img')) {
+          const img = $(ParagraphElem).find('img')
+          $(ParagraphElem).find('img').remove()
+          $(ParagraphElem).after('<p class="m-txt">' + img + '</p>')
         }
       })
       $('p').addClass('m-txt')
       $('ul').addClass('m-list').attr('data-font', 'middle')
-      $('li').html('<span class="m-list-body">' + listText + '</span>')
       $('li').prepend('<span class="m-list-icon">・</span>')
       $('a').attr('data-icon', 'blank').addClass('m-link')
       $('blockquote').addClass('m-blockquote')
