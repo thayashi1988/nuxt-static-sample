@@ -118,6 +118,7 @@ export default {
     hostname: 'https://nervous-franklin-aa026b.netlify.app/',
     // サイトマップの更新頻度（ms）
     cacheTime: 1000 * 60 * 60 * 24,
+    generate: true,
     routes (callback) {
       axios.get(API_URL + '/information', {
         headers: { 'X-API-KEY': API_KEY },
@@ -127,7 +128,7 @@ export default {
         // console.log('articles:', articles)
         const routes = articles.contents.map((article) => {
           // console.log('articleaaaaaaaaa:', article)
-          return 'article/' + article.id
+          return 'articles/article/' + article.id
         })
         callback(null, routes)
       })

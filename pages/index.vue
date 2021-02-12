@@ -54,7 +54,7 @@ export default {
   async asyncData({ params, $config, error }) {
     const pageParams = params.slug || '1'
     const articleslimit = 3 // 記事表示件数
-    console.log('pageParams:', pageParams)
+    // console.log('pageParams:', pageParams)
     const { data } = await axios.get(
       `${$config.apiUrl}/information?limit=${articleslimit}&offset=${
         (pageParams - 1) * articleslimit
