@@ -33,7 +33,7 @@ export default {
   name: 'CardDetail',
   props: {
     currentArticle: {
-      tyoe: Object,
+      type: Object,
       default: () => {},
     },
     parseArticleData: {

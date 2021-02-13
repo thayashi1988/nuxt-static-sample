@@ -38,6 +38,7 @@ export default {
     articleBody: {
       type: String,
       required: null,
+      default: '',
     },
     articleDate: {
       type: String,
