@@ -17,6 +17,7 @@
                     :parse-article-data="parseArticleData"
                     btn-txt="記事一覧に戻る"
                   ></card-detail>
+                  <!-- <p v-html="test"></p> -->
                 </li>
               </ul>
             </div>
@@ -25,43 +26,18 @@
         </section>
         <!-- ./l-section -->
         <div class="l-side">
-          <div class="l-box">
-            <div class="l-box-inner">
-              <p class="m-box-ttl">プロフィール</p>
-              <div class="m-box-profile">
-                <p class="m-box-label">管理人：じぃ</p>
-                <img src="~/assets/img/icon/icon.png" alt="じぃ" />
-              </div>
-              <p class="m-box-txt">
-                沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのブログで発信していきいます！
-              </p>
-            </div>
-          </div>
-          <!-- ./l-box -->
-          <div class="l-box">
-            <div class="l-box-inner">
-              <p class="m-box-ttl">最新記事</p>
-              <ul class="m-box-list">
-                <li v-for="(latestArticle, key) in latestArticles" :key="key">
-                  <dl>
-                    <dt>
-                      <span class="m-date">{{
-                        latestArticle.date | formatDate
-                      }}</span>
-                    </dt>
-                    <dd>
-                      <!-- eslint-disable-next-line vue/no-v-html-->
-                      <nuxt-link
-                        :to="latestArticle.id"
-                        v-html="latestArticle.body"
-                      ></nuxt-link>
-                    </dd>
-                  </dl>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- ./l-box -->
+          <the-side-profile>
+            <p class="m-box-txt">
+              沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのブログで発信していきいます！
+            </p>
+          </the-side-profile>
+          <the-side-latest>
+            <the-side-latest-items
+              v-for="(latestArticle, key) in latestArticles"
+              :key="key"
+              :latest-article="latestArticle"
+            ></the-side-latest-items>
+          </the-side-latest>
           <!-- <div class="l-box">
             <div class="l-box-inner">
               <p class="m-box-ttl">カテゴリー</p>
@@ -144,11 +120,20 @@ export default {
         const $ = cheerio.load(element.body)
         element.body = $('p').html()
       })
+      const testArray = []
+      data.content.forEach((elem, index) => {
+        if (elem.html) {
+          testArray.push(elem.html)
+        } else {
+          testArray.push(elem.richEdit)
+        }
+      })
+      console.log('testArray:', testArray)
       return {
         latestArticles: info.data.contents,
         currentArticle: data,
         parseArticleData: result,
-        test: data.content[0].html,
+        test: testArray,
       }
     } catch (err) {
       error({
