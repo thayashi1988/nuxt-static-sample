@@ -4,6 +4,7 @@
       <the-main-visual
         :heading-title="title"
         :heading-sub-title="subTitle"
+        :heading-sub-title-show="subTitleShow"
       ></the-main-visual>
       <slot />
     </div>
@@ -21,6 +22,10 @@ export default {
     subTitle: {
       type: String,
       default: '',
+    },
+    subTitleShow: {
+      type: Boolean,
+      default: true,
     },
   },
 }

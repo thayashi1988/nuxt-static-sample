@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-main :title="heading1" sub-title="">
+    <the-main :title="heading1()" sub-title="" :sub-title-show="false">
       <div class="l-underlayer">
         <section class="l-section" data-bg="gray">
           <div class="l-section-inner">
@@ -55,7 +55,7 @@
       </div>
       <!-- ./l-underlayer -->
     </the-main>
-    <the-bread-crumb :bread-crumb-title="heading1"></the-bread-crumb>
+    <the-bread-crumb :bread-crumb-title="heading"></the-bread-crumb>
   </div>
 </template>
 <script>
@@ -132,7 +132,7 @@ export default {
         const $ = cheerio.load(element.body[0].rich)
         element.body[0].rich = $('p').html()
       })
-
+      // console.log('data:', data)
       return {
         latestArticles: latestData,
         currentArticle: data,
@@ -146,11 +146,15 @@ export default {
     }
   },
   computed: {
-    heading1() {
-      // if (this.currentArticle.title.includes('<br>')) {
-      //   console.log('this.currentArticle.title:', this.currentArticle.title)
-      // }
+    heading() {
       return this.currentArticle.title
+    },
+  },
+  methods: {
+    heading1() {
+      let titleTxt = this.currentArticle.title
+      titleTxt = titleTxt.replace(/[\x20\u3000]/, '<br>')
+      return titleTxt
     },
   },
   head() {
