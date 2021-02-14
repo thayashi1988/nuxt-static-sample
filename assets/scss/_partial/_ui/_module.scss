@@ -347,6 +347,12 @@ list
       @include font-size(14);
     }
   }
+  &[data-font='large'] {
+    margin-bottom: 15px;
+    li {
+      @include font-size(16);
+    }
+  }
 }
 
 /*///////////////////////
