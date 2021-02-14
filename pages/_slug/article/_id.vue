@@ -110,7 +110,7 @@ export default {
             }
           })
           $('p').addClass('m-txt')
-          $('ul').addClass('m-list').attr('data-font', 'middle')
+          $('ul').addClass('m-list').attr('data-font', 'large')
           $('li').prepend('<span class="m-list-icon">・</span>')
           $('a').attr('data-icon', 'blank').addClass('m-link')
           $('blockquote').addClass('m-blockquote')
@@ -147,6 +147,9 @@ export default {
   },
   computed: {
     heading1() {
+      // if (this.currentArticle.title.includes('<br>')) {
+      //   console.log('this.currentArticle.title:', this.currentArticle.title)
+      // }
       return this.currentArticle.title
     },
   },

@@ -3,7 +3,8 @@
     <div class="l-mainvisul-inner">
       <div class="l-mainvisul-contents">
         <div class="is-fadein">
-          <h1 class="m-heading-1">{{ headingTitle }}</h1>
+          <!-- eslint-disable-next-line -->
+          <h1 class="m-heading-1" v-html="headingTitle"></h1>
           <p class="m-txt m-ac" data-color="white">
             {{ headingSubTitle }}
           </p>
