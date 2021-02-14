@@ -5,7 +5,7 @@
         <div class="is-fadein">
           <!-- eslint-disable-next-line -->
           <h1 class="m-heading-1" v-html="headingTitle"></h1>
-          <p class="m-txt m-ac" data-color="white">
+          <p v-if="headingSubTitleShow" class="m-txt m-ac" data-color="white">
             {{ headingSubTitle }}
           </p>
         </div>
@@ -25,6 +25,10 @@ export default {
     headingSubTitle: {
       type: String,
       default: '',
+    },
+    headingSubTitleShow: {
+      type: Boolean,
+      default: true,
     },
   },
 }
