@@ -614,12 +614,14 @@ card
 .m-card {
   &-thumb {
     overflow: hidden;
-    height: 260px;
+    max-width: 332px;
+    height: 250px;
     // border: 1px solid $accent;
     border-top: 1px solid $accent;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     @include mediaQuery(max, 0, 768) {
+      max-width: 100%;
       height: auto;
     }
     a {
@@ -640,7 +642,7 @@ card
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      // object-fit: cover;
       @include transition();
     }
   }
