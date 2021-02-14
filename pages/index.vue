@@ -54,7 +54,7 @@ export default {
     const articleslimit = 3 // 記事表示件数
     // console.log('pageParams:', pageParams)
     const { data } = await axios.get(
-      `${$config.apiUrl}/information?limit=${articleslimit}&offset=${
+      `${$config.apiUrl}/blog?limit=${articleslimit}&offset=${
         (pageParams - 1) * articleslimit
       }`,
       {
@@ -62,15 +62,16 @@ export default {
       }
     )
     const totalPages = data.totalCount // 記事総数
+    const blogDatas = data.contents
     const articlesArray = []
     let eyeCatchImg = ''
-    // console.log('data.contents:', data.contents)
     // 記事データを最初のテキストのみに整形し配列に格納
-    data.contents.forEach((element, index) => {
-      const $ = cheerio.load(element.body)
-      // 記事データに画像があれば、それをアイキャッチに設定
-      if ($('img').attr('src')) {
-        eyeCatchImg = $('img').attr('src')
+    blogDatas.forEach((element, index) => {
+      // console.log('element:', element)
+      const $ = cheerio.load(element.body[0].rich)
+      // thumbがtrueであればサムネイル画像を表示。そうでなければデフォルトサムネイル
+      if (element.thumb) {
+        eyeCatchImg = element.thumbImg.url
         element.eyecatch = eyeCatchImg
       } else {
         element.eyecatch = require(`@/assets/img/article/thumb/thumb_01.jpg`)
@@ -78,7 +79,6 @@ export default {
       element.body = $('p').html()
       articlesArray.push(element)
     })
-    // console.log('articlesArray:', articlesArray)
     return {
       articleItems: articlesArray,
       articleLen: Math.ceil(totalPages / articleslimit),

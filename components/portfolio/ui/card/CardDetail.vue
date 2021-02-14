@@ -1,10 +1,7 @@
 <template>
   <div class="l-card">
     <!-- <div class="m-card-thumb">
-      <img
-        src="~@/assets/img/article/thumb/thumb_01.jpg"
-        alt=""
-      />
+      <img src="~@/assets/img/article/thumb/thumb_01.jpg" alt="" />
     </div> -->
     <div class="l-card-body">
       <heading-2 class="m-mt-0" data-type="article">

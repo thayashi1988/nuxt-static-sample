@@ -14,10 +14,10 @@
                 >
                   <card-detail
                     :current-article="currentArticle"
-                    :parse-article-data="parseArticleData"
+                    :parse-article-data="cmsData"
                     btn-txt="記事一覧に戻る"
                   ></card-detail>
-                  <!-- <p v-html="test"></p> -->
+                  <!-- <div v-html="cmsData"></div> -->
                 </li>
               </ul>
             </div>
@@ -69,71 +69,75 @@ export default {
     try {
       const { data } = await axios.get(
         // 記事データ
-        `${$config.apiUrl}/information/${params.id}`,
+        `${$config.apiUrl}/blog/${params.id}`,
         {
           headers: { 'X-API-KEY': $config.apiKey },
         }
       )
-      const info = await axios.get(
+      // 最新記事表示のためのデータ
+      const artcleLatest = await axios.get(
         // 最新記事データ
-        `${$config.apiUrl}/information?limit=3`,
+        `${$config.apiUrl}/blog?limit=3`,
 
         {
           headers: { 'X-API-KEY': $config.apiKey },
         }
       )
       // 記事データにモジュールクラスをつける処理
-      // console.log('data:', data)
-      const $ = cheerio.load(data.body)
-      // 複数のリストタグをm-list-bodyを入れる処理
-      $('li').each(function (listIndex, listElem) {
-        $(this).html('<span class="m-list-body">' + $(this).text() + '</span>')
-      })
-      $('h2').attr('data-type', 'article').addClass('m-heading-2')
-      $('h3').attr('data-type', 'article').addClass('m-heading-3')
-      // 画像が挿入された場合、前後の文章内のpタグに入るため、画像だけ一つのpタグに入れる処理
-      // $('p').each(function (listIndex, listElem) {
-      // console.log(`$(this):${listIndex}`, $(this).html())
-      // })
-      // console.log('$("p").html():', $('p').html())
-      $('p').each((ParagraphIndex, ParagraphElem) => {
-        if ($(ParagraphElem).html().includes('<img')) {
-          const img = $(ParagraphElem).find('img')
-          $(ParagraphElem).find('img').remove()
-          $(ParagraphElem).before('<p class="m-txt m-ac">' + img + '</p>')
+      const blogTxt = data.body
+      const latestData = artcleLatest.data.contents
+      let result = ''
+      const cmsDataArray = []
+
+      // console.log('params.id:', params.id)
+      blogTxt.forEach((elem, index) => {
+        // リッチエディタで入稿の場合HTMLをパースし配列に格納する
+        if (elem.fieldId === 'rich') {
+          const $ = cheerio.load(elem.rich)
+          // 複数のリストタグをm-list-bodyを入れる処理
+          $('li').each(function (listIndex, listElem) {
+            $(this).html(
+              '<span class="m-list-body">' + $(this).text() + '</span>'
+            )
+          })
+          $('h2').attr('data-type', 'article').addClass('m-heading-2')
+          $('h3').attr('data-type', 'article').addClass('m-heading-3')
+          $('p').each((ParagraphIndex, ParagraphElem) => {
+            if ($(ParagraphElem).html().includes('<img')) {
+              const img = $(ParagraphElem).find('img')
+              $(ParagraphElem).find('img').remove()
+              $(ParagraphElem).before('<p class="m-txt m-ac">' + img + '</p>')
+            }
+          })
+          $('p').addClass('m-txt')
+          $('ul').addClass('m-list').attr('data-font', 'middle')
+          $('li').prepend('<span class="m-list-icon">・</span>')
+          $('a').attr('data-icon', 'blank').addClass('m-link')
+          $('blockquote').addClass('m-blockquote')
+          $('pre code').each((_, elm) => {
+            const codeHeighLight = hljs.highlightAuto($(elm).text())
+            $(elm).html(codeHeighLight.value)
+            $(elm).addClass('hljs m-code js')
+          })
+          result = $('body').html()
+          cmsDataArray.push(result)
+          // HTMLで入稿の場合、そのまま配列に格納する
+        } else {
+          cmsDataArray.push(elem.html)
         }
       })
-      $('p').addClass('m-txt')
-      $('ul').addClass('m-list').attr('data-font', 'middle')
-      $('li').prepend('<span class="m-list-icon">・</span>')
-      $('a').attr('data-icon', 'blank').addClass('m-link')
-      $('blockquote').addClass('m-blockquote')
-      $('pre code').each((_, elm) => {
-        const result = hljs.highlightAuto($(elm).text())
-        $(elm).html(result.value)
-        $(elm).addClass('hljs m-code js')
-      })
-      const result = $('body').html()
 
       // 最新記事データを最初のテキストのみに整形
-      info.data.contents.forEach((element, index) => {
-        const $ = cheerio.load(element.body)
-        element.body = $('p').html()
+      latestData.forEach((element, index) => {
+        const $ = cheerio.load(element.body[0].rich)
+        element.body[0].rich = $('p').html()
       })
-      const testArray = []
-      data.content.forEach((elem, index) => {
-        if (elem.html) {
-          testArray.push(elem.html)
-        } else {
-          testArray.push(elem.richEdit)
-        }
-      })
-      console.log('testArray:', testArray)
+
       return {
-        latestArticles: info.data.contents,
+        latestArticles: latestData,
         currentArticle: data,
         parseArticleData: result,
-        test: testArray,
+        cmsData: cmsDataArray.join('\n'),
       }
     } catch (err) {
       error({
