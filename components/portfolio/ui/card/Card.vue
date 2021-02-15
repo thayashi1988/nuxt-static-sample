@@ -2,7 +2,7 @@
   <div class="l-card">
     <div class="m-card-thumb">
       <nuxt-link :to="articleHref">
-        <img :src="articleEyeCatch" alt="" />
+        <img :src="articleEyeCatch" :alt="articleTitle" />
       </nuxt-link>
     </div>
     <div class="l-card-body">
