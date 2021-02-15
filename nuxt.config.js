@@ -124,7 +124,13 @@ export default {
       '/information',
       '/menu',
       '/shop',
-      '/index2'
+      '/index2',
+      '/articles/article/78ewfaplq',
+      '/articles/article/cdgqrgevq',
+      '/articles/article/zejzmwn-w',
+      '/articles/article/xqdiivfbqt',
+      '/articles/article/ujm59e-4e',
+      '/articles/article/cerm09ngo',
     ],
     routes (callback) {
       axios.get(API_URL + '/information', {
