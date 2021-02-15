@@ -133,7 +133,7 @@ export default {
       '/articles/article/cerm09ngo',
     ],
     routes (callback) {
-      axios.get(API_URL + '/information', {
+      axios.get(API_URL + '/blog', {
         headers: { 'X-API-KEY': API_KEY },
       })
       .then((response) => {
