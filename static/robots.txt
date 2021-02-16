@@ -1,13 +1,13 @@
 User-agent: *
-Disallow: /concept/
-Disallow: /information/
-Disallow: /menu/
-Disallow: /shop/
-Disallow: /index2/
-Disallow: /articles/article/78ewfaplq/
-Disallow: /articles/article/cdgqrgevq/
-Disallow: /articles/article/zejzmwn-w/
-Disallow: /articles/article/xqdiivfbqt/
-Disallow: /articles/article/ujm59e-4e/
+Disallow: /concept
+Disallow: /information
+Disallow: /menu
+Disallow: /shop
+Disallow: /index2
+Disallow: /articles/article/78ewfaplq
+Disallow: /articles/article/cdgqrgevq
+Disallow: /articles/article/zejzmwn-w
+Disallow: /articles/article/xqdiivfbqt
+Disallow: /articles/article/ujm59e-4e
 
 Sitemap: https://nervous-franklin-aa026b.netlify.app/sitemap.xml
