@@ -300,7 +300,7 @@ txt
   }
   img {
     display: inline-block;
-    max-width: 50%;
+    max-width: 100%;
     @include mediaQuery(max, 0, 768) {
       max-width: 100%;
     }
