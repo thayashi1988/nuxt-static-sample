@@ -10,4 +10,4 @@ Disallow: /articles/article/zejzmwn-w
 Disallow: /articles/article/xqdiivfbqt
 Disallow: /articles/article/ujm59e-4e
 
-Sitemap: https://nervous-franklin-aa026b.netlify.app/sitemap.xml
+Sitemap: https://pakumogu.xyz/sitemap.xml
