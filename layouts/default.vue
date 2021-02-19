@@ -13,13 +13,13 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `https://pakumogu.xyz/${this.$route.path}`,
+          content: `https://pakumogu.xyz${this.$route.path}`,
         },
       ],
       link: [
         {
           rel: 'canonical',
-          href: `https://pakumogu.xyz/${this.$route.path}`,
+          href: `https://pakumogu.xyz${this.$route.path}`,
         },
       ],
     }
