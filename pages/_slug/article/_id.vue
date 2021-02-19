@@ -62,7 +62,7 @@
 import axios from 'axios'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/arta.css'
+import 'highlight.js/styles/vs2015.css'
 
 export default {
   async asyncData({ $config, params, error }) {
@@ -117,7 +117,7 @@ export default {
           $('pre code').each((_, elm) => {
             const codeHeighLight = hljs.highlightAuto($(elm).text())
             $(elm).html(codeHeighLight.value)
-            $(elm).addClass('hljs m-code js')
+            $(elm).addClass('hljs m-code')
           })
           result = $('body').html()
           cmsDataArray.push(result)
