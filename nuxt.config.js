@@ -7,7 +7,7 @@ export default {
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-
+  // ssr: false,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     htmlAttrs: {
@@ -32,7 +32,7 @@ export default {
         content: 'ぱくもぐブログ',
       },
       { hid: 'og:type', property: 'og:type', content: 'article' },
-      { hid: 'og:url', property: 'og:url', content: 'https://nervous-franklin-aa026b.netlify.app/' },
+      { hid: 'og:url', property: 'og:url', content: 'https://pakumogu.xyz/' },
       {
         hid: 'og:title',
         property: 'og:title',
@@ -43,7 +43,7 @@ export default {
         property: 'og:description',
         content: '沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${title}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。',
       },
-      { hid: 'og:image', property: 'og:image', content: 'https://nervous-franklin-aa026b.netlify.app/assets/img/ogp/ogp.png' },
+      { hid: 'og:image', property: 'og:image', content: 'https://pakumogu.xyz/assets/img/ogp/ogp.png' },
       { hid: 'og:locale', content: 'ja_jp' },
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@ぱくもぐ' },
@@ -115,7 +115,7 @@ export default {
     // サイトマップが作成される場所
     path: '/sitemap.xml',
     // サイトのURL
-    hostname: 'https://nervous-franklin-aa026b.netlify.app/',
+    hostname: 'https://pakumogu.xyz/',
     // サイトマップの更新頻度（ms）
     cacheTime: 1000 * 60 * 60 * 24,
     // generate: true,
