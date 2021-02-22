@@ -32,7 +32,7 @@ export default {
         content: 'ぱくもぐブログ',
       },
       { hid: 'og:type', property: 'og:type', content: 'article' },
-      { hid: 'og:url', property: 'og:url', content: 'https://pakumogu.xyz/' },
+      { hid: 'og:url', property: 'og:url', content: 'https://pakumogu.xyz' },
       {
         hid: 'og:title',
         property: 'og:title',
@@ -62,6 +62,8 @@ export default {
   },
   router: {
     base: '/',
+    trailingSlash: false,
+    // middleware: 'redirect',
     extendRoutes(routes, resolve) {
       routes.push({
         path: '/articles/:slug',
@@ -109,29 +111,17 @@ export default {
   ],
   googleAnalytics: {
     id: GA_ID_UA,
-    checkDuplicatedScript: true
+    // checkDuplicatedScript: true
   },
   sitemap: {
     // サイトマップが作成される場所
     path: '/sitemap.xml',
     // サイトのURL
-    hostname: 'https://pakumogu.xyz/',
+    hostname: 'https://pakumogu.xyz',
     // サイトマップの更新頻度（ms）
     cacheTime: 1000 * 60 * 60 * 24,
+    trailingSlash: false, // 追加
     // generate: true,
-    exclude: [
-      '/concept',
-      '/information',
-      '/menu',
-      '/shop',
-      '/index2',
-      '/articles/article/78ewfaplq',
-      '/articles/article/cdgqrgevq',
-      '/articles/article/zejzmwn-w',
-      '/articles/article/xqdiivfbqt',
-      '/articles/article/ujm59e-4e',
-      '/articles/article/cerm09ngo',
-    ],
     routes (callback) {
       axios.get(API_URL + '/blog', {
         headers: { 'X-API-KEY': API_KEY },
