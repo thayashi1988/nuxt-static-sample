@@ -8,7 +8,7 @@
         <!-- eslint-disable -->
         <nuxt-link
           :to="latestArticle.id"
-          v-html="latestArticle.body[0].rich"
+          v-html="latestArticle.title"
         ></nuxt-link>
       </dd>
     </dl>
