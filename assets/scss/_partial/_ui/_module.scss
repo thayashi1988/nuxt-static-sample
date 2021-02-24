@@ -1107,6 +1107,58 @@ pager
 }
 
 /*///////////////////////
+article
+///////////////////////*/
+.m-article {
+  &-links {
+    display: flex;
+    align-items: center;
+    @include mediaQuery(max, 0, 768) {
+      border: 1px solid rgba(3, 196, 235, 1);
+      padding: 10px;
+    }
+    &-item {
+      width: calc(100% - 20px);
+      @include mediaQuery(max, 0, 768) {
+        width: 100%;
+      }
+      &:first-child {
+        margin-right: 20px;
+        @include mediaQuery(max, 0, 768) {
+          margin-right: 0;
+          margin-bottom: 40px;
+        }
+      }
+    }
+    &-next {
+      justify-content: flex-end;
+      @include mediaQuery(max, 0, 768) {
+        justify-content: flex-start;
+      }
+    }
+    &-prev {
+      @include mediaQuery(max, 0, 768) {
+        justify-content: flex-start;
+      }
+    }
+    &-thumb {
+      max-width: 120px;
+      margin-right: 10px;
+    }
+    &-txt {
+      &-sub {
+        @include font-size(14);
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    }
+    &-title {
+      @include font-size(14);
+    }
+  }
+}
+
+/*///////////////////////
 state
 ///////////////////////*/
 .is {
@@ -1166,6 +1218,14 @@ state
     border: none;
     box-shadow: none;
     background: #ccc;
+  }
+  &-last {
+    width: 100%;
+    margin-right: 0 !important;
+    justify-content: flex-start;
+    .m-article-links-next {
+      justify-content: flex-start;
+    }
   }
   &-fixed {
   }

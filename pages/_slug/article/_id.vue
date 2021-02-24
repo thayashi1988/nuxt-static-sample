@@ -21,6 +21,12 @@
                 </li>
               </ul>
             </div>
+            <the-articles
+              :prev-show-flag="prevFlag"
+              :prev-object="articleNextPrev[0]"
+              :next-show-flag="nextFlag"
+              :next-object="articleNextPrev[1]"
+            ></the-articles>
           </div>
           <!-- ./l-section-inner -->
         </section>
@@ -67,29 +73,22 @@ import 'highlight.js/styles/vs2015.css'
 export default {
   async asyncData({ $config, params, error }) {
     try {
-      const { data } = await axios.get(
-        // 記事データ
-        `${$config.apiUrl}/blog/${params.id}`,
-        {
-          headers: { 'X-API-KEY': $config.apiKey },
-        }
-      )
-      // 最新記事表示のためのデータ
-      const artcleLatest = await axios.get(
-        // 最新記事データ
-        `${$config.apiUrl}/blog?limit=3`,
+      // 記事データ
+      const { data } = await axios.get(`${$config.apiUrl}/blog/${params.id}`, {
+        headers: { 'X-API-KEY': $config.apiKey },
+      })
 
-        {
-          headers: { 'X-API-KEY': $config.apiKey },
-        }
-      )
+      // 最新記事表示のためのデータ
+      const artcleLatest = await axios.get(`${$config.apiUrl}/blog?limit=3`, {
+        headers: { 'X-API-KEY': $config.apiKey },
+      })
+
       // 記事データにモジュールクラスをつける処理
       const blogTxt = data.body
       const latestData = artcleLatest.data.contents
       let result = ''
       const cmsDataArray = []
 
-      // console.log('params.id:', params.id)
       blogTxt.forEach((elem, index) => {
         // リッチエディタで入稿の場合HTMLをパースし配列に格納する
         if (elem.fieldId === 'rich') {
@@ -132,12 +131,61 @@ export default {
         const $ = cheerio.load(element.body[0].rich)
         element.body[0].rich = $('p').html()
       })
-      // console.log('data:', data)
+
+      // 次の記事、前の記事データ
+      const articleNextPrev = await axios.get(`${$config.apiUrl}/blog?`, {
+        headers: { 'X-API-KEY': $config.apiKey },
+      })
+
+      // 次の記事、前の記事処理
+      const articleNextPrevData = articleNextPrev.data.contents
+      const articleNextPrevDataArray = []
+      let articleNextFlag = true // 記事が一つの場合のフラグ
+      let articlePrevFlag = true // 記事が一つの場合のフラグ
+      // const articleNextPrevDummyData = [
+      //   {
+      //     id: '',
+      //     thumbImg: { url: '' },
+      //     title: '',
+      //   },
+      // ]
+      articleNextPrevData.forEach((e, i) => {
+        if (e.id === params.id) {
+          if (typeof articleNextPrevData[i - 1] !== 'undefined') {
+            articleNextPrevDataArray.push(articleNextPrevData[i - 1])
+          } else {
+            articlePrevFlag = false
+            articleNextPrevDataArray.push({
+              id: '',
+              thumbImg: { url: '' },
+              title: '',
+            })
+            // articleNextPrevDataArray.push(articleNextPrevDummyData)
+          }
+
+          if (typeof articleNextPrevData[i + 1] !== 'undefined') {
+            articleNextPrevDataArray.push(articleNextPrevData[i + 1])
+          } else {
+            articleNextFlag = false
+            articleNextPrevDataArray.push({
+              id: '',
+              thumbImg: { url: '' },
+              title: '',
+            })
+            // articleNextPrevDataArray.push(articleNextPrevDummyData)
+          }
+        }
+      })
+      // console.log('articleNextPrevDataArray:', articleNextPrevDataArray)
+
       return {
         latestArticles: latestData,
         currentArticle: data,
         parseArticleData: result,
         cmsData: cmsDataArray.join('\n'),
+        articleNextPrev: articleNextPrevDataArray,
+        nextFlag: articleNextFlag,
+        prevFlag: articlePrevFlag,
       }
     } catch (err) {
       error({
