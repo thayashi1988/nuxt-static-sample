@@ -17,6 +17,14 @@
           {{ currentArticle.updatedAt | formatDate }}
         </template>
       </card-date>
+      <toc-article>
+        <toc-article-item
+          v-for="item in articleToc"
+          :key="item.id"
+          :toc-contents="item"
+          :scroll-offset="scrollOffset"
+        ></toc-article-item>
+      </toc-article>
       <!-- eslint-disable-next-line vue/no-v-html-->
       <div class="m-card-html" v-html="parseArticleData"></div>
       <card-btn class="" to="/" data-width="middle">{{ btnTxt }}</card-btn>
@@ -40,6 +48,18 @@ export default {
     btnTxt: {
       type: String,
       default: '',
+    },
+    articleToc: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  methods: {
+    scrollOffset() {
+      // スムーススクロールの移動を、ヘッダー高さ分を引いて移動する。
+      const headerHeight = document.querySelector('.l-header').clientHeight
+      const headerOffset = `-${headerHeight}` - `20`
+      return parseInt(headerOffset)
     },
   },
 }

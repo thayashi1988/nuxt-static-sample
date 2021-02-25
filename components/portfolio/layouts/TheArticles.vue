@@ -2,14 +2,12 @@
   <ul class="l-article-links">
     <the-articles-prev
       v-show="prevShowFlag"
-      :prev-flag="prevShowFlag"
       :prev-href="prevObject.id"
       :prev-src="prevObject.thumbImg.url"
       :prev-title="prevObject.title"
     ></the-articles-prev>
     <the-articles-next
       v-show="nextShowFlag"
-      :next-flag="nextShowFlag"
       :next-href="nextObject.id"
       :next-src="nextObject.thumbImg.url"
       :next-title="nextObject.title"
