@@ -41,12 +41,12 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: '沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${title}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。',
+        content: '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトのトップページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
       },
       { hid: 'og:image', property: 'og:image', content: 'https://pakumogu.xyz/assets/img/ogp/ogp.png' },
       { hid: 'og:locale', content: 'ja_jp' },
       { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:site', content: '@ぱくもぐ' },
+      { name: 'twitter:site', content: '@ぱくもぐブログ' },
     ],
     link: [
       {
@@ -90,6 +90,7 @@ export default {
     // '~plugins/ui'
     { src: '~/plugins/animatescroll.js', mode: 'client' },
     // { src: '~/plugins/gtag.js', mode: 'client' },
+    '~plugins/vue-scrollto',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

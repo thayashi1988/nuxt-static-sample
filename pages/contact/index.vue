@@ -95,12 +95,12 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.heading1}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.heading1}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:title',

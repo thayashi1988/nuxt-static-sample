@@ -15,6 +15,7 @@
                   <card-detail
                     :current-article="currentArticle"
                     :parse-article-data="cmsData"
+                    :article-toc="tocData"
                     btn-txt="記事一覧に戻る"
                   ></card-detail>
                   <!-- <div v-html="cmsData"></div> -->
@@ -34,7 +35,7 @@
         <div class="l-side">
           <the-side-profile>
             <p class="m-box-txt">
-              沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのブログで発信していきいます！
+              沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのぱくもぐブログで発信していきいます！
             </p>
           </the-side-profile>
           <the-side-latest>
@@ -88,6 +89,8 @@ export default {
       const latestData = artcleLatest.data.contents
       let result = ''
       const cmsDataArray = []
+      let tocArray = []
+      let toc = []
 
       blogTxt.forEach((elem, index) => {
         // リッチエディタで入稿の場合HTMLをパースし配列に格納する
@@ -118,6 +121,17 @@ export default {
             $(elm).html(codeHeighLight.value)
             $(elm).addClass('hljs m-code')
           })
+
+          // 目次生成処理
+          const headings = $('h1, h2, h3').toArray()
+          tocArray = headings.map((data) => ({
+            text: data.children[0].data,
+            id: data.attribs.id,
+            name: data.name,
+          }))
+          // rich、テキストどちらの入稿もconcatで一つの配列にする。
+          toc = toc.concat(tocArray)
+
           result = $('body').html()
           cmsDataArray.push(result)
           // HTMLで入稿の場合、そのまま配列に格納する
@@ -125,6 +139,7 @@ export default {
           cmsDataArray.push(elem.html)
         }
       })
+      // console.log('array:', array)
 
       // 最新記事データを最初のテキストのみに整形
       latestData.forEach((element, index) => {
@@ -140,39 +155,31 @@ export default {
       // 次の記事、前の記事処理
       const articleNextPrevData = articleNextPrev.data.contents
       const articleNextPrevDataArray = []
-      let articleNextFlag = true // 記事が一つの場合のフラグ
-      let articlePrevFlag = true // 記事が一つの場合のフラグ
-      // const articleNextPrevDummyData = [
-      //   {
-      //     id: '',
-      //     thumbImg: { url: '' },
-      //     title: '',
-      //   },
-      // ]
+      let articleNextFlag = true // 次の記事が一つの場合のフラグ
+      let articlePrevFlag = true // 前の記事が一つの場合のフラグ
+
+      const insertDummyData = () => {
+        articleNextPrevDataArray.push({
+          id: '',
+          thumbImg: { url: '' },
+          title: '',
+        })
+      }
+
       articleNextPrevData.forEach((e, i) => {
         if (e.id === params.id) {
           if (typeof articleNextPrevData[i - 1] !== 'undefined') {
             articleNextPrevDataArray.push(articleNextPrevData[i - 1])
           } else {
+            insertDummyData()
             articlePrevFlag = false
-            articleNextPrevDataArray.push({
-              id: '',
-              thumbImg: { url: '' },
-              title: '',
-            })
-            // articleNextPrevDataArray.push(articleNextPrevDummyData)
           }
 
           if (typeof articleNextPrevData[i + 1] !== 'undefined') {
             articleNextPrevDataArray.push(articleNextPrevData[i + 1])
           } else {
+            insertDummyData()
             articleNextFlag = false
-            articleNextPrevDataArray.push({
-              id: '',
-              thumbImg: { url: '' },
-              title: '',
-            })
-            // articleNextPrevDataArray.push(articleNextPrevDummyData)
           }
         }
       })
@@ -186,6 +193,7 @@ export default {
         articleNextPrev: articleNextPrevDataArray,
         nextFlag: articleNextFlag,
         prevFlag: articlePrevFlag,
+        tocData: toc,
       }
     } catch (err) {
       error({
@@ -212,12 +220,12 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.currentArticle.title}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.currentArticle.title}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.currentArticle.title}ページです。HTML、CSS、javascriptのスキル、経験、実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.currentArticle.title}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:title',
