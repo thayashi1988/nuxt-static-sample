@@ -1,6 +1,9 @@
 <template>
   <div>
-    <the-main :title="heading1" sub-title="WEB技術や日常などを発信しています">
+    <the-main
+      :title="heading1"
+      sub-title="ぱくもぐブログを通して、WEB技術や日常などを発信しています"
+    >
       <section class="l-section">
         <div class="l-section-inner">
           <div class="l-grid-container">
@@ -97,12 +100,12 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.heading1}のトップページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `沖縄在住のWebコーダーのブログ、ポートフォリオサイトの${this.heading1}のトップページです。今までのHTML、CSS、javascriptの経験や実績を紹介します。`,
+          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.heading1}のトップページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:type',
