@@ -9,6 +9,7 @@
       </heading-2>
       <card-date
         :up-date-boolean="currentArticle.date !== currentArticle.updatedAt"
+        :tag="currentArticle.category[0]"
       >
         <template #date>
           {{ currentArticle.date | formatDate }}

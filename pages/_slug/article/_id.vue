@@ -18,7 +18,6 @@
                     :article-toc="tocData"
                     btn-txt="記事一覧に戻る"
                   ></card-detail>
-                  <!-- <div v-html="cmsData"></div> -->
                 </li>
               </ul>
             </div>
@@ -44,6 +43,9 @@
               :key="key"
               :latest-article="latestArticle"
             ></the-side-latest-items>
+            <li>
+              <link-arrow href="/">記事一覧へ戻る</link-arrow>
+            </li>
           </the-side-latest>
           <!-- <div class="l-box">
             <div class="l-box-inner">
@@ -78,7 +80,6 @@ export default {
       const { data } = await axios.get(`${$config.apiUrl}/blog/${params.id}`, {
         headers: { 'X-API-KEY': $config.apiKey },
       })
-
       // 最新記事表示のためのデータ
       const artcleLatest = await axios.get(`${$config.apiUrl}/blog?limit=3`, {
         headers: { 'X-API-KEY': $config.apiKey },
@@ -139,7 +140,6 @@ export default {
           cmsDataArray.push(elem.html)
         }
       })
-      // console.log('array:', array)
 
       // 最新記事データを最初のテキストのみに整形
       latestData.forEach((element, index) => {

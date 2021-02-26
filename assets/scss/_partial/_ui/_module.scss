@@ -311,10 +311,23 @@ txt
 label
 ///////////////////////*/
 .m-label {
-  display: inline-block;
-  border: 1px solid $accent;
+  display: inline-flex;
+  align-items: center;
+  font-weight: normal;
+  @include font-size(12);
+  // border: 1px solid $accent;
+  // padding: 0 10px;
   margin-right: 10px;
   margin-bottom: 5px;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url(#{$icon_path}icon_tag.svg) no-repeat;
+    background-size: contain;
+    margin-right: 5px;
+  }
   a {
     display: block;
     font-weight: bold;
@@ -629,8 +642,8 @@ card
 .m-card {
   &-thumb {
     overflow: hidden;
-    max-width: 332px;
-    height: 250px;
+    // max-width: 332px;
+    // height: 250px;
     // border: 1px solid $accent;
     border-top: 1px solid $accent;
     border-top-left-radius: 9px;
@@ -672,6 +685,8 @@ card
     }
   }
   &-type {
+    display: flex;
+    align-items: flex-start;
     font-weight: bold;
     margin-bottom: 20px;
   }

@@ -6,7 +6,7 @@
     <span v-if="upDateBoolean" class="m-card-date m-card-date-update"
       >更新：<slot name="upDate">{{ upDate }}</slot></span
     >
-    <!-- <span class="m-label"><a href="/single/">ラベル</a></span> -->
+    <card-tag v-if="tagShow" :tag-name="tag"></card-tag>
   </p>
 </template>
 <script>
@@ -24,6 +24,14 @@ export default {
     upDateBoolean: {
       type: Boolean,
       default: false,
+    },
+    tag: {
+      type: String,
+      default: '',
+    },
+    tagShow: {
+      type: Boolean,
+      default: true,
     },
   },
 }

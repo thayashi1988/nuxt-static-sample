@@ -18,15 +18,7 @@
                 data-padding="true"
                 data-padding-sp="false"
               >
-                <card
-                  :article-href="`/articles/article/` + article.id"
-                  :article-eye-catch="article.eyecatch"
-                  :article-title="article.title"
-                  :article-date="article.date"
-                  :article-date-up-date="article.updatedAt"
-                  :article-body="article.body"
-                  btn-txt="この記事を見る"
-                ></card>
+                <card :article-data="article" btn-txt="記事一覧に戻る"></card>
               </li>
             </ul>
           </div>
@@ -68,9 +60,9 @@ export default {
     const blogDatas = data.contents
     const articlesArray = []
     let eyeCatchImg = ''
+
     // 記事データを最初のテキストのみに整形し配列に格納
     blogDatas.forEach((element, index) => {
-      // console.log('element:', element)
       const $ = cheerio.load(element.body[0].rich)
       // thumbがtrueであればサムネイル画像を表示。そうでなければデフォルトサムネイル
       if (element.thumb) {

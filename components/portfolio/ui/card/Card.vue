@@ -1,27 +1,34 @@
 <template>
   <div class="l-card">
     <div class="m-card-thumb">
-      <nuxt-link :to="articleHref">
-        <img :src="articleEyeCatch" :alt="articleTitle" />
+      <nuxt-link :to="`/articles/article/${articleData.id}`">
+        <img :src="articleData.eyecatch" :alt="articleData.title" />
       </nuxt-link>
     </div>
     <div class="l-card-body">
-      <card-date :up-date-boolean="articleDate !== articleDateUpDate">
+      <card-date
+        :up-date-boolean="articleData.date !== articleData.updatedAt"
+        :tag-show="false"
+      >
         <template #date>
-          {{ articleDate | formatDate }}
+          {{ articleData.date | formatDate }}
         </template>
         <template #upDate>
-          {{ articleDateUpDate | formatDate }}
+          {{ articleData.updatedAt | formatDate }}
         </template>
       </card-date>
       <heading-2 data-type="cardttl">
-        <nuxt-link :to="articleHref" class="m-card-ttl">{{
-          articleTitle
+        <nuxt-link :to="articleData.id" class="m-card-ttl">{{
+          articleData.title
         }}</nuxt-link>
       </heading-2>
       <!-- eslint-disable-next-line vue/no-v-html-->
-      <div class="m-card-txt" v-html="articleBody"></div>
-      <card-btn :to="articleHref" data-width="small">{{ btnTxt }}</card-btn>
+      <div class="m-card-txt" v-html="articleData.body"></div>
+      <card-btn
+        :to="`/articles/article/${articleData.id}`"
+        data-width="small"
+        >{{ btnTxt }}</card-btn
+      >
     </div>
     <!-- ./l-card-body -->
   </div>
@@ -31,30 +38,13 @@
 export default {
   name: 'Card',
   props: {
-    articleTitle: {
-      type: String,
-      required: true,
+    articleData: {
+      type: Object,
+      default: () => {},
     },
-    articleBody: {
+    parseArticleData: {
       type: String,
-      required: null,
       default: '',
-    },
-    articleDate: {
-      type: String,
-      required: true,
-    },
-    articleDateUpDate: {
-      type: String,
-      required: true,
-    },
-    articleEyeCatch: {
-      type: String,
-      required: true,
-    },
-    articleHref: {
-      type: String,
-      required: true,
     },
     btnTxt: {
       type: String,
