@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="link" class="m-link" data-icon="arrow"
+  <nuxt-link :to="href" class="m-link" data-icon="arrow"
     ><slot></slot
   ></nuxt-link>
 </template>
@@ -7,7 +7,7 @@
 export default {
   name: 'LinkArrow',
   props: {
-    link: {
+    href: {
       type: String,
       default: '',
     },
