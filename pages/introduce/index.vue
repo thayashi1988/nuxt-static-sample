@@ -86,7 +86,7 @@
             <text-normal
               >Webページコーディングに関しては、以下のお問い合わせからご連絡ください。</text-normal
             >
-            <link-arrow link="/contact">お問い合わせはこちらから</link-arrow>
+            <link-arrow href="/contact">お問い合わせはこちらから</link-arrow>
           </contact>
         </div>
         <!-- ./l-section-inner -->
@@ -103,7 +103,7 @@
             <text-normal
               >技術に関することや、日々の出来事をゆる〜く発信しています。</text-normal
             >
-            <link-arrow link="/">Blogはこちらから</link-arrow>
+            <link-arrow href="/">Blogはこちらから</link-arrow>
           </blog>
         </div>
         <!-- ./l-section-inner -->
