@@ -384,6 +384,7 @@ link
   position: relative;
   // display: flex;
   // align-items: center;
+  @include font-size(16);
   text-decoration: underline;
   @include transition();
   &[data-icon='arrow'] {
@@ -400,9 +401,10 @@ link
     }
   }
   &[data-icon='blank'] {
+    margin-right: 5px;
     &::before {
       position: absolute;
-      bottom: 0;
+      bottom: 2px;
       right: -3px;
       content: '';
       display: inline-block;
@@ -411,15 +413,18 @@ link
       border: 1px solid $main;
       border-top-color: transparent;
       border-left-color: transparent;
-      margin-left: 10px;
+      // margin-left: 5px;
     }
     &::after {
       content: '';
+      position: relative;
+      top: -2px;
+      left: 0;
       display: inline-block;
       width: 10px;
       height: 8px;
       border: 1px solid $main;
-      margin-left: 10px;
+      margin-left: 5px;
     }
   }
 }
