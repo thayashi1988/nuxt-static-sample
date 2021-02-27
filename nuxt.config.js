@@ -17,14 +17,13 @@ export default {
     titleTemplate(title) {
       return (title ? `${title} | ` : '') + 'ぱくもぐブログ'
     },
-    title: 'ぱくもぐブログ' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
       },
       {
         hid: 'og:site_name',
@@ -36,12 +35,12 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: process.env.npm_package_name || '',
+        content: 'ぱくもぐブログ',
       },
       {
         hid: 'og:description',
         property: 'og:description',
-        content: '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトのトップページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
+        content: '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
       },
       { hid: 'og:image', property: 'og:image', content: 'https://pakumogu.xyz/assets/img/ogp/ogp.png' },
       { hid: 'og:locale', content: 'ja_jp' },

@@ -87,17 +87,17 @@ export default {
   },
   head() {
     return {
-      title: `${this.heading1}`,
+      // title: `${this.heading1}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.heading1}のトップページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
+          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.heading1}のトップページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.heading1}のトップページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
+          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.heading1}のトップページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:type',
