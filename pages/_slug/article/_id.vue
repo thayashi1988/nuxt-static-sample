@@ -220,12 +220,12 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.currentArticle.title}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
+          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.currentArticle.title}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトの${this.currentArticle.title}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
+          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.currentArticle.title}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:title',

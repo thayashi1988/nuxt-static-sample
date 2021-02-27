@@ -386,6 +386,9 @@ link
   // align-items: center;
   @include font-size(16);
   text-decoration: underline;
+  @include mediaQuery(max, 0, 768) {
+    @include font-size(14);
+  }
   @include transition();
   &[data-icon='arrow'] {
     &::before {
@@ -741,6 +744,9 @@ blockquote
   & > * {
     position: relative;
     // padding-left: 30px;
+    @include mediaQuery(max, 0, 768) {
+      @include font-size(14);
+    }
   }
 }
 
