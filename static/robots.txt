@@ -1,13 +1,6 @@
 User-agent: *
-Disallow: /concept
-Disallow: /information
-Disallow: /menu
-Disallow: /shop
-Disallow: /index2
-Disallow: /articles/article/78ewfaplq
-Disallow: /articles/article/cdgqrgevq
-Disallow: /articles/article/zejzmwn-w
-Disallow: /articles/article/xqdiivfbqt
-Disallow: /articles/article/ujm59e-4e
+Disallow: /contact/thanks
+Disallow: /articles/2
+Disallow: /articles/3
 
 Sitemap: https://pakumogu.xyz/sitemap.xml
