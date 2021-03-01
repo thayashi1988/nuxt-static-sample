@@ -82,6 +82,9 @@ main
 ///////////////////////*/
 .l-main {
   // padding: 0 10px;
+  &-inner {
+    background: #f8f9f9;
+  }
 }
 
 /*///////////////////////
@@ -139,9 +142,12 @@ section
 underlayer
 ///////////////////////*/
 .l-underlayer {
+  max-width: 1140px;
   display: flex;
   background: $bg_sub;
   padding: 50px 2%;
+  margin: 0 auto;
+  box-sizing: content-box;
   @include mediaQuery(max, 0, 768) {
     display: block;
     padding: 50px 4%;
