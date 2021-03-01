@@ -25,10 +25,10 @@ export default {
     return {
       navTitles: [
         { title: 'introduce', link: '/introduce' },
-        { title: 'skills', link: '/introduce#skills' },
-        { title: 'service', link: '/introduce#service' },
-        { title: 'gallery', link: '/introduce#gallery' },
         { title: 'contact', link: '/contact' },
+        // { title: 'skills', link: '/introduce#skills' },
+        // { title: 'service', link: '/introduce#service' },
+        // { title: 'gallery', link: '/introduce#gallery' },
         // { title: 'blog', link: '/blog' },
       ],
     }
