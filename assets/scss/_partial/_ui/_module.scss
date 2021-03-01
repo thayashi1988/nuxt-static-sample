@@ -74,7 +74,7 @@ nav
 .m-nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   @include mediaQuery(max, 0, 768) {
     flex-direction: column;
     background: rgba(0, 0, 0, 0.6);
@@ -83,6 +83,12 @@ nav
     @include mediaQuery(max, 0, 768) {
       color: #fff;
       border-bottom: 1px solid #fff;
+    }
+    &:not(:first-of-type) {
+      margin-left: 15px;
+      @include mediaQuery(max, 0, 768) {
+        margin-left: 0;
+      }
     }
     a {
       position: relative;
