@@ -18,7 +18,7 @@
                 data-padding="true"
                 data-padding-sp="false"
               >
-                <card :article-data="article" btn-txt="記事一覧に戻る"></card>
+                <card :article-data="article" btn-txt="記事を開く"></card>
               </li>
             </ul>
           </div>

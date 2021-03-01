@@ -17,7 +17,7 @@
           {{ articleData.updatedAt | formatDate }}
         </template>
       </card-date>
-      <heading-2 data-type="cardttl">
+      <heading-2 data-type="cardttl" :style="`height: ${heading2MaxHeight}px`">
         <nuxt-link :to="articleData.id" class="m-card-ttl">{{
           articleData.title
         }}</nuxt-link>
@@ -50,6 +50,21 @@ export default {
       type: String,
       default: '',
     },
+  },
+  data() {
+    return {
+      heading2MaxHeight: 'auto',
+    }
+  },
+  mounted() {
+    // 見出しの高さ揃え
+    const heading2 = document.querySelectorAll('.m-heading-2')
+    const heading2Heights = []
+    heading2.forEach((elem, index) => {
+      heading2Heights.push(elem.clientHeight)
+    })
+    this.heading2MaxHeight = Math.max.apply(null, heading2Heights)
+    return this.heading2MaxHeight
   },
 }
 </script>
