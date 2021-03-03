@@ -695,7 +695,7 @@ card
     @include font-size(20);
     margin-bottom: 5px;
     @include mediaQuery(max, 0, 768) {
-      @include font-size(18);
+      @include font-size(16);
     }
   }
   &-type {
@@ -734,6 +734,12 @@ card
         position: relative;
         // padding-left: 30px;
       }
+    }
+  }
+  &-btn {
+    @include mediaQuery(max, 0, 768) {
+      @include font-size(14);
+      padding: 5px 10px;
     }
   }
 }

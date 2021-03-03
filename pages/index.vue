@@ -18,7 +18,7 @@
                 data-padding="true"
                 data-padding-sp="false"
               >
-                <card :article-data="article" btn-txt="記事を開く"></card>
+                <card :article-data="article" btn-txt="記事を見る"></card>
               </li>
             </ul>
           </div>
@@ -46,7 +46,7 @@ import cheerio from 'cheerio'
 export default {
   async asyncData({ params, $config, error }) {
     const pageParams = params.slug || '1'
-    const articleslimit = 3 // 記事表示件数
+    const articleslimit = 6 // 記事表示件数
     // console.log('pageParams:', pageParams)
     const { data } = await axios.get(
       `${$config.apiUrl}/blog?limit=${articleslimit}&offset=${

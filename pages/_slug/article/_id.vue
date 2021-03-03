@@ -16,6 +16,7 @@
                     :current-article="currentArticle"
                     :parse-article-data="cmsData"
                     :article-toc="tocData"
+                    :prams-id="pageId"
                     btn-txt="記事一覧に戻る"
                   ></card-detail>
                 </li>
@@ -194,6 +195,7 @@ export default {
         nextFlag: articleNextFlag,
         prevFlag: articlePrevFlag,
         tocData: toc,
+        pageId: params.id,
       }
     } catch (err) {
       error({
