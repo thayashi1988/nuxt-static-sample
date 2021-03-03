@@ -23,7 +23,7 @@
         }}</nuxt-link>
       </heading-2>
       <!-- eslint-disable-next-line vue/no-v-html-->
-      <div class="m-card-txt" v-html="articleData.body"></div>
+      <!-- <div class="m-card-txt" v-html="articleData.body"></div> -->
       <card-btn
         :to="`/articles/article/${articleData.id}`"
         data-width="small"
