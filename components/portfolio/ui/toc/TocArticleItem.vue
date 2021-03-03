@@ -3,7 +3,7 @@
     <a
       v-if="tocContents.name === 'h2'"
       v-scroll-to="{ el: `#${tocContents.id}`, offset: scrollOffset }"
-      :href="`#${tocContents.id}`"
+      :href="`/articles/article/${pageId}#${tocContents.id}`"
     >
       {{ tocContents.text }}
     </a>
@@ -11,7 +11,7 @@
       <li class="m-toc-list-under-item">
         <a
           v-scroll-to="{ el: `#${tocContents.id}`, offset: scrollOffset }"
-          :href="`#${tocContents.id}`"
+          :href="`/articles/article/${pageId}#${tocContents.id}`"
         >
           {{ tocContents.text }}
         </a>
@@ -31,6 +31,10 @@ export default {
     scrollOffset: {
       type: Function,
       default: () => {},
+    },
+    pageId: {
+      type: String,
+      default: '',
     },
   },
 }

@@ -24,6 +24,7 @@
           :key="item.id"
           :toc-contents="item"
           :scroll-offset="scrollOffset"
+          :page-id="pramsId"
         ></toc-article-item>
       </toc-article>
       <!-- eslint-disable-next-line vue/no-v-html-->
@@ -53,6 +54,10 @@ export default {
     articleToc: {
       type: Array,
       default: () => [],
+    },
+    pramsId: {
+      type: String,
+      default: '',
     },
   },
   methods: {
