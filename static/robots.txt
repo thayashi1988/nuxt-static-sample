@@ -2,5 +2,16 @@ User-agent: *
 Disallow: /contact/thanks
 Disallow: /articles/2
 Disallow: /articles/3
+Disallow: /articles/virqrcdeo
+Disallow: /ei_mnwznch
+Disallow: /ibcmvoi7i
+Disallow: /b1ds_cn8j
+Disallow: /articles/b1ds_cn8j
+Disallow: /articles/pi9iljjr_mn
+Disallow: /articles/dn77b47blq20
+Disallow: /articles/ei_mnwznch
+Disallow: /pi9iljjr_mn
+Disallow: /ula7ft_9qi
+Disallow: /dn77b47blq20
 
 Sitemap: https://pakumogu.xyz/sitemap.xml
