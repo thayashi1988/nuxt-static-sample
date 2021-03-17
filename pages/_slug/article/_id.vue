@@ -2,7 +2,12 @@
   <div>
     <the-main :title="heading1()" sub-title="" :sub-title-show="false">
       <div class="l-underlayer">
-        <section class="l-section" data-bg="gray">
+        <article
+          class="l-section"
+          data-bg="gray"
+          itemscope
+          itemtype="https://schema.org/BlogPosting"
+        >
           <div class="l-section-inner">
             <div class="l-grid-container">
               <ul class="l-grid-row">
@@ -30,9 +35,9 @@
             ></the-articles>
           </div>
           <!-- ./l-section-inner -->
-        </section>
+        </article>
         <!-- ./l-section -->
-        <div class="l-side">
+        <aside class="l-side">
           <the-side-profile>
             <p class="m-box-txt">
               沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのぱくもぐブログで発信していきいます！
@@ -60,7 +65,7 @@
             </div>
           </div> -->
           <!-- ./l-box -->
-        </div>
+        </aside>
         <!-- ./l-side -->
       </div>
       <!-- ./l-underlayer -->

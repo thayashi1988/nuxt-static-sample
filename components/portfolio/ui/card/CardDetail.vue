@@ -3,13 +3,15 @@
     <!-- <div class="m-card-thumb">
       <img src="~@/assets/img/article/thumb/thumb_01.jpg" alt="" />
     </div> -->
-    <div class="l-card-body">
-      <heading-2 class="m-mt-0" data-type="article">
+    <div class="l-card-body" itemprop="articleBody">
+      <heading-2 class="m-mt-0" data-type="article" itemprop="headline">
         {{ currentArticle.title }}
       </heading-2>
       <card-date
         :up-date-boolean="currentArticle.date !== currentArticle.updatedAt"
         :tag="currentArticle.category[0]"
+        :attr-publish-date="publishDateFormated"
+        :attr-up-date="upDateFormated"
       >
         <template #date>
           {{ currentArticle.date | formatDate }}
@@ -59,6 +61,22 @@ export default {
       type: String,
       default: '',
     },
+  },
+  data() {
+    return {
+      publishDateFormated: '',
+      upDateFormated: '',
+    }
+  },
+  created() {
+    const publishDate = this.currentArticle.date
+    const upDate = this.currentArticle.updatedAt
+
+    this.publishDateFormated = publishDate.substring(
+      0,
+      publishDate.indexOf('T')
+    )
+    this.upDateFormated = upDate.substring(0, upDate.indexOf('T'))
   },
   methods: {
     scrollOffset() {
