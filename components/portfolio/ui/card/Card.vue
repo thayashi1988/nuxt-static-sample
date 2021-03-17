@@ -8,6 +8,8 @@
     <div class="l-card-body">
       <card-date
         :up-date-boolean="articleData.date !== articleData.updatedAt"
+        :attr-publish-date="publishDateFormated"
+        :attr-up-date="upDateFormated"
         :tag-show="false"
       >
         <template #date>
@@ -54,7 +56,19 @@ export default {
   data() {
     return {
       heading2MaxHeight: 'auto',
+      publishDateFormated: '',
+      upDateFormated: '',
     }
+  },
+  created() {
+    const publishDate = this.articleData.date
+    const upDate = this.articleData.updatedAt
+
+    this.publishDateFormated = publishDate.substring(
+      0,
+      publishDate.indexOf('T')
+    )
+    this.upDateFormated = upDate.substring(0, upDate.indexOf('T'))
   },
   mounted() {
     // 見出しの高さ揃え
