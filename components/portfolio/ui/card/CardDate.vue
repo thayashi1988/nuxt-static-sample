@@ -1,10 +1,17 @@
 <template>
   <p class="m-card-type">
-    <span class="m-card-date"
-      >初稿：<slot name="date">{{ date }}</slot></span
+    <time
+      class="m-card-date"
+      :datetime="attrPublishDate"
+      itemprop="datepublished"
+      >初稿：<slot name="date">{{ date }}</slot></time
     >
-    <span v-if="upDateBoolean" class="m-card-date m-card-date-update"
-      >更新：<slot name="upDate">{{ upDate }}</slot></span
+    <time
+      v-if="upDateBoolean"
+      class="m-card-date m-card-date-update"
+      :datetime="attrUpDate"
+      itemprop="datemodified"
+      >更新：<slot name="upDate">{{ upDate }}</slot></time
     >
     <card-tag v-if="tagShow" :tag-name="tag"></card-tag>
   </p>
@@ -18,6 +25,14 @@ export default {
       default: '',
     },
     upDate: {
+      type: String,
+      default: '',
+    },
+    attrPublishDate: {
+      type: String,
+      default: '',
+    },
+    attrUpDate: {
       type: String,
       default: '',
     },
