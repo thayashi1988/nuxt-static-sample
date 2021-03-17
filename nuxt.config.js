@@ -5,6 +5,9 @@ export default {
   generate: {
     fallback: true,
   },
+  server: {
+    port: 9000 // デフォルト: 3000
+  },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   // ssr: false,
