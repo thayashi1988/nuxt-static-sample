@@ -7,7 +7,10 @@
     :name="name"
   >
     <dd class="m-contact-item-label">
-      <label for="namekana"><slot></slot></label>
+      <label for="namekana"
+        ><slot></slot
+        ><span class="m-contact-item-important">※入力必須</span></label
+      >
     </dd>
     <dt class="m-contact-item-parts">
       <input

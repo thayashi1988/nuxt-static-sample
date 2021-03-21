@@ -882,6 +882,10 @@ contact
     }
     &-label {
       margin-bottom: 10px;
+      label {
+        display: flex;
+        align-items: center;
+      }
     }
     &-parts {
       input,
@@ -894,6 +898,11 @@ contact
       textarea {
         height: 200px;
       }
+    }
+    &-important {
+      color: #ff0000;
+      @include font-size(12);
+      margin-left: 10px;
     }
   }
   &-validate {
