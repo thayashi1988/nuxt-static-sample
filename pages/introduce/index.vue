@@ -224,14 +224,14 @@ export default {
     galleryDatas() {
       const galleryDatas = [
         {
-          galleryImg: require('@/assets/img/icon/icon.png'),
-          galleryModalImg: require('@/assets/img/icon/icon.png'),
+          galleryImg: require('@/assets/img/icon/icon_middle.png'),
+          galleryModalImg: require('@/assets/img/icon/icon_middle.png'),
           galleryModalTitle: 'タイトル1',
           galleryModalBody: '実績掲載は準備中です。。',
         },
         {
-          galleryImg: require('@/assets/img/icon/icon.png'),
-          galleryModalImg: require('@/assets/img/icon/icon.png'),
+          galleryImg: require('@/assets/img/icon/icon_middle.png'),
+          galleryModalImg: require('@/assets/img/icon/icon_middle.png'),
           galleryModalTitle: 'タイトル2',
           galleryModalBody: '実績掲載は準備中です。。',
         },
