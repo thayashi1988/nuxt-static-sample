@@ -6,7 +6,7 @@ export default {
     fallback: true,
   },
   server: {
-    port: 9000 // デフォルト: 3000
+    port: 9000, // デフォルト: 3000
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -26,7 +26,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
+        content:
+          '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
       },
       {
         hid: 'og:site_name',
@@ -43,9 +44,14 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
+        content:
+          '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
       },
-      { hid: 'og:image', property: 'og:image', content: 'https://pakumogu.xyz/assets/img/ogp/ogp.png' },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://pakumogu.xyz/assets/img/ogp/ogp.png',
+      },
       { hid: 'og:locale', content: 'ja_jp' },
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@ぱくもぐブログ' },
@@ -107,11 +113,7 @@ export default {
     '@nuxtjs/google-analytics',
   ],
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/google-analytics'
-  ],
+  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '@nuxtjs/google-analytics'],
   googleAnalytics: {
     id: GA_ID_UA,
     // checkDuplicatedScript: true
@@ -125,21 +127,22 @@ export default {
     cacheTime: 1000 * 60 * 60 * 24,
     trailingSlash: false, // 追加
     // generate: true,
-    routes (callback) {
-      axios.get(API_URL + '/blog', {
-        headers: { 'X-API-KEY': API_KEY },
-      })
-      .then((response) => {
-        const articles = response.data
-        // console.log('articles:', articles)
-        const routes = articles.contents.map((article) => {
-          // console.log('articleaaaaaaaaa:', article)
-          return 'articles/article/' + article.id
+    routes(callback) {
+      axios
+        .get(API_URL + '/blog', {
+          headers: { 'X-API-KEY': API_KEY },
         })
-        callback(null, routes)
-      })
-      .catch(callback)
-    }
+        .then((response) => {
+          const articles = response.data
+          // console.log('articles:', articles)
+          const routes = articles.contents.map((article) => {
+            // console.log('articleaaaaaaaaa:', article)
+            return 'articles/article/' + article.id
+          })
+          callback(null, routes)
+        })
+        .catch(callback)
+    },
   },
   axios: {},
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -160,11 +163,11 @@ export default {
     apiUrl: API_URL,
     apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined,
     gaIdUa: process.env.NODE_ENV !== 'production' ? GA_ID_UA : undefined,
-    gaIdG: process.env.NODE_ENV !== 'production' ? GA_ID_G : undefined
+    gaIdG: process.env.NODE_ENV !== 'production' ? GA_ID_G : undefined,
   },
   privateRuntimeConfig: {
     apiKey: API_KEY,
     gaIdUa: GA_ID_UA,
-    gaIdG: GA_ID_G
+    gaIdG: GA_ID_G,
   },
 }
