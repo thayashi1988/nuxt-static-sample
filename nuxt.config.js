@@ -1,9 +1,30 @@
 import axios from 'axios'
 const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
+
 export default {
   // 200.htmlを404.htmlに変更
   generate: {
     fallback: true,
+    // async routes() {
+    //   const limit = 100
+    //   const test = await axios.get(`${API_URL}/blog/?limit${limit}`, {
+    //     headers: { 'X-API-KEY': API_KEY },
+    //   })
+    //   test.data.contents.map((id) => {
+    //     return id.id
+    //   })
+    //   aaa = [...test]
+    //   console.log('aaa:', ...aaa)
+    // },
+    exclude: [
+      '/draft/draft',
+      '/b1ds_cn8j',
+      '/dn77b47blq20',
+      '/dte6g848li',
+      '/dvd-n5oi_d',
+      '/pi9iljjr_mn',
+      '/ula7ft_9qi',
+    ],
   },
   server: {
     port: 9000, // デフォルト: 3000
