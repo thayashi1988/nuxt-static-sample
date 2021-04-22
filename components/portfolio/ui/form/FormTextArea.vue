@@ -4,11 +4,7 @@
       <label for="detail"><slot></slot></label>
     </dd>
     <dt class="m-contact-item-parts">
-      <textarea
-        id="detail"
-        name="detail"
-        @input="$emit('input', $event.target.value)"
-      />
+      <textarea id="detail" name="detail" @input="$emit('input', $event.target.value)" />
     </dt>
   </dl>
 </template>

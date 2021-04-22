@@ -1,12 +1,6 @@
 <template>
   <div class="m-ac m-mt-30">
-    <button
-      type="submit"
-      class="m-btn"
-      :class="classes"
-      :data-width="dataWidth"
-      :disabled="disabled"
-    >
+    <button type="submit" class="m-btn" :class="classes" :data-width="dataWidth" :disabled="disabled">
       <slot></slot>
     </button>
   </div>

@@ -5,15 +5,10 @@
         <the-logo link="/" @menuCloseTrrigerLogo="closeHamburgerMenu" />
       </div>
       <div class="l-header-col">
-        <the-hamburger-menu
-          :menu-toggle-class="menuTrigger"
-          @onMenuTriggerClick="menuOpen"
-          >{{ menuTxt }}</the-hamburger-menu
-        >
-        <the-nav
-          :layer-toggle-class="menuTrigger"
-          @menuCloseTrrigerGnavi="closeHamburgerMenu"
-        ></the-nav>
+        <the-hamburger-menu :menu-toggle-class="menuTrigger" @onMenuTriggerClick="menuOpen">
+          {{ menuTxt }}
+        </the-hamburger-menu>
+        <the-nav :layer-toggle-class="menuTrigger" @menuCloseTrrigerGnavi="closeHamburgerMenu"></the-nav>
       </div>
     </div>
     <!-- ./l-header-inner -->
@@ -35,9 +30,7 @@ export default {
   methods: {
     menuOpen() {
       this.menuTrigger = !this.menuTrigger
-      this.menuTxt = this.menuTrigger
-        ? this.menuToggleTxt.close
-        : this.menuToggleTxt.open
+      this.menuTxt = this.menuTrigger ? this.menuToggleTxt.close : this.menuToggleTxt.open
     },
     closeHamburgerMenu(menuCloseBooleanGnavi, menuCloseBooleanLogo) {
       this.menuTrigger = menuCloseBooleanGnavi

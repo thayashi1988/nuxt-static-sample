@@ -3,11 +3,7 @@
     <the-main :title="heading1" :sub-title="heading1Sub">
       <section class="l-section">
         <div class="l-section-inner is-fadein">
-          <heading-2
-            id="introduce"
-            heading-second-title="INTRODUCE"
-            heading-second-sub-title="自己紹介"
-          ></heading-2>
+          <heading-2 id="introduce" heading-second-title="INTRODUCE" heading-second-sub-title="自己紹介"></heading-2>
           <table-normal>
             <table-normal-line
               v-for="(tableData, key) in tableDatas"
@@ -20,11 +16,7 @@
       </section>
       <section class="l-section">
         <div class="l-section-inner">
-          <heading-2
-            id="skills"
-            heading-second-title="skills"
-            heading-second-sub-title="スキル"
-          ></heading-2>
+          <heading-2 id="skills" heading-second-title="skills" heading-second-sub-title="スキル"></heading-2>
           <skill>
             <skill-items
               v-for="(skillData, key) in SkillDatas"
@@ -40,11 +32,7 @@
       <!-- ./l-section -->
       <section class="l-section">
         <div class="l-section-inner">
-          <heading-2
-            id="service"
-            heading-second-title="SERVIE"
-            heading-second-sub-title="サービス"
-          ></heading-2>
+          <heading-2 id="service" heading-second-title="SERVIE" heading-second-sub-title="サービス"></heading-2>
           <service>
             <service-items
               v-for="(serviceData, key) in serviceDatas"
@@ -58,11 +46,7 @@
       <!-- ./l-section -->
       <section class="l-section">
         <div class="l-section-inner">
-          <heading-2
-            id="gallery"
-            heading-second-title="GALLERY"
-            heading-second-sub-title="ギャラリー"
-          ></heading-2>
+          <heading-2 id="gallery" heading-second-title="GALLERY" heading-second-sub-title="ギャラリー"></heading-2>
           <gallery>
             <gallery-items
               v-for="(galleryData, key) in galleryDatas"
@@ -77,15 +61,9 @@
       <!-- ./l-section -->
       <section class="l-section">
         <div class="l-section-inner">
-          <heading-2
-            id="contact"
-            heading-second-title="CONTACT"
-            heading-second-sub-title="お問い合わせ"
-          ></heading-2>
+          <heading-2 id="contact" heading-second-title="CONTACT" heading-second-sub-title="お問い合わせ"></heading-2>
           <contact>
-            <text-normal
-              >Webページコーディングに関しては、以下のお問い合わせからご連絡ください。</text-normal
-            >
+            <text-normal> Webページコーディングに関しては、以下のお問い合わせからご連絡ください。 </text-normal>
             <link-arrow href="/contact">お問い合わせはこちらから</link-arrow>
           </contact>
         </div>
@@ -94,15 +72,9 @@
       <!-- ./l-section -->
       <section class="l-section">
         <div class="l-section-inner">
-          <heading-2
-            id="blog"
-            heading-second-title="BLOG"
-            heading-second-sub-title="ブログ"
-          ></heading-2>
+          <heading-2 id="blog" heading-second-title="BLOG" heading-second-sub-title="ブログ"></heading-2>
           <blog>
-            <text-normal
-              >技術に関することや、日々の出来事をゆる〜く発信しています。</text-normal
-            >
+            <text-normal> 技術に関することや、日々の出来事をゆる〜く発信しています。 </text-normal>
             <link-arrow href="/">Blogはこちらから</link-arrow>
           </blog>
         </div>
@@ -117,11 +89,7 @@
       @onModalTriggerClose="modalClose"
     ></modal-gallery>
     <transition name="modal">
-      <div
-        v-if="show"
-        class="l-modal-layer js-modal-close"
-        @click="modalLayerClose"
-      ></div>
+      <div v-if="show" class="l-modal-layer js-modal-close" @click="modalLayerClose"></div>
     </transition>
   </div>
 </template>
@@ -215,8 +183,7 @@ export default {
         {
           serviceTitle: 'コミュニケーション',
           serviceImg: require('@/assets/img/icon/icon_communication.svg'),
-          serviceBody:
-            'チャット、オンラインMTGを密に行い、認識齟齬が無いようにお仕事を進めていきます。',
+          serviceBody: 'チャット、オンラインMTGを密に行い、認識齟齬が無いようにお仕事を進めていきます。',
         },
       ]
       return serviceDatas

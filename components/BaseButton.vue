@@ -3,7 +3,8 @@
     <nuxt-link
       :to="link"
       :class="`font-semibold md:text-lg xl:text-base px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 leading-tight shadow-md ${classShape} ${classBackgroundColor} ${classBackgroundHoverColor} ${classTextColor}`"
-      >{{ name }}
+    >
+      {{ name }}
       <slot />
     </nuxt-link>
   </div>

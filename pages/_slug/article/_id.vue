@@ -2,21 +2,11 @@
   <div>
     <the-main :title="heading1()" sub-title="" :sub-title-show="false">
       <div class="l-underlayer">
-        <article
-          class="l-section"
-          data-bg="gray"
-          itemscope
-          itemtype="https://schema.org/BlogPosting"
-        >
+        <article class="l-section" data-bg="gray" itemscope itemtype="https://schema.org/BlogPosting">
           <div class="l-section-inner">
             <div class="l-grid-container">
               <ul class="l-grid-row">
-                <li
-                  class="l-grid-col"
-                  data-col="12"
-                  data-col-sp="12"
-                  data-marginp="true"
-                >
+                <li class="l-grid-col" data-col="12" data-col-sp="12" data-marginp="true">
                   <card-detail
                     :current-article="currentArticle"
                     :parse-article-data="cmsData"
@@ -82,32 +72,33 @@ import 'highlight.js/styles/vs2015.css'
 export default {
   async asyncData({ $config, params, error }) {
     try {
-      // 記事データ
-      const { data } = await axios.get(`${$config.apiUrl}/blog/${params.id}`, {
+      // 一旦100件の記事を取得
+      const getData = await axios.get(`${$config.apiUrl}/blog/?limit=100`, {
         headers: { 'X-API-KEY': $config.apiKey },
       })
-      // 最新記事表示のためのデータ
-      const artcleLatest = await axios.get(`${$config.apiUrl}/blog?limit=3`, {
-        headers: { 'X-API-KEY': $config.apiKey },
+      const allArticelsData = getData.data.contents
+
+      // アクセスしたページと同じ記事を抽出
+      const currentArticleData = allArticelsData.find((id) => {
+        return id.id === params.id
       })
+
+      // 最新記事の3件抽出
+      const latestArticleData = allArticelsData.slice(0, 3)
 
       // 記事データにモジュールクラスをつける処理
-      const blogTxt = data.body
-      const latestData = artcleLatest.data.contents
+      const blogTxt = currentArticleData.body
       let result = ''
       const cmsDataArray = []
-      let tocArray = []
       let toc = []
 
-      blogTxt.forEach((elem, index) => {
+      blogTxt.forEach((elem) => {
         // リッチエディタで入稿の場合HTMLをパースし配列に格納する
         if (elem.fieldId === 'rich') {
           const $ = cheerio.load(elem.rich)
           // 複数のリストタグをm-list-bodyを入れる処理
-          $('li').each(function (listIndex, listElem) {
-            $(this).html(
-              '<span class="m-list-body">' + $(this).text() + '</span>'
-            )
+          $('li').each(function () {
+            $(this).html('<span class="m-list-body">' + $(this).text() + '</span>')
           })
           $('h2').attr('data-type', 'article').addClass('m-heading-2')
           $('h3').attr('data-type', 'article').addClass('m-heading-3')
@@ -131,7 +122,7 @@ export default {
 
           // 目次生成処理
           const headings = $('h1, h2, h3').toArray()
-          tocArray = headings.map((data) => ({
+          const tocArray = headings.map((data) => ({
             text: data.children[0].data,
             id: data.attribs.id,
             name: data.name,
@@ -148,52 +139,51 @@ export default {
       })
 
       // 最新記事データを最初のテキストのみに整形
-      latestData.forEach((element, index) => {
+      latestArticleData.forEach((element, index) => {
         const $ = cheerio.load(element.body[0].rich)
         element.body[0].rich = $('p').html()
       })
 
-      // 次の記事、前の記事データ
-      const articleNextPrev = await axios.get(`${$config.apiUrl}/blog?`, {
-        headers: { 'X-API-KEY': $config.apiKey },
-      })
-
       // 次の記事、前の記事処理
-      const articleNextPrevData = articleNextPrev.data.contents
+      const articleNextPrevData = allArticelsData
       const articleNextPrevDataArray = []
       let articleNextFlag = true // 次の記事が一つの場合のフラグ
       let articlePrevFlag = true // 前の記事が一つの場合のフラグ
 
-      const insertDummyData = () => {
+      const insertDummyData = (nextPrevFlag) => {
         articleNextPrevDataArray.push({
           id: '',
           thumbImg: { url: '' },
           title: '',
         })
+        if (nextPrevFlag === 'prev') {
+          articlePrevFlag = false
+        } else {
+          articleNextFlag = false
+        }
       }
 
       articleNextPrevData.forEach((e, i) => {
         if (e.id === params.id) {
+          // 現在の記事より、最新記事があるかの判定
           if (typeof articleNextPrevData[i - 1] !== 'undefined') {
             articleNextPrevDataArray.push(articleNextPrevData[i - 1])
           } else {
-            insertDummyData()
-            articlePrevFlag = false
+            insertDummyData('prev')
           }
 
+          // 現在の記事より、過去記事があるかの判定
           if (typeof articleNextPrevData[i + 1] !== 'undefined') {
             articleNextPrevDataArray.push(articleNextPrevData[i + 1])
           } else {
-            insertDummyData()
-            articleNextFlag = false
+            insertDummyData('next')
           }
         }
       })
-      // console.log('articleNextPrevDataArray:', articleNextPrevDataArray)
 
       return {
-        latestArticles: latestData,
-        currentArticle: data,
+        latestArticles: latestArticleData,
+        currentArticle: currentArticleData,
         parseArticleData: result,
         cmsData: cmsDataArray.join('\n'),
         articleNextPrev: articleNextPrevDataArray,

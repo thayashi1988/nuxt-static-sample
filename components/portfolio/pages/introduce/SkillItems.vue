@@ -3,10 +3,7 @@
     <div
       :id="skillData.skillName"
       v-scroll="handleScroll"
-      :class="[
-        { 'is-show-bottom': scrollFlag },
-        { [addClassData]: scrollFlag },
-      ]"
+      :class="[{ 'is-show-bottom': scrollFlag }, { [addClassData]: scrollFlag }]"
       class="l-progress js-progress"
     >
       <p class="m-progress-txt">{{ skillData.skillName }}</p>

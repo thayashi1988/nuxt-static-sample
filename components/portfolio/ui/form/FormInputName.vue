@@ -1,26 +1,10 @@
 <template>
-  <validation-provider
-    v-slot="{ errors }"
-    tag="dl"
-    class="m-contact-item"
-    :rules="rules"
-    :name="name"
-  >
+  <validation-provider v-slot="{ errors }" tag="dl" class="m-contact-item" :rules="rules" :name="name">
     <dd class="m-contact-item-label">
-      <label for="name"
-        ><slot></slot
-        ><span class="m-contact-item-important">※入力必須</span></label
-      >
+      <label for="name"><slot></slot><span class="m-contact-item-important">※入力必須</span></label>
     </dd>
     <dt class="m-contact-item-parts">
-      <input
-        id="name"
-        v-model.trim="innerValue"
-        type="text"
-        name="name"
-        autocomplete="autocomplete"
-        required
-      />
+      <input id="name" v-model.trim="innerValue" type="text" name="name" autocomplete="autocomplete" required />
       <p v-show="errors.length" class="m-contact-validate-error">
         {{ errors[0] }}
       </p>
