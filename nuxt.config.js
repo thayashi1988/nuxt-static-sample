@@ -71,12 +71,12 @@ export default {
   router: {
     base: '/',
     trailingSlash: false,
-    // middleware: 'redirect',
+    middleware: 'redirect',
     extendRoutes(routes, resolve) {
       routes.push({
+        name: 'articles',
         path: '/articles/:slug',
         component: resolve(__dirname, 'pages/index.vue'),
-        name: 'articles',
       })
     },
     // base: '/nuxt-static-sample/', //元の記述
