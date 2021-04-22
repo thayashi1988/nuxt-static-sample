@@ -16,27 +16,14 @@
               data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="form-name" value="contact" />
-              <form-input-name
-                v-model.trim="nameModel"
-                rules="required"
-                name="お名前"
-                >お名前</form-input-name
-              >
-              <form-input-kana
-                v-model.trim="nameKanaModel"
-                rules="required|katakana"
-                name="フリガナ"
-                >フリガナ</form-input-kana
-              >
-              <form-input-mail
-                v-model.trim="mailModel"
-                rules="required|email"
-                name="メールアドレス"
-                >メールアドレス</form-input-mail
-              >
-              <form-text-area v-model.trim="textareaModel"
-                >お問い合わせ内容</form-text-area
-              >
+              <form-input-name v-model.trim="nameModel" rules="required" name="お名前"> お名前 </form-input-name>
+              <form-input-kana v-model.trim="nameKanaModel" rules="required|katakana" name="フリガナ">
+                フリガナ
+              </form-input-kana>
+              <form-input-mail v-model.trim="mailModel" rules="required|email" name="メールアドレス">
+                メールアドレス
+              </form-input-mail>
+              <form-text-area v-model.trim="textareaModel">お問い合わせ内容</form-text-area>
               <div v-show="false" class="p-contact__item">
                 <label for="message">スパムでない場合は空欄</label>
                 <input v-model="botField" type="text" name="bot-field" />
@@ -45,8 +32,9 @@
                 data-width="middle"
                 :classes="{ 'is-disable': invalid || !validated }"
                 :disabled="invalid || !validated"
-                >送信</form-submit-btn
               >
+                送信
+              </form-submit-btn>
             </validation-observer>
           </div>
         </div>

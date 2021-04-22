@@ -1,10 +1,6 @@
 <template>
   <div class="l-menu">
-    <button
-      class="m-menu"
-      :class="{ 'is-open': menuToggleClass }"
-      @click="onMenuTriggerClick"
-    >
+    <button class="m-menu" :class="{ 'is-open': menuToggleClass }" @click="onMenuTriggerClick">
       <span><slot></slot></span>
     </button>
   </div>

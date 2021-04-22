@@ -1,9 +1,5 @@
 <template>
-  <div
-    v-scroll="handleScroll"
-    :class="[{ 'is-show-bottom': scrollFlag }]"
-    class="js-contact is-hide"
-  >
+  <div v-scroll="handleScroll" :class="[{ 'is-show-bottom': scrollFlag }]" class="js-contact is-hide">
     <slot></slot>
   </div>
 </template>

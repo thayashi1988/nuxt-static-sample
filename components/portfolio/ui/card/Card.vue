@@ -20,17 +20,13 @@
         </template>
       </card-date>
       <heading-2 data-type="cardttl" :style="`height: ${heading2MaxHeight}px`">
-        <nuxt-link :to="articleData.id" class="m-card-ttl">{{
-          articleData.title
-        }}</nuxt-link>
+        <nuxt-link :to="articleData.id" class="m-card-ttl">
+          {{ articleData.title }}
+        </nuxt-link>
       </heading-2>
       <!-- eslint-disable-next-line vue/no-v-html-->
       <!-- <div class="m-card-txt" v-html="articleData.body"></div> -->
-      <card-btn
-        :to="`/articles/article/${articleData.id}`"
-        data-width="small"
-        >{{ btnTxt }}</card-btn
-      >
+      <card-btn :to="`/articles/article/${articleData.id}`" data-width="small">{{ btnTxt }}</card-btn>
     </div>
     <!-- ./l-card-body -->
   </div>
@@ -64,10 +60,7 @@ export default {
     const publishDate = this.articleData.date
     const upDate = this.articleData.updatedAt
 
-    this.publishDateFormated = publishDate.substring(
-      0,
-      publishDate.indexOf('T')
-    )
+    this.publishDateFormated = publishDate.substring(0, publishDate.indexOf('T'))
     this.upDateFormated = upDate.substring(0, upDate.indexOf('T'))
   },
   mounted() {
