@@ -4,46 +4,23 @@
       <div class="l-modal-inner">
         <div class="l-grid-container">
           <div class="l-grid-row">
-            <div
-              class="l-grid-col"
-              data-col="4"
-              data-col-sp="12"
-              data-padding="true"
-              data-padding-sp="false"
-            >
+            <div class="l-grid-col" data-col="4" data-col-sp="12" data-padding="true" data-padding-sp="false">
               <div class="m-modal-img">
-                <img
-                  :src="modalData.galleryModalImg"
-                  :alt="modalData.galleryModalTitle"
-                />
+                <img :src="modalData.galleryModalImg" :alt="modalData.galleryModalTitle" />
               </div>
             </div>
-            <div
-              class="l-grid-col"
-              data-col="8"
-              data-col-sp="12"
-              data-padding="true"
-              data-padding-sp="false"
-            >
+            <div class="l-grid-col" data-col="8" data-col-sp="12" data-padding="true" data-padding-sp="false">
               <p class="m-modal-lead">{{ modalData.galleryModalTitle }}</p>
               <p class="m-modal-txt">{{ modalData.galleryModalBody }}</p>
             </div>
           </div>
         </div>
         <!-- ./l-grid-container -->
-        <button
-          class="m-modal-close js-modal-close"
-          @click="onModalTriggerClose"
-        >
+        <button class="m-modal-close js-modal-close" @click="onModalTriggerClose">
           <span>>閉じる</span>
         </button>
         <div class="l-btn">
-          <button
-            type="button"
-            class="m-btn js-modal-close"
-            data-width="middle"
-            @click="onModalTriggerClose"
-          >
+          <button type="button" class="m-btn js-modal-close" data-width="middle" @click="onModalTriggerClose">
             閉じる
           </button>
         </div>

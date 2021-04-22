@@ -72,10 +72,7 @@ export default {
     const publishDate = this.currentArticle.date
     const upDate = this.currentArticle.updatedAt
 
-    this.publishDateFormated = publishDate.substring(
-      0,
-      publishDate.indexOf('T')
-    )
+    this.publishDateFormated = publishDate.substring(0, publishDate.indexOf('T'))
     this.upDateFormated = upDate.substring(0, upDate.indexOf('T'))
   },
   methods: {

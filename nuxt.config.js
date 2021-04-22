@@ -1,5 +1,5 @@
-const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
 import axios from 'axios'
+const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
 export default {
   // 200.htmlを404.htmlに変更
   generate: {
@@ -71,12 +71,12 @@ export default {
   router: {
     base: '/',
     trailingSlash: false,
-    // middleware: 'redirect',
+    middleware: 'redirect',
     extendRoutes(routes, resolve) {
       routes.push({
+        name: 'articles',
         path: '/articles/:slug',
         component: resolve(__dirname, 'pages/index.vue'),
-        name: 'articles',
       })
     },
     // base: '/nuxt-static-sample/', //元の記述

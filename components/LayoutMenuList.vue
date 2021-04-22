@@ -2,12 +2,7 @@
   <div :class="itemClass">
     <div :class="blockClass">
       <img v-if="image" :src="imageUrl" :alt="name" :class="imageClass" />
-      <img
-        v-else
-        src="~@/assets/img/dummy.jpg"
-        :alt="name"
-        :class="imageClass"
-      />
+      <img v-else src="~@/assets/img/dummy.jpg" :alt="name" :class="imageClass" />
       <div :class="dataClass">
         <div class="font-bold text-xl mb-2">{{ name }}</div>
         <p v-if="flagBody" class="text-base mb-2">
@@ -52,8 +47,7 @@ export default {
     },
     blockClass: {
       type: String,
-      default:
-        'md:w-full bg-gray-200 flex flex-wrap justify-between md:px-4 md:py-4',
+      default: 'md:w-full bg-gray-200 flex flex-wrap justify-between md:px-4 md:py-4',
     },
     imageClass: {
       type: String,

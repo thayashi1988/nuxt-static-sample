@@ -10,12 +10,7 @@
   >
     <div class="l-thumbnail">
       <div class="m-thumbnail-img">
-        <button
-          type="button"
-          class="m-modal-link js-modal"
-          data-icon="modal"
-          @click="onModalTriggerClick"
-        >
+        <button type="button" class="m-modal-link js-modal" data-icon="modal" @click="onModalTriggerClick">
           <img :src="galleryData.galleryImg" alt="" />
         </button>
       </div>
