@@ -1,9 +1,6 @@
 <template>
   <div>
-    <the-main
-      :title="heading1"
-      sub-title="ぱくもぐブログを通して、WEB技術や日常などを発信しています"
-    >
+    <the-main :title="heading1" sub-title="ぱくもぐブログを通して、WEB技術や日常などを発信しています">
       <section class="l-section">
         <div class="l-section-inner">
           <div class="l-grid-container">
@@ -49,9 +46,7 @@ export default {
     const articleslimit = 6 // 記事表示件数
     // console.log('pageParams:', pageParams)
     const { data } = await axios.get(
-      `${$config.apiUrl}/blog?limit=${articleslimit}&offset=${
-        (pageParams - 1) * articleslimit
-      }`,
+      `${$config.apiUrl}/blog?limit=${articleslimit}&offset=${(pageParams - 1) * articleslimit}`,
       {
         headers: { 'X-API-KEY': $config.apiKey },
       }

@@ -8,8 +8,7 @@ export default {
   data() {
     return {
       heading1: 'お問い合わせ完了',
-      heading1Sub:
-        'お問い合わせありがとうございました。返信までしばらくお待ち下さい、',
+      heading1Sub: 'お問い合わせありがとうございました。返信までしばらくお待ち下さい、',
     }
   },
 }
