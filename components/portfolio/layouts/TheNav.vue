@@ -2,12 +2,9 @@
   <nav class="l-nav is-transition" :class="{ 'is-open-nav': layerToggleClass }">
     <ul class="m-nav">
       <li v-for="(item, key) in navTitles" :key="key">
-        <nuxt-link
-          :to="item.link"
-          class="js-scroll"
-          @click.native.prevent="menuCloseTrrigerGnavi"
-          >{{ item.title }}</nuxt-link
-        >
+        <nuxt-link :to="item.link" class="js-scroll" @click.native.prevent="menuCloseTrrigerGnavi">
+          {{ item.title }}
+        </nuxt-link>
       </li>
     </ul>
   </nav>

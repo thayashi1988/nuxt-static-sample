@@ -3,23 +3,11 @@
     <the-main :title="heading1" :sub-title="heading1Sub">
       <div class="l-grid-container">
         <ul class="l-grid-row" data-align="center">
-          <li
-            class="l-grid-col"
-            data-col="4"
-            data-col-sp="6"
-            data-padding="true"
-          >
+          <li class="l-grid-col" data-col="4" data-col-sp="6" data-padding="true">
             <btn-base to="/" data-width="middle">TOPページへ</btn-base>
           </li>
-          <li
-            class="l-grid-col"
-            data-col="4"
-            data-col-sp="6"
-            data-padding="true"
-          >
-            <btn-base to="/introduce" data-width="middle"
-              >自己紹介ページへ</btn-base
-            >
+          <li class="l-grid-col" data-col="4" data-col-sp="6" data-padding="true">
+            <btn-base to="/introduce" data-width="middle"> 自己紹介ページへ </btn-base>
           </li>
         </ul>
       </div>

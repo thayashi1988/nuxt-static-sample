@@ -8,15 +8,10 @@
           itemscope
           itemtype="https://schema.org/BreadcrumbList"
         >
-          <li
-            class="m-breadcrumbs-item"
-            itemprop="itemListElement"
-            itemscope
-            itemtype="https://schema.org/ListItem"
-          >
-            <nuxt-link itemprop="item" to="/"
-              ><span itemprop="name">ぱくもぐTOP</span></nuxt-link
-            >
+          <li class="m-breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <nuxt-link itemprop="item" to="/">
+              <span itemprop="name">ぱくもぐTOP</span>
+            </nuxt-link>
             <meta itemprop="position" content="1" />
           </li>
           <li
@@ -27,12 +22,9 @@
             itemscope
             itemtype="https://schema.org/ListItem"
           >
-            <nuxt-link
-              v-if="index < createBreadCrumb.length - 1"
-              itemprop="item"
-              :to="`/` + path"
-              ><span itemprop="name">{{ path }}</span></nuxt-link
-            >
+            <nuxt-link v-if="index < createBreadCrumb.length - 1" itemprop="item" :to="`/` + path">
+              <span itemprop="name">{{ path }}</span>
+            </nuxt-link>
             <span v-else itemprop="name">{{ breadCrumbTitle }}</span>
             <meta itemprop="position" :content="index + 2" />
           </li>

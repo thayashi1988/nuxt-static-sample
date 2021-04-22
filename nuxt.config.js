@@ -1,5 +1,5 @@
-const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
 import axios from 'axios'
+const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
 export default {
   // 200.htmlを404.htmlに変更
   generate: {

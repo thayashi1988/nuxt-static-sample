@@ -1,9 +1,10 @@
 <template>
   <h2 class="m-heading-2" :data-type="dataType">
-    {{ headingSecondTitle }}<slot></slot
-    ><span v-if="dataType === ''" class="m-header-txtsub">{{
-      headingSecondSubTitle
-    }}</span>
+    {{ headingSecondTitle }}
+    <slot />
+    <span v-if="dataType === ''" class="m-header-txtsub">
+      {{ headingSecondSubTitle }}
+    </span>
   </h2>
 </template>
 <script>
