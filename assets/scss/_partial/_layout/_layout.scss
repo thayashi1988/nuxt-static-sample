@@ -372,10 +372,10 @@ article
   &-links {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px;
+    margin-top: 20px;
     @include mediaQuery(max, 0, 768) {
       display: block;
-      margin-top: 0;
+      margin-top: 20px;
     }
   }
 }
@@ -392,6 +392,22 @@ toc
     &-under {
       padding-left: 20px;
     }
+  }
+}
+
+/*///////////////////////
+sns
+///////////////////////*/
+.l-sns{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  svg{
+    @include font-size(38)
+  }
+  @include mediaQuery(max, 0, 768) {
+    margin-top: -20px;
   }
 }
 
