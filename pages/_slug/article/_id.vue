@@ -17,12 +17,16 @@
                 </li>
               </ul>
             </div>
+            <div class="l-sns">
+              <Twitter />
+              <Facebook />
+            </div>
             <the-articles
               :prev-show-flag="prevFlag"
               :prev-object="articleNextPrev[0]"
               :next-show-flag="nextFlag"
               :next-object="articleNextPrev[1]"
-            ></the-articles>
+            />
           </div>
           <!-- ./l-section-inner -->
         </article>
@@ -68,8 +72,11 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/vs2015.css'
+import Twitter from '~/components/portfolio/ui/sns/Twitter'
+import Facebook from '~/components/portfolio/ui/sns/Facebook'
 
 export default {
+  components: { Twitter, Facebook },
   async asyncData({ $config, params, error }) {
     try {
       // 一旦100件の記事を取得
@@ -229,6 +236,16 @@ export default {
           property: 'og:title',
           content: `${this.currentArticle.title}`,
         },
+      ],
+      script: [
+        {
+          src: 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0',
+          async: true,
+          defer: true,
+          crossorigin: 'anonymous',
+          nonce: 'jc7OTse8',
+        },
+        { src: 'https://platform.twitter.com/widgets.js', async: true, charset: 'utf-8' },
       ],
     }
   },
