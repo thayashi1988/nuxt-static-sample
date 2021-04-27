@@ -18,7 +18,15 @@ module.exports = {
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
+    'vue/html-closing-bracket-newline': 'off',
     'vue/max-attributes-per-line': 'off',
+    'vue/html-indent': 'off',
+    // 'vue/html-indent': ['off', type, {
+    //   'attribute': 1,
+    //   "baseIndent": 0,
+    //   'closeBracket': 1,
+    //   'alignAttributesVertically': true,
+    // }],
     'vue/singleline-html-element-content-newline': 'off',
     'no-console': 'off',
     'vue/html-self-closing': 'off',

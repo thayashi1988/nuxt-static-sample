@@ -24,6 +24,7 @@ export default {
       '/dvd-n5oi_d',
       '/pi9iljjr_mn',
       '/ula7ft_9qi',
+      '/5f5b83g0y',
     ],
   },
   server: {
@@ -50,6 +51,7 @@ export default {
         content:
           '沖縄在住のWebコーダーのぱくもぐブログ兼ポートフォリオサイトです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。',
       },
+      { name: 'theme-color', content: '#03c4eb' },
       {
         hid: 'og:site_name',
         property: 'og:site_name',
@@ -134,7 +136,16 @@ export default {
     '@nuxtjs/google-analytics',
   ],
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '@nuxtjs/google-analytics'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '@nuxtjs/google-analytics', 'nuxt-fontawesome'],
+  fontawesome: {
+    component: 'fa',
+    imports: [
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['faTwitterSquare', 'faFacebookSquare'],
+      },
+    ],
+  },
   googleAnalytics: {
     id: GA_ID_UA,
     // checkDuplicatedScript: true
@@ -164,6 +175,7 @@ export default {
         })
         .catch(callback)
     },
+    exclude: ['/draft/draft'],
   },
   axios: {},
   // Build Configuration (https://go.nuxtjs.dev/config-build)
