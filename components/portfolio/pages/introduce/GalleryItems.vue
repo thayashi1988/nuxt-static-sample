@@ -6,7 +6,7 @@
     data-col="3"
     data-col-sp="6"
     data-padding="true"
-    data-padding-sp="false"
+    data-padding-sp="true"
   >
     <div class="l-thumbnail">
       <div class="m-thumbnail-img">

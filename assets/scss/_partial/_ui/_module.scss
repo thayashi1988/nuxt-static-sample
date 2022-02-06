@@ -115,10 +115,10 @@ nav
           width: 100%;
           // animation: nav-hover-border ease .5s forwards;
         }
-        &:hover {
+        // &:hover {
           // transform: translateY(-5px);
           // animation: nav-hover-text ease .5s forwards;
-        }
+        // }
       }
     }
   }
@@ -133,8 +133,8 @@ breadcrumbs
     @include mediaQuery(max, 0, 768) {
       @include font-size(12);
     }
-    &:first-of-type {
-    }
+    // &:first-of-type {
+    // }
     &:not(:first-of-type) {
       margin-left: 10px;
       &::before {
@@ -236,10 +236,10 @@ heading
       @include mediaQuery(max, 0, 768) {
         @include font-size(20);
       }
-      &:first-of-type {
+      // &:first-of-type {
         // border-bottom: none;
         // margin-top: 0;
-      }
+      // }
     }
   }
   &-3 {
@@ -1043,6 +1043,7 @@ modal
     }
   }
   &-img {
+    text-align: center;
     @include mediaQuery(max, 0, 768) {
       margin-bottom: (30 / 750) * 100vw;
     }
@@ -1053,12 +1054,25 @@ modal
       margin-bottom: (20 / 750) * 100vw;
     }
     @include mediaQuery(min, 0, 768) {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
   }
   &-txt {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     // margin-bottom: (20 / 750) * 100vw;
+    &-link{
+      @include font-size(18);
+      text-decoration: underline;
+      @include mediaQuery(max, 0, 768) {
+        // @include font-size(16);
+      }
+      img{
+        display: inline-block;
+        @include mediaQuery(max, 0, 768) {
+          margin: 0 auto;
+        }
+      }
+    }
   }
   &-close {
     position: absolute;
@@ -1101,6 +1115,23 @@ modal
     span {
       position: absolute;
       text-indent: -999em;
+    }
+  }
+  &-list{
+    &-item{
+      display: table;
+      @include font-size(16);
+      vertical-align: middle;
+      @include mediaQuery(max, 0, 768) {
+        @include font-size(14);
+      }
+      &-icon {
+        display: table-cell;
+        padding-right: 5px;
+      }
+      &-body {
+        display: table-cell;
+      }
     }
   }
 }
@@ -1241,12 +1272,12 @@ toc
       }
     }
   }
-  &-list {
-    &-under {
-      &-item {
-      }
-    }
-  }
+  // &-list {
+  //   &-under {
+  //     &-item {
+  //     }
+  //   }
+  // }
 }
 
 /*///////////////////////
@@ -1310,8 +1341,8 @@ state
     box-shadow: none;
     background: #ccc;
   }
-  &-fixed {
-  }
+  // &-fixed {
+  // }
 }
 
 /*///////////////////////
@@ -1352,7 +1383,7 @@ adjust
 /* width */
 @for $i from 1 through 20 {
   .m-w-#{$i * 5} {
-    width: #{$i * 5}% !important;
+    width: (#{$i * 5%}) !important;
   }
 }
 
