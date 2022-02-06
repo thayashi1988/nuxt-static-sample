@@ -6,14 +6,14 @@
           <div class="l-grid-row">
             <div class="l-grid-col" data-col="5" data-col-sp="12" data-padding="true" data-padding-sp="false">
               <div class="m-modal-img">
-                <a :href="modalData.galleryModalLink" target="_blank" class="m-modal-txt-link">
+                <a :href="modalData.galleryModalLink" target="_blank" class="m-modal-txt-link" @click="handleGAEvent">
                   <img :src="modalData.galleryModalImg" :alt="modalData.galleryModalTitle"
                 /></a>
               </div>
             </div>
             <div class="l-grid-col" data-col="7" data-col-sp="12" data-padding="true" data-padding-sp="false">
               <p class="m-modal-lead">
-                <a :href="modalData.galleryModalLink" target="_blank" class="m-modal-txt-link">{{
+                <a :href="modalData.galleryModalLink" target="_blank" class="m-modal-txt-link" @click="handleGAEvent">{{
                   modalData.galleryModalTitle
                 }}</a>
               </p>
@@ -60,6 +60,14 @@ export default {
     onModalTriggerClose() {
       const close = false
       this.$emit('onModalTriggerClose', close)
+    },
+    handleGAEvent() {
+      this.$ga.event({
+        eventCategory: 'link',
+        eventAction: 'click',
+        eventLabel: 'https://nextjs-blog-two-lilac-12.vercel.app/',
+        eventValue: 1,
+      })
     },
   },
 }
