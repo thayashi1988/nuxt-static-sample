@@ -236,8 +236,8 @@ progress
 /*///////////////////////
 media
 ///////////////////////*/
-.l-media {
-}
+// .l-media {
+// }
 
 /*///////////////////////
 thumbnail
@@ -425,17 +425,17 @@ grid
 .l-grid {
   &-container {
     width: 100%;
-    &[data-option='progress'] {
+    // &[data-option='progress'] {
       // position: relative;
       // border-top: 1px solid #000;
       // border-bottom: 1px solid #000;
-      &::before {
+      // &::before {
         // content: "100%";
         // position: absolute;
         // top: 0;
         // left: 0;
-      }
-    }
+      // }
+    // }
   }
   &-row {
     display: flex;
