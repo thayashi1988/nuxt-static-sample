@@ -191,16 +191,55 @@ export default {
     galleryDatas() {
       const galleryDatas = [
         {
-          galleryImg: require('@/assets/img/icon/icon_middle.png'),
-          galleryModalImg: require('@/assets/img/icon/icon_middle.png'),
-          galleryModalTitle: 'タイトル1',
-          galleryModalBody: '実績掲載は準備中です。。',
+          galleryImg: require('@/assets/img/thumb/thumb_nuxtjs.jpg'),
+          galleryModalImg: require('@/assets/img/thumb/thumb_nuxtjs.jpg'),
+          galleryModalLink: 'https://pakumogu.xyz/',
+          galleryModalTitle: 'Nuxt.js+microCMS JAMSTACKブログ',
+          galleryModalBody: 'Nuxt.js+microCMSで構築した、本ブログサイトです。<br>以下の技術を使用しております。',
+          galleryModalListIcon: '・',
+          galleryModalList: [
+            {
+              galleryModalListBody: 'netlifyでのホスティング',
+            },
+            {
+              galleryModalListBody: 'netlify fromを使用したお問い合わせページ',
+            },
+            {
+              galleryModalListBody: 'github、microCMSと連携した自動デプロイ環境',
+            },
+            {
+              galleryModalListBody: 'ヘッドレスCMS「microCMS」を使用したブログ記事管理',
+            },
+          ],
         },
         {
-          galleryImg: require('@/assets/img/icon/icon_middle.png'),
-          galleryModalImg: require('@/assets/img/icon/icon_middle.png'),
-          galleryModalTitle: 'タイトル2',
-          galleryModalBody: '実績掲載は準備中です。。',
+          galleryImg: require('@/assets/img/thumb/thumb_nextjs.jpg'),
+          galleryModalImg: require('@/assets/img/thumb/thumb_nextjs.jpg'),
+          galleryModalLink: 'https://nextjs-blog-two-lilac-12.vercel.app/',
+          galleryModalTitle: 'Next.jsアプリ',
+          galleryModalBody:
+            '自己学習のためにNext.js+firebaseを使用したアプリになります。<br>以下の技術を使用しております。',
+          galleryModalListIcon: '・',
+          galleryModalList: [
+            {
+              galleryModalListBody: 'Firebase AuthenticationによるGoogle認証',
+            },
+            {
+              galleryModalListBody: 'Firebase Realtime Databaseを使用したチャットアプリ',
+            },
+            {
+              galleryModalListBody: 'Cloud FirestoreによるデータベースCRUD操作',
+            },
+            {
+              galleryModalListBody: 'Next.jsによるSSG対応',
+            },
+            {
+              galleryModalListBody: '動的ルーティング、連続fetch',
+            },
+            {
+              galleryModalListBody: 'Cloud Storage for Firebaseを使用した画像アップロード',
+            },
+          ],
         },
       ]
       return galleryDatas

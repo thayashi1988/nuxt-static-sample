@@ -4,14 +4,27 @@
       <div class="l-modal-inner">
         <div class="l-grid-container">
           <div class="l-grid-row">
-            <div class="l-grid-col" data-col="4" data-col-sp="12" data-padding="true" data-padding-sp="false">
+            <div class="l-grid-col" data-col="5" data-col-sp="12" data-padding="true" data-padding-sp="false">
               <div class="m-modal-img">
-                <img :src="modalData.galleryModalImg" :alt="modalData.galleryModalTitle" />
+                <a :href="modalData.galleryModalLink" target="_blank" class="m-modal-txt-link">
+                  <img :src="modalData.galleryModalImg" :alt="modalData.galleryModalTitle"
+                /></a>
               </div>
             </div>
-            <div class="l-grid-col" data-col="8" data-col-sp="12" data-padding="true" data-padding-sp="false">
-              <p class="m-modal-lead">{{ modalData.galleryModalTitle }}</p>
-              <p class="m-modal-txt">{{ modalData.galleryModalBody }}</p>
+            <div class="l-grid-col" data-col="7" data-col-sp="12" data-padding="true" data-padding-sp="false">
+              <p class="m-modal-lead">
+                <a :href="modalData.galleryModalLink" target="_blank" class="m-modal-txt-link">{{
+                  modalData.galleryModalTitle
+                }}</a>
+              </p>
+              <!-- eslint-disable-next-line -->
+              <p class="m-modal-txt" v-html="modalData.galleryModalBody"></p>
+              <ul class="m-modal-list">
+                <li v-for="(listData, key) in modalData.galleryModalList" :key="key" class="m-modal-list-item">
+                  <span class="m-modal-list-item-icon">{{ modalData.galleryModalListIcon }}</span
+                  ><span class="m-modal-list-item-body">{{ listData.galleryModalListBody }}</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
