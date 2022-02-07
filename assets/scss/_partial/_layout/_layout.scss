@@ -269,15 +269,24 @@ btn
 card
 ///////////////////////*/
 .l-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: #fff;
   border-radius: 10px;
   border: 1px solid $accent;
   // border-top: none;
   &-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     padding: 20px 15px;
     @include mediaQuery(max, 0, 768) {
       padding: 10px 10px 20px;
     }
+  }
+  &-btn {
+    margin-top: auto;
   }
 }
 
