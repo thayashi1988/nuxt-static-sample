@@ -197,6 +197,14 @@ export default {
       }
     },
     transpile: ['vee-validate/dist/rules'],
+    loaders: {
+      scss: {
+        implementation: require('sass'),
+        sassOptions: {
+          fiber: require('fibers'),
+        },
+      },
+    },
   },
   publicRuntimeConfig: {
     apiUrl: API_URL,
