@@ -1213,8 +1213,8 @@ article
 .m-article {
   &-links {
     display: flex;
-    align-items: center;
     @include mediaQuery(max, 0, 768) {
+      align-items: center;
       border: 1px solid rgba(3, 196, 235, 1);
       padding: 10px;
     }
@@ -1227,7 +1227,7 @@ article
         margin-right: 20px;
         @include mediaQuery(max, 0, 768) {
           margin-right: 0;
-          margin-bottom: 40px;
+          margin-bottom: 20px;
         }
       }
     }
