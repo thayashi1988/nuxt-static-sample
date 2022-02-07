@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use '../_mixin/_mixin' as *;
+@use '../_variable/_variables' as var;
 /*------------------------
   layout
 ------------------------*/
@@ -15,7 +18,7 @@ header
   background: #fff;
   padding: 0 10px;
   &-inner {
-    max-width: $content_width;
+    max-width: var.$content_width;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -94,12 +97,12 @@ main
 mainvisul
 ///////////////////////*/
 .l-mainvisul {
-  background: url(#{$img_path}bg_main.jpg) no-repeat bottom center;
+  background: url(#{var.$img_path}bg_main.jpg) no-repeat bottom center;
   background-size: cover;
   margin-top: 100px;
   &-inner {
     position: relative;
-    max-width: $content_width;
+    max-width: var.$content_width;
     min-height: 300px;
     margin: 0 auto;
     @include mediaQuery(max, 0, 768) {
@@ -123,15 +126,15 @@ section
 .l-section {
   padding: 50px 0;
   &:nth-child(odd) {
-    background: $bg_sub;
+    background: var.$bg_sub;
   }
   &-inner {
-    max-width: $content_width;
+    max-width: var.$content_width;
     margin: 0 auto;
     padding: 0 4%;
   }
   &[data-bg='gray'] {
-    background: $bg_sub;
+    background: var.$bg_sub;
   }
   &-last {
     padding-top: 20px;
@@ -147,7 +150,7 @@ underlayer
 .l-underlayer {
   max-width: 1140px;
   display: flex;
-  background: $bg_sub;
+  background: var.$bg_sub;
   padding: 50px 2%;
   margin: 0 auto;
   box-sizing: content-box;
@@ -274,7 +277,7 @@ card
   height: 100%;
   background: #fff;
   border-radius: 10px;
-  border: 1px solid $accent;
+  border: 1px solid var.$accent;
   // border-top: none;
   &-body {
     display: flex;
@@ -474,13 +477,13 @@ grid
   &-col {
     @for $value from 1 through 12 {
       &[data-col='#{$value}'] {
-        width: (100% / 12 * $value);
+        width: calc(100% / 12 * $value);
       }
     }
     @for $value from 1 through 12 {
       &[data-col-sp='#{$value}'] {
         @include mediaQuery(max, 0, 768) {
-          width: (100% / 12 * $value);
+          width: calc(100% / 12 * $value);
         }
       }
     }
@@ -500,7 +503,7 @@ grid
     }
     &[data-padding-sp='false'] {
       @include mediaQuery(max, 0, 768) {
-        margin-bottom: (20 / 750) * 100vw;
+        margin-bottom: calc((20 / 750) * 100vw);
         padding-right: 0;
       }
     }

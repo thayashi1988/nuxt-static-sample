@@ -113,11 +113,13 @@ export default {
         },
         {
           tableHeader: '経歴',
-          tableCellData: '専門学校講師→Web制作会社',
+          tableCellData:
+            '<p class="m-txt">・2012年4月〜2015年3月：専門学校講師<br><span class="m-txt-small">Officeソフト、HTML/CSSの資格取得に向けた授業展開。</span></p><p class="m-txt">・2015年4月〜現在：Web制作会社<br><span class="m-txt-small">Webページ制作（HTML、CSS、jQuery、javascriptやタスクランナーを用いてページ作成）</span><br><span class="m-txt-small">新卒社員へPCスキルのレクチャー、コーディング研修の実施</span><br><span class="m-txt-small">某大手食品メーカーWebサイトリニュアルページ量産の監修（ページ制作、品質担保、工数管理、スケジュール調整、メンバーへの作業レクチャー）</span></p>',
         },
         {
           tableHeader: '趣味',
-          tableCellData: '食べ飲み歩き・映画を見る',
+          tableCellData:
+            '<p class="m-txt">・コーディング（もくもく達成感が感じれるのが好きです）</p><p class="m-txt">・食べ飲み歩き（美味しいのを食べたり、ビールを飲みます。）</p><p class="m-txt">・映画を見る（サスペンス映画が好きです。）</p><p class="m-txt">・お散歩（健康のためにお散歩しています。見知らぬ土地を歩くのも好きです。）</p><p class="m-txt">・旅行（47都道府県を自分の足で踏み入れたいです。残り21箇所）</p>',
         },
       ]
       return tableDatas
