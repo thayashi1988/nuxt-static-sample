@@ -116,8 +116,8 @@ nav
           // animation: nav-hover-border ease .5s forwards;
         }
         // &:hover {
-          // transform: translateY(-5px);
-          // animation: nav-hover-text ease .5s forwards;
+        // transform: translateY(-5px);
+        // animation: nav-hover-text ease .5s forwards;
         // }
       }
     }
@@ -241,8 +241,8 @@ heading
         @include font-size(20);
       }
       // &:first-of-type {
-        // border-bottom: none;
-        // margin-top: 0;
+      // border-bottom: none;
+      // margin-top: 0;
       // }
     }
   }
@@ -838,12 +838,16 @@ box
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    @include mediaQuery(max, 0, 768) {
+      justify-content: flex-start;
+    }
     img {
       display: inline-block;
       width: 100%;
-      max-width: 30%;
+      max-width: 80px;
       margin: 0 auto;
       @include mediaQuery(max, 0, 768) {
+        margin: 0 0 0 15px;
         // margin-left: 5%;
         // width: 35%;
       }
@@ -859,6 +863,9 @@ box
     li {
       @include font-size(14);
       margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
       a {
         @include font-size(14);
         display: -webkit-box;
@@ -1064,13 +1071,13 @@ modal
   &-txt {
     margin-bottom: 10px;
     // margin-bottom: (20 / 750) * 100vw;
-    &-link{
+    &-link {
       @include font-size(18);
       text-decoration: underline;
       @include mediaQuery(max, 0, 768) {
         // @include font-size(16);
       }
-      img{
+      img {
         display: inline-block;
         @include mediaQuery(max, 0, 768) {
           margin: 0 auto;
@@ -1121,8 +1128,8 @@ modal
       text-indent: -999em;
     }
   }
-  &-list{
-    &-item{
+  &-list {
+    &-item {
       display: table;
       @include font-size(16);
       vertical-align: middle;
@@ -1153,6 +1160,18 @@ modal
     }
     &-active {
       transition: all 0.5s ease;
+    }
+  }
+}
+
+/*///////////////////////
+sns
+///////////////////////*/
+.m-sns {
+  &-title {
+    margin-bottom: 10px;
+    @include mediaQuery(max, 0, 768) {
+      margin-bottom: (10 / 768) * 100vw;
     }
   }
 }
@@ -1194,8 +1213,8 @@ article
 .m-article {
   &-links {
     display: flex;
-    align-items: center;
     @include mediaQuery(max, 0, 768) {
+      align-items: center;
       border: 1px solid rgba(3, 196, 235, 1);
       padding: 10px;
     }
@@ -1208,7 +1227,7 @@ article
         margin-right: 20px;
         @include mediaQuery(max, 0, 768) {
           margin-right: 0;
-          margin-bottom: 40px;
+          margin-bottom: 20px;
         }
       }
     }

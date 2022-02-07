@@ -18,8 +18,11 @@
               </ul>
             </div>
             <div class="l-sns">
-              <Twitter />
-              <Facebook />
+              <TextNormal cls="m-bold m-sns-title">記事をシェアする</TextNormal>
+              <div class="l-sns-inner">
+                <Twitter />
+                <Facebook />
+              </div>
             </div>
             <the-articles
               :prev-show-flag="prevFlag"
@@ -44,7 +47,7 @@
               :latest-article="latestArticle"
             ></the-side-latest-items>
             <li>
-              <link-arrow href="/">記事一覧へ戻る</link-arrow>
+              <link-arrow href="/" cls="m-mb-0">記事一覧へ戻る</link-arrow>
             </li>
           </the-side-latest>
           <!-- <div class="l-box">
@@ -72,11 +75,12 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/vs2015.css'
-import Twitter from '~/components/portfolio/ui/sns/Twitter'
 import Facebook from '~/components/portfolio/ui/sns/Facebook'
+import Twitter from '~/components/portfolio/ui/sns/Twitter'
+import TextNormal from '~/components/portfolio/ui/text/TextNormal'
 
 export default {
-  components: { Twitter, Facebook },
+  components: { TextNormal, Twitter, Facebook },
   async asyncData({ $config, params, error }) {
     try {
       // 一旦100件の記事を取得
