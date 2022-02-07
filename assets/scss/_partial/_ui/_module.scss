@@ -308,6 +308,9 @@ txt
       text-shadow: 0px 3px 3px #000;
     }
   }
+  &-small {
+    @include font-size(14);
+  }
   img {
     display: inline-block;
     max-width: 100%;
