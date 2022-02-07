@@ -1,6 +1,6 @@
 <template>
   <li class="m-article-links-item" :class="{ 'is-last': prevFlag }">
-    <p class="m-article-links-txt-sub">前の記事</p>
+    <p class="m-article-links-txt-sub">新しい記事</p>
     <nuxt-link :to="prevHref" class="m-article-links m-article-links-prev">
       <div class="m-article-links-thumb">
         <img :src="prevSrc" :alt="prevTitle" />
