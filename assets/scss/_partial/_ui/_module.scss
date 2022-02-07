@@ -838,12 +838,16 @@ box
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    @include mediaQuery(max, 0, 768) {
+      justify-content: flex-start;
+    }
     img {
       display: inline-block;
       width: 100%;
-      max-width: 30%;
+      max-width: 80px;
       margin: 0 auto;
       @include mediaQuery(max, 0, 768) {
+        margin: 0 0 0 15px;
         // margin-left: 5%;
         // width: 35%;
       }
@@ -859,6 +863,9 @@ box
     li {
       @include font-size(14);
       margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
       a {
         @include font-size(14);
         display: -webkit-box;
