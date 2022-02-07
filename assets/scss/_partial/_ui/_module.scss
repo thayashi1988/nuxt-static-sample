@@ -137,6 +137,10 @@ breadcrumbs
     // }
     &:not(:first-of-type) {
       margin-left: 10px;
+      @include mediaQuery(max, 0, 768) {
+        margin-left: 0;
+        margin-top: 10px;
+      }
       &::before {
         content: '';
         display: inline-block;
@@ -1253,7 +1257,9 @@ toc
         display: inline-block;
         content: '';
         width: 15px;
+        min-width: 15px;
         height: 15px;
+        min-height: 15px;
         border-radius: 50%;
         background-color: rgba(3, 196, 235, 1);
         margin-right: 10px;
