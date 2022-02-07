@@ -1,6 +1,6 @@
 <template>
   <li class="m-article-links-item" :class="{ 'is-last': nextFlag }">
-    <p class="m-article-links-txt-sub">次の記事</p>
+    <p class="m-article-links-txt-sub">前の記事</p>
     <nuxt-link :to="nextHref" class="m-article-links m-article-links-next">
       <div class="m-article-links-thumb">
         <img :src="nextSrc" :alt="nextTitle" />

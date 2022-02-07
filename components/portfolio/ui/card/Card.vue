@@ -26,7 +26,9 @@
       </heading-2>
       <!-- eslint-disable-next-line vue/no-v-html-->
       <!-- <div class="m-card-txt" v-html="articleData.body"></div> -->
-      <card-btn :to="`/articles/article/${articleData.id}`" data-width="small">{{ btnTxt }}</card-btn>
+      <card-btn :to="`/articles/article/${articleData.id}`" data-width="small" class="l-card-btn">
+        {{ btnTxt }}
+      </card-btn>
     </div>
     <!-- ./l-card-body -->
   </div>
@@ -62,16 +64,6 @@ export default {
 
     this.publishDateFormated = publishDate.substring(0, publishDate.indexOf('T'))
     this.upDateFormated = upDate.substring(0, upDate.indexOf('T'))
-  },
-  mounted() {
-    // 見出しの高さ揃え
-    const heading2 = document.querySelectorAll('.m-heading-2')
-    const heading2Heights = []
-    heading2.forEach((elem, index) => {
-      heading2Heights.push(elem.clientHeight)
-    })
-    this.heading2MaxHeight = Math.max.apply(null, heading2Heights)
-    return this.heading2MaxHeight
   },
 }
 </script>
