@@ -1,3 +1,5 @@
+@use 'sass:math';
+@use '../_variable/_variables' as *;
 ////////////////
 //  mixin
 ////////////////
@@ -11,19 +13,17 @@
 //   margin-bottom: 40px;
 // }
 //mediaQuery
-@mixin mediaQuery($val,$min,$max){
-  @if $val == max{
-    @media screen and (max-width: ($max + px)){
+@mixin mediaQuery($val, $min, $max) {
+  @if $val == max {
+    @media screen and (max-width: ($max + px)) {
       @content;
     }
-  }
-  @else if $val == min{
-    @media screen and (min-width: ($max + px)){
+  } @else if $val == min {
+    @media screen and (min-width: ($max + px)) {
       @content;
     }
-  }
-  @else if $val == both{
-    @media screen and (min-width: ($max + px)) and (max-width: ($max + px)){
+  } @else if $val == both {
+    @media screen and (min-width: ($max + px)) and (max-width: ($max + px)) {
       @content;
     }
   }
@@ -34,53 +34,51 @@
 //font-size
 @mixin font-size($size, $base: 10) {
   font-size: $size + px;
-  font-size: ($size / $base) * 1rem
+  font-size: math.div($size, $base) * 1rem;
 }
 
 // //ex
 // // @include sizeVw(mt, 60);  margin-top
 // // @include sizeVw(fz, 60);  font-size
 // // sizeVW
-@mixin sizeVw($property, $size, $winW:null){
-  @if $winW == null{
-    $winW : 768;  // ブレイクポイントを設定
+@mixin sizeVw($property, $size, $winW: null) {
+  @if $winW == null {
+    $winW: 768; // ブレイクポイントを設定
   }
-  @if $property == 'fz'{
-    font-size: ($size / $winW) * 100 + vw;
+  @if $property == 'fz' {
+    font-size: calc(($size / $winW) * 100vw);
   }
-  @if $property == 'mt'{
-    margin-top: ($size / $winW) * 100 + vw;
+  @if $property == 'mt' {
+    margin-top: calc(($size / $winW) * 100vw);
   }
-  @if $property == 'mr'{
-    margin-right: ($size / $winW) * 100 + vw;
+  @if $property == 'mr' {
+    margin-right: calc(($size / $winW) * 100vw);
   }
-  @if $property == 'mb'{
-    margin-bottom: ($size / $winW) * 100 + vw;
+  @if $property == 'mb' {
+    margin-bottom: calc(($size / $winW) * 100vw);
   }
-  @if $property == 'ml'{
-    margin-left: ($size / $winW) * 100 + vw;
+  @if $property == 'ml' {
+    margin-left: calc(($size / $winW) * 100vw);
   }
-  @if $property == 'pt'{
-    margin-top: ($size / $winW) * 100 + vw;
+  @if $property == 'pt' {
+    margin-top: calc(($size / $winW) * 100vw);
   }
-  @if $property == 'pr'{
-    margin-right: ($size / $winW) * 100 + vw;
+  @if $property == 'pr' {
+    margin-right: calc(($size / $winW) * 100vw);
   }
-  @if $property == 'pb'{
-    margin-bottom: ($size / $winW) * 100 + vw;
+  @if $property == 'pb' {
+    margin-bottom: calc(($size / $winW) * 100vw);
   }
-  @if $property == 'pl'{
-    margin-left: ($size / $winW) * 100 + vw;
+  @if $property == 'pl' {
+    margin-left: calc(($size / $winW) * 100vw);
   }
 }
-
 
 //ex
 // @include border(top,1,solid,#ccc);  //border-top:1px solid #ccc;
-@mixin border($pos, $width, $type, $color){
+@mixin border($pos, $width, $type, $color) {
   border-#{$pos}: #{$width}px $type $color;
 }
-
 
 //ex
 // @include absolute(0,0,0,0);  //top: 0; right:0; bottom:0 left: calc(50%);
@@ -88,21 +86,21 @@
 // @include absolute($top:0, $bottom:0);  //top: 0; bottom: 0;
 // @include absolute(0,0,0,0,cont);  //top: 0; right:0; bottom:0 left: calc(50%); content: "";
 //position
-@mixin absolute($top:null, $right:null, $bottom:null, $left:null, $cont:null){
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null, $cont: null) {
   position: absolute;
-  @if $cont != null{
-    content: "";
+  @if $cont != null {
+    content: '';
   }
-  @if $top != null{
+  @if $top != null {
     top: $top;
   }
-  @if $right != null{
+  @if $right != null {
     right: $right;
   }
-  @if $bottom != null{
+  @if $bottom != null {
     bottom: $bottom;
   }
-  @if $left != null{
+  @if $left != null {
     left: $left;
   }
 }
@@ -112,8 +110,6 @@
 // // @include transition(1s,.5s);
 // // @include transition(1s,.5s,linear);
 // //transition
-@mixin transition($speed: .4s, $delay: 0s, $easeing: ease){
+@mixin transition($speed: 0.4s, $delay: 0s, $easeing: ease) {
   transition: all $speed $delay $easeing;
 }
-
-

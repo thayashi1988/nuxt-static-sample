@@ -1,7 +1,9 @@
 <template>
   <tr>
-    <th>{{ tableData.tableHeader }}</th>
-    <td>{{ tableData.tableCellData }}</td>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <th v-html="tableData.tableHeader"></th>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <td v-html="tableData.tableCellData"></td>
   </tr>
 </template>
 <script>

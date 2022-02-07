@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use '../_mixin/_mixin' as *;
+@use '../_variable/_variables' as var;
 /*------------------------
   base css
 ------------------------*/
@@ -10,12 +13,12 @@ html {
 }
 
 body {
-  font-family: $font;
-  // font-family: $raleway;
+  font-family: var.$font;
+  // font-family: var.$raleway;
   font-size: 1.6rem;
-  color: $main;
+  color: var.$main;
   line-height: 1.5;
-  font-feature-settings:'palt' 1
+  font-feature-settings: 'palt' 1;
 }
 
 a {

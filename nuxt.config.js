@@ -125,7 +125,13 @@ export default {
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: true,
+  // components: true,
+  components: [
+    {
+      path: '@/components',
+      pathPrefix: false,
+    },
+  ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -191,6 +197,14 @@ export default {
       }
     },
     transpile: ['vee-validate/dist/rules'],
+    loaders: {
+      scss: {
+        implementation: require('sass'),
+        sassOptions: {
+          fiber: require('fibers'),
+        },
+      },
+    },
   },
   publicRuntimeConfig: {
     apiUrl: API_URL,
