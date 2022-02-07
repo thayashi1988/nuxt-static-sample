@@ -413,16 +413,18 @@ toc
 /*///////////////////////
 sns
 ///////////////////////*/
-.l-sns{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-  svg{
-    @include font-size(38)
+.l-sns {
+  // margin-top: 20px;
+  &-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  svg {
+    @include font-size(38);
   }
   @include mediaQuery(max, 0, 768) {
-    margin-top: -20px;
+    margin-top: 20px;
   }
 }
 

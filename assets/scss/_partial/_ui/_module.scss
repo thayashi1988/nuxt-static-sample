@@ -1165,6 +1165,18 @@ modal
 }
 
 /*///////////////////////
+sns
+///////////////////////*/
+.m-sns {
+  &-title {
+    margin-bottom: 10px;
+    @include mediaQuery(max, 0, 768) {
+      margin-bottom: (10 / 768) * 100vw;
+    }
+  }
+}
+
+/*///////////////////////
 pager
 ///////////////////////*/
 .m-pager {
