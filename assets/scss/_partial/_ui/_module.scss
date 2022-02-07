@@ -116,8 +116,8 @@ nav
           // animation: nav-hover-border ease .5s forwards;
         }
         // &:hover {
-          // transform: translateY(-5px);
-          // animation: nav-hover-text ease .5s forwards;
+        // transform: translateY(-5px);
+        // animation: nav-hover-text ease .5s forwards;
         // }
       }
     }
@@ -241,8 +241,8 @@ heading
         @include font-size(20);
       }
       // &:first-of-type {
-        // border-bottom: none;
-        // margin-top: 0;
+      // border-bottom: none;
+      // margin-top: 0;
       // }
     }
   }
@@ -1071,13 +1071,13 @@ modal
   &-txt {
     margin-bottom: 10px;
     // margin-bottom: (20 / 750) * 100vw;
-    &-link{
+    &-link {
       @include font-size(18);
       text-decoration: underline;
       @include mediaQuery(max, 0, 768) {
         // @include font-size(16);
       }
-      img{
+      img {
         display: inline-block;
         @include mediaQuery(max, 0, 768) {
           margin: 0 auto;
@@ -1128,8 +1128,8 @@ modal
       text-indent: -999em;
     }
   }
-  &-list{
-    &-item{
+  &-list {
+    &-item {
       display: table;
       @include font-size(16);
       vertical-align: middle;
