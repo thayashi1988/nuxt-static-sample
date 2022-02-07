@@ -74,6 +74,9 @@ breadcrumbs
 .l-breadcrumbs {
   &-list {
     display: flex;
+    @include mediaQuery(max, 0, 768) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -388,6 +391,9 @@ toc
   border-radius: 10px;
   padding: 15px 30px 20px;
   margin-bottom: 30px;
+  @include mediaQuery(max, 0, 768) {
+    padding: 15px 15px 20px;
+  }
   &-list {
     &-under {
       padding-left: 20px;
