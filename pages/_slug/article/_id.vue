@@ -44,7 +44,7 @@
               :latest-article="latestArticle"
             ></the-side-latest-items>
             <li>
-              <link-arrow href="/">記事一覧へ戻る</link-arrow>
+              <link-arrow href="/" cls="m-mb-0">記事一覧へ戻る</link-arrow>
             </li>
           </the-side-latest>
           <!-- <div class="l-box">
