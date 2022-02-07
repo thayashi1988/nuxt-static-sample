@@ -2,7 +2,7 @@
   <div :class="itemClass">
     <div :class="blockClass">
       <img v-if="image" :src="imageUrl" :alt="name" :class="imageClass" />
-      <img v-else src="~@/assets/img/dummy.jpg" :alt="name" :class="imageClass" />
+      <img v-else src="~@/assets/img/bg_main.jpg" :alt="name" :class="imageClass" />
       <div :class="dataClass">
         <div class="font-bold text-xl mb-2">{{ name }}</div>
         <p v-if="flagBody" class="text-base mb-2">
