@@ -6,16 +6,25 @@
           <div class="l-grid-row">
             <div class="l-grid-col" data-col="5" data-col-sp="12" data-padding="true" data-padding-sp="false">
               <div class="m-modal-img">
-                <a :href="modalData.galleryModalLink" target="_blank" class="m-modal-txt-link" @click="handleGAEvent">
+                <a
+                  :href="modalData.galleryModalLink"
+                  target="_blank"
+                  class="m-modal-txt-link"
+                  @click="handleGAEventImg"
+                >
                   <img :src="modalData.galleryModalImg" :alt="modalData.galleryModalTitle"
                 /></a>
               </div>
             </div>
             <div class="l-grid-col" data-col="7" data-col-sp="12" data-padding="true" data-padding-sp="false">
               <p class="m-modal-lead">
-                <a :href="modalData.galleryModalLink" target="_blank" class="m-modal-txt-link" @click="handleGAEvent">{{
-                  modalData.galleryModalTitle
-                }}</a>
+                <a
+                  :href="modalData.galleryModalLink"
+                  target="_blank"
+                  class="m-modal-txt-link"
+                  @click="handleGAEventTitle"
+                  >{{ modalData.galleryModalTitle }}</a
+                >
               </p>
               <!-- eslint-disable-next-line -->
               <p class="m-modal-txt" v-html="modalData.galleryModalBody"></p>
@@ -61,9 +70,17 @@ export default {
       const close = false
       this.$emit('onModalTriggerClose', close)
     },
-    handleGAEvent() {
+    handleGAEventImg() {
       this.$ga.event({
-        eventCategory: 'link',
+        eventCategory: 'link_img',
+        eventAction: 'click',
+        eventLabel: 'https://nextjs-blog-two-lilac-12.vercel.app/',
+        eventValue: 1,
+      })
+    },
+    handleGAEventTitle() {
+      this.$ga.event({
+        eventCategory: 'link_title',
         eventAction: 'click',
         eventLabel: 'https://nextjs-blog-two-lilac-12.vercel.app/',
         eventValue: 1,
