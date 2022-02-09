@@ -4,8 +4,8 @@
       <img src="~@/assets/img/article/thumb/thumb_01.jpg" alt="" />
     </div> -->
     <div class="l-card-body" itemprop="articleBody">
-      <heading-2 class="m-mt-0" data-type="article" itemprop="headline">
-        {{ currentArticle.title }}
+      <!-- eslint-disable-next-line -->
+      <heading-2 class="m-mt-0" data-type="article" itemprop="headline" v-html="articleHeading">
       </heading-2>
       <card-date
         :up-date-boolean="currentArticle.date !== currentArticle.updatedAt"
@@ -67,6 +67,11 @@ export default {
       publishDateFormated: '',
       upDateFormated: '',
     }
+  },
+  computed: {
+    articleHeading() {
+      return this.$myInjectedFunction(this.currentArticle.title, false)
+    },
   },
   created() {
     const publishDate = this.currentArticle.date
