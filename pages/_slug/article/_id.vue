@@ -211,16 +211,16 @@ export default {
   },
   computed: {
     heading() {
-      return this.currentArticle.title
+      return this.$myInjectedFunction(this.currentArticle.title, 'bread')
     },
     heading1() {
-      return this.$myInjectedFunction(this.currentArticle.title, true)
+      return this.$myInjectedFunction(this.currentArticle.title, 'heading1')
     },
   },
 
   head() {
     return {
-      title: `${this.currentArticle.title}`,
+      title: `${this.heading}`,
       meta: [
         {
           hid: 'description',

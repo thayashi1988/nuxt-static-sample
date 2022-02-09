@@ -176,7 +176,7 @@ heading
       @include font-size(28);
     }
     @include mediaQuery(min, 0, 768) {
-      @include font-size(48);
+      @include font-size(44);
     }
     & + * {
       @include mediaQuery(max, 0, 768) {
@@ -222,6 +222,7 @@ heading
       // margin-top: 20px;
       margin-bottom: 20px;
       @include mediaQuery(max, 0, 768) {
+        margin-top: 0;
         // margin-bottom: (20 / 768) * 100vw;
       }
     }
