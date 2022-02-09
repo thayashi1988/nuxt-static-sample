@@ -19,10 +19,9 @@
           {{ articleData.updatedAt | formatDate }}
         </template>
       </card-date>
-      <heading-2 data-type="cardttl" :style="`height: ${heading2MaxHeight}px`">
-        <nuxt-link :to="articleData.id" class="m-card-ttl">
-          {{ articleData.title }}
-        </nuxt-link>
+      <heading-2 data-type="cardttl">
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <nuxt-link :to="articleData.id" class="m-card-ttl" v-html="articleHeading"></nuxt-link>
       </heading-2>
       <!-- eslint-disable-next-line vue/no-v-html-->
       <!-- <div class="m-card-txt" v-html="articleData.body"></div> -->
@@ -53,10 +52,14 @@ export default {
   },
   data() {
     return {
-      heading2MaxHeight: 'auto',
       publishDateFormated: '',
       upDateFormated: '',
     }
+  },
+  computed: {
+    articleHeading() {
+      return this.$myInjectedFunction(this.articleData.title, false)
+    },
   },
   created() {
     const publishDate = this.articleData.date
