@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-main :title="heading1()" sub-title="" :sub-title-show="false">
+    <the-main :title="heading1" sub-title="" :sub-title-show="false">
       <div class="l-underlayer">
         <article class="l-section" data-bg="gray" itemscope itemtype="https://schema.org/BlogPosting">
           <div class="l-section-inner">
@@ -213,14 +213,11 @@ export default {
     heading() {
       return this.currentArticle.title
     },
-  },
-  methods: {
     heading1() {
-      let titleTxt = this.currentArticle.title
-      titleTxt = titleTxt.replace(/[\x20\u3000]/, '<br>')
-      return titleTxt
+      return this.$myInjectedFunction(this.currentArticle.title, true)
     },
   },
+
   head() {
     return {
       title: `${this.currentArticle.title}`,
