@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     articleHeading() {
-      return this.$myInjectedFunction(this.articleData.title, false)
+      return this.$myInjectedFunction(this.articleData.title, 'heading2')
     },
   },
   created() {

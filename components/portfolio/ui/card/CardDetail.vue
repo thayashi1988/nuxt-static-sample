@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     articleHeading() {
-      return this.$myInjectedFunction(this.currentArticle.title, false)
+      return this.$myInjectedFunction(this.currentArticle.title, 'heading2')
     },
   },
   created() {
