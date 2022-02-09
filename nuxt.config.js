@@ -117,6 +117,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '~/plugins/filter.js',
+    '~/plugins/microCMS/headingBreak.js',
     { src: '~/plugins/vee-validate', ssr: true },
     // '~plugins/ui'
     { src: '~/plugins/animatescroll.js', mode: 'client' },
