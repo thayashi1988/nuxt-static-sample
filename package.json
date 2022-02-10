@@ -49,11 +49,17 @@
     "vee-validate": "^3.4.5",
     "vue-scrollto": "^2.20.0"
   },
+  "resolutions": {
+    "colors": "1.4.0"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "Android >= 5",
     "ie >= 11",
     "iOS >= 10"
-  ]
+  ],
+  "volta": {
+    "node": "14.5.0"
+  }
 }
