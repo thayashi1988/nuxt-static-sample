@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable vue/no-v-html -->
   <div>
     <the-main :title="heading1Preview" sub-title="" :sub-title-show="false">
       <div class="l-underlayer">
@@ -18,8 +19,12 @@
                   <div class="l-card">
                     <div class="l-card-body" itemprop="articleBody">
                       <!-- eslint-disable-next-line vue/no-v-html -->
-                      <heading-2 class="m-mt-0" data-type="article" itemprop="headline" v-html="articleHeadingPreview">
-                      </heading-2>
+                      <h2
+                        class="m-heading-2"
+                        data-type="article"
+                        itemprop="headline"
+                        v-html="articleHeadingPreview"
+                      ></h2>
                       <!-- eslint-disable-next-line vue/no-v-html -->
                       <div class="m-card-html" v-html="cmsData"></div>
                       <card-btn class="" to="/" data-width="middle">記事一覧に戻る</card-btn>
@@ -130,9 +135,9 @@ export default {
   async created() {
     const query = this.$route.query
     // console.log('query:', query)
-    // if (query.id === undefined || query.draftKey === undefined) {
-    //   return
-    // }
+    if (query.id === undefined || query.draftKey === undefined) {
+      return
+    }
     // コンテンツID + ドラフトキーでアクセス
     // http://localhost:9000/draft/draft?id=5f5b83g0y&draftKey=68f_OI4mB
     // blog/5f5b83g0y?draftKey=68f_OI4mB
@@ -192,13 +197,13 @@ export default {
       }
     })
 
-    this.currentArticle = allArticelsData
-    this.parseArticleData = result
+    this.currentArticle = allArticelsData || ''
+    this.parseArticleData = result || ''
     this.cmsData = cmsDataArray.join('\n')
-    this.tocData = toc
-    this.heading = allArticelsData.title
-    this.heading1 = allArticelsData.title
-    this.articleHeading = allArticelsData.title
+    this.tocData = toc || ''
+    this.heading = allArticelsData.title || ''
+    this.heading1 = allArticelsData.title || ''
+    this.articleHeading = allArticelsData.title || ''
   },
   head() {
     return {
