@@ -8,24 +8,14 @@
             <div class="l-grid-container">
               <ul class="l-grid-row">
                 <li class="l-grid-col" data-col="12" data-col-sp="12" data-marginp="true">
-                  <!-- <card-detail
-                    :current-article="currentArticle"
-                    :parse-article-data="cmsData"
-                    :article-toc="tocData"
-                    :prams-id="previeUrl"
-                    btn-txt="記事一覧に戻る"
-                  ></card-detail> -->
-                  <!-- eslint-disable-next-line vue/no-v-html -->
                   <div class="l-card">
                     <div class="l-card-body" itemprop="articleBody">
-                      <!-- eslint-disable-next-line vue/no-v-html -->
                       <h2
-                        class="m-heading-2"
+                        class="m-heading-2 m-mt-0"
                         data-type="article"
                         itemprop="headline"
                         v-html="articleHeadingPreview"
                       ></h2>
-                      <!-- eslint-disable-next-line vue/no-v-html -->
                       <div class="m-card-html" v-html="cmsData"></div>
                       <card-btn class="" to="/" data-width="middle">記事一覧に戻る</card-btn>
                     </div>
@@ -40,12 +30,6 @@
                 <Facebook />
               </div>
             </div>
-            <!-- <the-articles
-              :prev-show-flag="prevFlag"
-              :prev-object="articleNextPrev[0]"
-              :next-show-flag="nextFlag"
-              :next-object="articleNextPrev[1]"
-            ></the-articles> -->
           </div>
           <!-- ./l-section-inner -->
         </article>
@@ -56,32 +40,12 @@
               沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのぱくもぐブログで発信していきいます！
             </p>
           </the-side-profile>
-          <!-- <the-side-latest>
-            <the-side-latest-items
-              v-for="(latestArticle, key) in latestArticles"
-              :key="key"
-              :latest-article="latestArticle"
-            ></the-side-latest-items>
-            <li>
-              <link-arrow href="/">記事一覧へ戻る</link-arrow>
-            </li>
-          </the-side-latest> -->
-          <!-- <div class="l-box">
-            <div class="l-box-inner">
-              <p class="m-box-ttl">カテゴリー</p>
-              <p>
-                <span class="m-label"><a href="#">ラベルラベル</a></span
-                ><span class="m-label"><a href="#">ラベルラベルラベルラベル</a></span>
-              </p>
-            </div>
-          </div> -->
-          <!-- ./l-box -->
         </aside>
         <!-- ./l-side -->
       </div>
       <!-- ./l-underlayer -->
     </the-main>
-    <!-- <the-bread-crumb :bread-crumb-title="headingPreview"></the-bread-crumb> -->
+    <the-bread-crumb :bread-crumb-title="headingPreview"></the-bread-crumb>
   </div>
 </template>
 <script>
