@@ -3,11 +3,11 @@
     <p class="m-article-links-txt-sub">新しい記事</p>
     <nuxt-link :to="prevHref" class="m-article-links m-article-links-prev">
       <div class="m-article-links-thumb">
-        <img :src="prevSrc" :alt="prevTitle" />
+        <img :src="prevSrc" :alt="prevTitleFunc" />
       </div>
       <div class="m-article-links-body">
         <h4 class="m-article-links-title">
-          {{ prevTitle }}
+          {{ prevTitleFunc }}
         </h4>
       </div>
     </nuxt-link>
@@ -33,6 +33,11 @@ export default {
     prevFlag: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    prevTitleFunc() {
+      return this.$myInjectedFunction(this.prevTitle, 'bread')
     },
   },
 }
