@@ -8,8 +8,7 @@
         <!-- eslint-disable -->
         <nuxt-link
           :to="latestArticle.id"
-          v-html="latestArticle.title"
-        ></nuxt-link>
+        >{{titleFunc}}</nuxt-link>
       </dd>
     </dl>
   </li>
@@ -21,6 +20,11 @@ export default {
     latestArticle: {
       type: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    titleFunc() {
+      return this.$myInjectedFunction(this.latestArticle.title, 'bread')
     },
   },
 }

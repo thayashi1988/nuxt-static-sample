@@ -5,8 +5,7 @@
     </div> -->
     <div class="l-card-body" itemprop="articleBody">
       <!-- eslint-disable-next-line -->
-      <heading-2 class="m-mt-0" data-type="article" itemprop="headline" v-html="articleHeading">
-      </heading-2>
+      <heading-2 class="m-mt-0" data-type="article" itemprop="headline" v-html="articleHeading" :br="true" />
       <card-date
         :up-date-boolean="currentArticle.date !== currentArticle.updatedAt"
         :tag="currentArticle.category[0]"

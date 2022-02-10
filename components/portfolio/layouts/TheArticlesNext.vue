@@ -3,11 +3,11 @@
     <p class="m-article-links-txt-sub">前の記事</p>
     <nuxt-link :to="nextHref" class="m-article-links m-article-links-next">
       <div class="m-article-links-thumb">
-        <img :src="nextSrc" :alt="nextTitle" />
+        <img :src="nextSrc" :alt="nextTitleFunc" />
       </div>
       <div class="m-article-links-body">
         <h4 class="m-article-links-title">
-          {{ nextTitle }}
+          {{ nextTitleFunc }}
         </h4>
       </div>
     </nuxt-link>
@@ -33,6 +33,11 @@ export default {
     nextFlag: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    nextTitleFunc() {
+      return this.$myInjectedFunction(this.nextTitle, 'bread')
     },
   },
 }
