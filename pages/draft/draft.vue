@@ -207,24 +207,24 @@ export default {
   },
   head() {
     return {
-      // title: `${this.heading}`,
+      title: `${this.headingPreview}`,
       meta: [
         { hid: 'robots', name: 'robots', content: 'noindex' },
-        //   {
-        //     hid: 'description',
-        //     name: 'description',
-        //     content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.currentArticle.title}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
-        //   },
-        //   {
-        //     hid: 'og:description',
-        //     property: 'og:description',
-        //     content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.currentArticle.title}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
-        //   },
-        //   {
-        //     hid: 'og:title',
-        //     property: 'og:title',
-        //     content: `${this.heading}`,
-        //   },
+        {
+          hid: 'description',
+          name: 'description',
+          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.headingPreview}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.headingPreview}ページです。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${this.headingPreview}`,
+        },
       ],
     }
   },
