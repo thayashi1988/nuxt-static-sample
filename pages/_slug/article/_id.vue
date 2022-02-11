@@ -52,13 +52,14 @@
           </the-side-latest>
           <!-- <div class="l-box">
             <div class="l-box-inner">
-              <p class="m-box-ttl">カテゴリー</p>
-              <p>
-                <span class="m-label"><a href="#">ラベルラベル</a></span
-                ><span class="m-label"
-                  ><a href="#">ラベルラベルラベルラベル</a></span
-                >
-              </p>
+              <p class="m-box-ttl">カテゴリ一覧</p>
+              <ul class="m-list-category">
+                <li v-for="data in categoryDatas" :key="data.category">
+                  <span class="m-label"
+                    ><a href="#">{{ data.category }}&nbsp;（{{ data.count }}件）</a></span
+                  >
+                </li>
+              </ul>
             </div>
           </div> -->
           <!-- ./l-box -->
@@ -75,12 +76,8 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/vs2015.css'
-import Facebook from '~/components/portfolio/ui/sns/Facebook'
-import Twitter from '~/components/portfolio/ui/sns/Twitter'
-import TextNormal from '~/components/portfolio/ui/text/TextNormal'
 
 export default {
-  components: { TextNormal, Twitter, Facebook },
   async asyncData({ $config, params, error }) {
     try {
       // 一旦100件の記事を取得
@@ -88,6 +85,32 @@ export default {
         headers: { 'X-API-KEY': $config.apiKey },
       })
       const allArticelsData = getData.data.contents
+
+      // カテゴリーだけを取得
+      const allCategoryData = await axios.get(`${$config.apiUrl}/blog/?limit=100&fields=category`, {
+        headers: { 'X-API-KEY': $config.apiKey },
+      })
+
+      // カテゴリ一覧の連想配列を生成
+      const categoryArrayInObj = allCategoryData.data.contents
+
+      // カテゴリ一覧の連想配列からカテゴリーだけの配列に修正
+      const categoryArray = []
+      categoryArrayInObj.forEach((elem) => {
+        categoryArray.push(elem.category[0])
+      })
+
+      // categoryArrayで重複している分を削除し配列にする
+      const categoryDuplicateDelete = [...new Set(categoryArray)]
+
+      // 各カテゴリが何件あるかを判定し、カテゴリと件数のオブジェクトにする
+      const categoryDatas = []
+      categoryDuplicateDelete.forEach((elem) => {
+        const count = categoryArray.filter((elemFilter) => {
+          return elemFilter === elem
+        }).length
+        categoryDatas.push({ category: elem, count })
+      })
 
       // アクセスしたページと同じ記事を抽出
       const currentArticleData = allArticelsData.find((id) => {
@@ -202,6 +225,7 @@ export default {
         prevFlag: articlePrevFlag,
         tocData: toc,
         pageId: params.id,
+        categoryDatas,
       }
     } catch (err) {
       error({
