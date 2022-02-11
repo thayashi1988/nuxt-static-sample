@@ -82,7 +82,7 @@ export default {
   },
   head() {
     return {
-      // title: `${this.heading1}`,
+      title: `${this.heading1}`,
       meta: [
         {
           hid: 'description',
