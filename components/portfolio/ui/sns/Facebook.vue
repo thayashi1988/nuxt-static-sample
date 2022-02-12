@@ -1,5 +1,5 @@
 <template>
-  <div class="l-facebook">
+  <div class="l-sns-facebook">
     <div id="fb-root"></div>
     <div :data-href="currentPath" data-layout="button" data-size="large" @click="fbShareUrl">
       <a

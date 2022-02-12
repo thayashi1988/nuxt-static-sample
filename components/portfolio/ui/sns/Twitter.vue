@@ -1,5 +1,5 @@
 <template>
-  <div class="l-twiiter">
+  <div class="l-sns-twiiter">
     <button>
       <!-- <a
         href="https://twitter.com/share?ref_src=twsrc%5Etfw"
