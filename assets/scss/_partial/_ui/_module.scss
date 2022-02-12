@@ -207,7 +207,7 @@ heading
     @include mediaQuery(max, 0, 768) {
       @include font-size(28);
       // margin-bottom: (60 / 768) * 100vw;
-      @include sizeVw(mt, 60);
+      @include sizeVw(mb, 60);
     }
     @include mediaQuery(min, 0, 768) {
       color: var.$main;
