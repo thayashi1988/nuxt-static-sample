@@ -1262,8 +1262,12 @@ article
       }
     }
     &-thumb {
-      max-width: 120px;
+      // max-width: 150px;
       margin-right: 10px;
+      flex: 1 1 150px;
+    }
+    &-body {
+      flex-basis: calc(100% - (150px + 10px));
     }
     &-txt {
       &-sub {
