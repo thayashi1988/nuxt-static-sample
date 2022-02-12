@@ -18,13 +18,13 @@ export default {
     // },
     exclude: [
       '/draft/draft',
-      '/b1ds_cn8j',
-      '/dn77b47blq20',
-      '/dte6g848li',
-      '/dvd-n5oi_d',
-      '/pi9iljjr_mn',
-      '/ula7ft_9qi',
-      '/5f5b83g0y',
+      // '/b1ds_cn8j',
+      // '/dn77b47blq20',
+      // '/dte6g848li',
+      // '/dvd-n5oi_d',
+      // '/pi9iljjr_mn',
+      // '/ula7ft_9qi',
+      // '/5f5b83g0y',
     ],
   },
   server: {
@@ -96,11 +96,18 @@ export default {
     trailingSlash: false,
     middleware: 'redirect',
     extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'articles',
-        path: '/articles/:slug',
-        component: resolve(__dirname, 'pages/index.vue'),
-      })
+      routes.push(
+        {
+          name: 'articles',
+          path: '/articles/:slug',
+          component: resolve(__dirname, 'pages/index.vue'),
+        },
+        {
+          name: 'categorys',
+          path: '/categorys/category/:slug',
+          component: resolve(__dirname, 'pages/index.vue'),
+        }
+      )
     },
     // base: '/nuxt-static-sample/', //元の記述
     // extendRoutes(routes, resolve) {//ページが存在しない場合のリダイレクトの設定

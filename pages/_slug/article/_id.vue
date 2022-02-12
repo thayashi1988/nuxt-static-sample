@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-main :title="heading1" sub-title="" :sub-title-show="false">
+    <the-main :title="breakHeading" sub-title="" :sub-title-show="false">
       <div class="l-underlayer">
         <article class="l-section" data-bg="gray" itemscope itemtype="https://schema.org/BlogPosting">
           <div class="l-section-inner">
@@ -50,18 +50,20 @@
               <link-arrow href="/" cls="m-mb-0">記事一覧へ戻る</link-arrow>
             </li>
           </the-side-latest>
-          <!-- <div class="l-box">
+          <div class="l-box">
             <div class="l-box-inner">
               <p class="m-box-ttl">カテゴリ一覧</p>
               <ul class="m-list-category">
                 <li v-for="data in categoryDatas" :key="data.category">
-                  <span class="m-label"
-                    ><a href="#">{{ data.category }}&nbsp;（{{ data.count }}件）</a></span
-                  >
+                  <span class="m-label">
+                    <nuxt-link :to="`/categorys/category/${data.encode === '' ? data.category : data.encode}`">
+                      {{ data.category }}&nbsp;（{{ data.count }}件）</nuxt-link
+                    >
+                  </span>
                 </li>
               </ul>
             </div>
-          </div> -->
+          </div>
           <!-- ./l-box -->
         </aside>
         <!-- ./l-side -->
@@ -99,17 +101,22 @@ export default {
       categoryArrayInObj.forEach((elem) => {
         categoryArray.push(elem.category[0])
       })
-
       // categoryArrayで重複している分を削除し配列にする
       const categoryDuplicateDelete = [...new Set(categoryArray)]
 
       // 各カテゴリが何件あるかを判定し、カテゴリと件数のオブジェクトにする
       const categoryDatas = []
+      const checkJapanese = new RegExp(/^[\u30A0-\u30FF\u3040-\u309F\u3005-\u3006\u30E0-\u9FCF]+$/)
       categoryDuplicateDelete.forEach((elem) => {
         const count = categoryArray.filter((elemFilter) => {
           return elemFilter === elem
         }).length
-        categoryDatas.push({ category: elem, count })
+        if (elem.match(checkJapanese)) {
+          const encode = encodeURI(elem)
+          categoryDatas.push({ category: elem, categoryLower: elem.toLowerCase(), count, encode })
+        } else {
+          categoryDatas.push({ category: elem, categoryLower: elem.toLowerCase(), count, encode: '' })
+        }
       })
 
       // アクセスしたページと同じ記事を抽出
@@ -237,7 +244,7 @@ export default {
     heading() {
       return this.$myInjectedFunction(this.currentArticle.title, 'bread')
     },
-    heading1() {
+    breakHeading() {
       return this.$myInjectedFunction(this.currentArticle.title, 'heading1')
     },
   },
