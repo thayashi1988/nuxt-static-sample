@@ -56,7 +56,7 @@
               <ul class="m-list-category">
                 <li v-for="data in categoryDatas" :key="data.category">
                   <span class="m-label">
-                    <nuxt-link :to="`/categorys/category/${data.category}`">
+                    <nuxt-link :to="`/categorys/category/${data.encode === '' ? data.category : data.encode}`">
                       {{ data.category }}&nbsp;（{{ data.count }}件）</nuxt-link
                     >
                   </span>
@@ -107,11 +107,17 @@ export default {
 
       // 各カテゴリが何件あるかを判定し、カテゴリと件数のオブジェクトにする
       const categoryDatas = []
+      const checkJapanese = new RegExp(/^[\u30A0-\u30FF\u3040-\u309F\u3005-\u3006\u30E0-\u9FCF]+$/)
       categoryDuplicateDelete.forEach((elem) => {
         const count = categoryArray.filter((elemFilter) => {
           return elemFilter === elem
         }).length
-        categoryDatas.push({ category: elem, count })
+        if (elem.match(checkJapanese)) {
+          const encode = encodeURI(elem)
+          categoryDatas.push({ category: elem, categoryLower: elem.toLowerCase(), count, encode })
+        } else {
+          categoryDatas.push({ category: elem, categoryLower: elem.toLowerCase(), count, encode: '' })
+        }
       })
 
       // アクセスしたページと同じ記事を抽出
