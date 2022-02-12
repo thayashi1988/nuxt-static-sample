@@ -1,8 +1,5 @@
 <template>
   <div class="l-card">
-    <!-- <div class="m-card-thumb">
-      <img src="~@/assets/img/article/thumb/thumb_01.jpg" alt="" />
-    </div> -->
     <div class="l-card-body" itemprop="articleBody">
       <!-- eslint-disable-next-line -->
       <heading-2 class="m-mt-0" data-type="article" itemprop="headline" v-html="articleHeading" :br="true" />
@@ -30,7 +27,7 @@
       </toc-article>
       <!-- eslint-disable-next-line vue/no-v-html-->
       <div class="m-card-html" v-html="parseArticleData"></div>
-      <card-btn class="" to="/" data-width="middle">{{ btnTxt }}</card-btn>
+      <card-btn to="/" data-width="middle">記事一覧に戻る</card-btn>
     </div>
     <!-- ./l-card-body -->
   </div>
@@ -45,10 +42,6 @@ export default {
       default: () => {},
     },
     parseArticleData: {
-      type: String,
-      default: '',
-    },
-    btnTxt: {
       type: String,
       default: '',
     },
@@ -75,7 +68,6 @@ export default {
   created() {
     const publishDate = this.currentArticle.date
     const upDate = this.currentArticle.updatedAt
-
     this.publishDateFormated = publishDate.substring(0, publishDate.indexOf('T'))
     this.upDateFormated = upDate.substring(0, upDate.indexOf('T'))
   },

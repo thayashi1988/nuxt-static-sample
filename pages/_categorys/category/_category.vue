@@ -34,42 +34,54 @@ import cheerio from 'cheerio'
 
 export default {
   async asyncData({ params, $config, error }) {
-    const searchCount = 50
-    // URLのカテゴリ名を取得
-    const pageCategoryParams = params.category
+    try {
+      // URLのカテゴリ名を取得
+      const pageCategoryParam = params.category
+      console.log('pageCategoryParam:', pageCategoryParam)
+      const searchCount = 50
 
-    // アクセスしているカテゴリーだけを取得
-    const { data } = await axios.get(
-      `${$config.apiUrl}/blog/?limit=${searchCount}&filters=category[contains]${pageCategoryParams}`,
-      {
+      const queryParams = {
+        limit: searchCount, // 記事取得件数
+        filters: `category[contains]${pageCategoryParam}`, // カテゴリ名で検索
+      }
+
+      // アクセスしているカテゴリーだけを取得
+      const { data } = await axios.get(`${$config.apiUrl}/blog`, {
+        params: queryParams,
         headers: { 'X-API-KEY': $config.apiKey },
-      }
-    )
-    const categoryCount = data.totalCount // 該当カテゴリの件数
-    const categoryArticleDatas = data.contents // 該当カテゴリだけのデータ
+      })
+      const categoryCount = data.totalCount // 該当カテゴリの件数
+      const categoryArticleDatas = data.contents // 該当カテゴリだけのデータ
 
-    const categoryArticleArray = []
-    // 記事データを最初のテキストのみに整形し配列に格納
-    categoryArticleDatas.forEach((element) => {
-      const $ = cheerio.load(element.body[0].rich)
-      if (element.thumb) {
-        const eyeCatchImg = element.thumbImg.url
-        element.eyecatch = eyeCatchImg
-      } else {
-        element.eyecatch = require(`@/assets/img/article/thumb/thumb_01.jpg`)
+      const categoryArticleArray = []
+      // 記事データを最初のテキストのみに整形し配列に格納
+      categoryArticleDatas.forEach((element) => {
+        const $ = cheerio.load(element.body[0].rich)
+        if (element.thumb) {
+          const eyeCatchImg = element.thumbImg.url
+          element.eyecatch = eyeCatchImg
+        } else {
+          element.eyecatch = require(`@/assets/img/article/thumb/thumb_01.jpg`)
+        }
+        element.body = $('p').html()
+        categoryArticleArray.push(element)
+      })
+      return {
+        categoryArticleItems: categoryArticleArray,
+        pageCategoryParam,
+        categoryCount,
       }
-      element.body = $('p').html()
-      categoryArticleArray.push(element)
-    })
-    return {
-      categoryArticleItems: categoryArticleArray,
-      pageCategoryParams,
-      categoryCount,
+    } catch (err) {
+      alert('通信エラーです。ページをリロードしてください。')
+      console.log('err:', err.message)
+      error({
+        erroeCode: 404,
+      })
     }
   },
   computed: {
     categoryHeading() {
-      return `カテゴリ一覧 ${this.pageCategoryParams} （${this.categoryCount}件）`
+      return `カテゴリ一覧 ${this.pageCategoryParam} （全${this.categoryCount}件）`
     },
   },
   head() {

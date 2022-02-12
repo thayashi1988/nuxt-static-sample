@@ -26,7 +26,7 @@
       <!-- eslint-disable-next-line vue/no-v-html-->
       <!-- <div class="m-card-txt" v-html="articleData.body"></div> -->
       <card-btn :to="`/articles/article/${articleData.id}`" data-width="small" class="l-card-btn">
-        {{ btnTxt }}
+        記事を見る
       </card-btn>
     </div>
     <!-- ./l-card-body -->
@@ -42,10 +42,6 @@ export default {
       default: () => {},
     },
     parseArticleData: {
-      type: String,
-      default: '',
-    },
-    btnTxt: {
       type: String,
       default: '',
     },
