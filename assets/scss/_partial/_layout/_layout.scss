@@ -97,8 +97,10 @@ main
 mainvisul
 ///////////////////////*/
 .l-mainvisul {
-  background: url(#{var.$img_path}bg_main.jpg) no-repeat bottom center;
+  // height: 0;
+  background: url(#{var.$img_path}bg/bg_main.jpg) no-repeat bottom center;
   background-size: cover;
+  // padding-top: calc(360 / 640 * 100%);
   margin-top: 100px;
   &-inner {
     position: relative;
@@ -124,6 +126,7 @@ mainvisul
 section
 ///////////////////////*/
 .l-section {
+  background-color: #fff;
   padding: 50px 0;
   &:nth-child(odd) {
     background: var.$bg_sub;

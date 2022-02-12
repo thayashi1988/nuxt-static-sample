@@ -207,7 +207,7 @@ heading
     @include mediaQuery(max, 0, 768) {
       @include font-size(28);
       // margin-bottom: (60 / 768) * 100vw;
-      @include sizeVw(mt, 60);
+      @include sizeVw(mb, 60);
     }
     @include mediaQuery(min, 0, 768) {
       color: var.$main;
@@ -1262,8 +1262,12 @@ article
       }
     }
     &-thumb {
-      max-width: 120px;
+      // max-width: 150px;
       margin-right: 10px;
+      flex: 1 1 150px;
+    }
+    &-body {
+      flex-basis: calc(100% - (150px + 10px));
     }
     &-txt {
       &-sub {
@@ -1287,7 +1291,7 @@ toc
       margin-top: 15px;
     }
     a {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       position: relative;
       @include font-size(14);

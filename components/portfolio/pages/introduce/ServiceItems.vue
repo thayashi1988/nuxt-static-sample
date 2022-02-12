@@ -14,7 +14,7 @@
         <span>{{ serviceData.serviceTitle }}</span>
       </h3>
       <p class="m-media-img">
-        <span><img :src="serviceData.serviceImg" :alt="serviceData.serviceTitle" /></span>
+        <span><img :src="serviceData.serviceImg" :alt="serviceData.serviceTitle" width="150" height="150" /></span>
       </p>
       <!-- eslint-disable-next-line -->
       <p class="m-media-txt" v-html="serviceData.serviceBody"></p>
