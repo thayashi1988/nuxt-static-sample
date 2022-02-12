@@ -1291,7 +1291,7 @@ toc
       margin-top: 15px;
     }
     a {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       position: relative;
       @include font-size(14);
