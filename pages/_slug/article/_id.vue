@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-main :title="heading1" sub-title="" :sub-title-show="false">
+    <the-main :title="breakHeading" sub-title="" :sub-title-show="false">
       <div class="l-underlayer">
         <article class="l-section" data-bg="gray" itemscope itemtype="https://schema.org/BlogPosting">
           <div class="l-section-inner">
@@ -101,7 +101,6 @@ export default {
       categoryArrayInObj.forEach((elem) => {
         categoryArray.push(elem.category[0])
       })
-
       // categoryArrayで重複している分を削除し配列にする
       const categoryDuplicateDelete = [...new Set(categoryArray)]
 
@@ -245,7 +244,7 @@ export default {
     heading() {
       return this.$myInjectedFunction(this.currentArticle.title, 'bread')
     },
-    heading1() {
+    breakHeading() {
       return this.$myInjectedFunction(this.currentArticle.title, 'heading1')
     },
   },
