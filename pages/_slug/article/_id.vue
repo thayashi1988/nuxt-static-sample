@@ -50,18 +50,20 @@
               <link-arrow href="/" cls="m-mb-0">記事一覧へ戻る</link-arrow>
             </li>
           </the-side-latest>
-          <!-- <div class="l-box">
+          <div class="l-box">
             <div class="l-box-inner">
               <p class="m-box-ttl">カテゴリ一覧</p>
               <ul class="m-list-category">
                 <li v-for="data in categoryDatas" :key="data.category">
-                  <span class="m-label"
-                    ><a href="#">{{ data.category }}&nbsp;（{{ data.count }}件）</a></span
-                  >
+                  <span class="m-label">
+                    <nuxt-link :to="`/categorys/category/${data.category}`">
+                      {{ data.category }}&nbsp;（{{ data.count }}件）</nuxt-link
+                    >
+                  </span>
                 </li>
               </ul>
             </div>
-          </div> -->
+          </div>
           <!-- ./l-box -->
         </aside>
         <!-- ./l-side -->
