@@ -2,7 +2,7 @@
   <div class="l-card">
     <div class="m-card-thumb">
       <nuxt-link :to="`/articles/article/${articleData.id}`">
-        <img :src="articleData.eyecatch" :alt="articleData.title" />
+        <img :src="articleData.eyecatch" :alt="articleData.title" width="574" height="250" />
       </nuxt-link>
     </div>
     <div class="l-card-body">

@@ -11,7 +11,7 @@
     <div class="l-thumbnail">
       <div class="m-thumbnail-img">
         <button type="button" class="m-modal-link js-modal" data-icon="modal" @click="onModalTriggerClick">
-          <img :src="galleryData.galleryImg" alt="" />
+          <img :src="galleryData.galleryImg" alt="" width="243" height="154" />
         </button>
       </div>
     </div>
