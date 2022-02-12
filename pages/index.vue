@@ -15,7 +15,7 @@
                 data-padding="true"
                 data-padding-sp="false"
               >
-                <card :article-data="article" btn-txt="記事を見る"></card>
+                <card :article-data="article"></card>
               </li>
             </ul>
           </div>
@@ -42,37 +42,44 @@ import cheerio from 'cheerio'
 
 export default {
   async asyncData({ params, $config, error }) {
-    const pageParams = params.slug || '1'
-    const articleslimit = 6 // 記事表示件数
-    // console.log('pageParams:', pageParams)
-    const { data } = await axios.get(
-      `${$config.apiUrl}/blog?limit=${articleslimit}&offset=${(pageParams - 1) * articleslimit}`,
-      {
+    try {
+      const pageNumParam = parseInt(params.slug || '1')
+      const getArticleCount = 6
+      const queryParams = {
+        limit: getArticleCount, // 記事表示件数
+        offset: (pageNumParam - 1) * getArticleCount, // 前回の最後から取得する,
+      }
+      const { data } = await axios.get(`${$config.apiUrl}/blog`, {
+        params: queryParams,
         headers: { 'X-API-KEY': $config.apiKey },
-      }
-    )
-    const totalPages = data.totalCount // 記事総数
-    const blogDatas = data.contents
-    const articlesArray = []
-    let eyeCatchImg = ''
+      })
 
-    // 記事データを最初のテキストのみに整形し配列に格納
-    blogDatas.forEach((element, index) => {
-      const $ = cheerio.load(element.body[0].rich)
-      // thumbがtrueであればサムネイル画像を表示。そうでなければデフォルトサムネイル
-      if (element.thumb) {
-        eyeCatchImg = element.thumbImg.url
-        element.eyecatch = eyeCatchImg
-      } else {
-        element.eyecatch = require(`@/assets/img/article/thumb/thumb_01.jpg`)
+      const totalArticleCount = data.totalCount // 記事総数
+      const articleDatas = data.contents // 記事データ
+      const articleDataArray = []
+      let eyeCatchImg = ''
+
+      // 記事データを最初のテキストのみに整形し配列に格納
+      articleDatas.forEach((element) => {
+        const $ = cheerio.load(element.body[0].rich)
+        // thumbがtrueであればサムネイル画像を表示。そうでなければデフォルトサムネイル
+        if (element.thumb) {
+          eyeCatchImg = element.thumbImg.url
+          element.eyecatch = eyeCatchImg
+        } else {
+          element.eyecatch = require(`@/assets/img/article/thumb/thumb_01.jpg`)
+        }
+        element.body = $('p').html()
+        articleDataArray.push(element)
+      })
+      return {
+        articleItems: articleDataArray,
+        articleLen: Math.ceil(totalArticleCount / getArticleCount),
+        pagerNum: pageNumParam,
       }
-      element.body = $('p').html()
-      articlesArray.push(element)
-    })
-    return {
-      articleItems: articlesArray,
-      articleLen: Math.ceil(totalPages / articleslimit),
-      pagerNum: parseInt(pageParams),
+    } catch (error) {
+      alert('通信エラーです。ページをリロードしてください。')
+      console.log('error:', error.message)
     }
   },
   data() {

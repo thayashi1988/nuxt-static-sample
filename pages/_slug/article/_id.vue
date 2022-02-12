@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-main :title="breakHeading" sub-title="" :sub-title-show="false">
+    <the-main :title="breakHeading" :sub-title-show="false">
       <div class="l-underlayer">
         <article class="l-section" data-bg="gray" itemscope itemtype="https://schema.org/BlogPosting">
           <div class="l-section-inner">
@@ -9,10 +9,9 @@
                 <li class="l-grid-col" data-col="12" data-col-sp="12" data-marginp="true">
                   <card-detail
                     :current-article="currentArticle"
-                    :parse-article-data="cmsData"
+                    :parse-article-data="parseArticle"
                     :article-toc="tocData"
                     :prams-id="pageId"
-                    btn-txt="記事一覧に戻る"
                   ></card-detail>
                 </li>
               </ul>
@@ -82,19 +81,28 @@ import 'highlight.js/styles/vs2015.css'
 export default {
   async asyncData({ $config, params, error }) {
     try {
+      const queryParams = {
+        limit: 100, // 記事取得件数
+      }
       // 一旦100件の記事を取得
-      const getData = await axios.get(`${$config.apiUrl}/blog/?limit=100`, {
+      const { data: getData } = await axios.get(`${$config.apiUrl}/blog`, {
+        params: queryParams,
         headers: { 'X-API-KEY': $config.apiKey },
       })
-      const allArticelsData = getData.data.contents
+      const allArticelsData = getData.contents
 
+      const queryParamsCategory = {
+        limit: 100, // 記事取得件数
+        fields: 'category', // カテゴリーのみ取得
+      }
       // カテゴリーだけを取得
-      const allCategoryData = await axios.get(`${$config.apiUrl}/blog/?limit=100&fields=category`, {
+      const { data: allCategoryData } = await axios.get(`${$config.apiUrl}/blog`, {
+        prams: queryParamsCategory,
         headers: { 'X-API-KEY': $config.apiKey },
       })
 
       // カテゴリ一覧の連想配列を生成
-      const categoryArrayInObj = allCategoryData.data.contents
+      const categoryArrayInObj = allCategoryData.contents
 
       // カテゴリ一覧の連想配列からカテゴリーだけの配列に修正
       const categoryArray = []
@@ -128,12 +136,12 @@ export default {
       const latestArticleData = allArticelsData.slice(0, 3)
 
       // 記事データにモジュールクラスをつける処理
-      const blogTxt = currentArticleData.body
-      let result = ''
+      const articleBody = currentArticleData.body
+      let parseArticleData = ''
       const cmsDataArray = []
-      let toc = []
+      let tocDatas = []
 
-      blogTxt.forEach((elem) => {
+      articleBody.forEach((elem) => {
         // リッチエディタで入稿の場合HTMLをパースし配列に格納する
         if (elem.fieldId === 'rich') {
           const $ = cheerio.load(elem.rich)
@@ -169,10 +177,10 @@ export default {
             name: data.name,
           }))
           // rich、テキストどちらの入稿もconcatで一つの配列にする。
-          toc = toc.concat(tocArray)
+          tocDatas = tocDatas.concat(tocArray)
 
-          result = $('body').html()
-          cmsDataArray.push(result)
+          parseArticleData = $('body').html()
+          cmsDataArray.push(parseArticleData)
           // HTMLで入稿の場合、そのまま配列に格納する
         } else {
           cmsDataArray.push(elem.html)
@@ -225,16 +233,18 @@ export default {
       return {
         latestArticles: latestArticleData,
         currentArticle: currentArticleData,
-        parseArticleData: result,
-        cmsData: cmsDataArray.join('\n'),
+        // parseArticle: parseArticleData,
+        parseArticle: cmsDataArray.join('\n'),
         articleNextPrev: articleNextPrevDataArray,
         nextFlag: articleNextFlag,
         prevFlag: articlePrevFlag,
-        tocData: toc,
+        tocData: tocDatas,
         pageId: params.id,
         categoryDatas,
       }
     } catch (err) {
+      alert('通信エラーです。ページをリロードしてください。')
+      console.log('err:', err.message)
       error({
         erroeCode: 404,
       })
@@ -248,7 +258,6 @@ export default {
       return this.$myInjectedFunction(this.currentArticle.title, 'heading1')
     },
   },
-
   head() {
     return {
       title: `${this.heading}`,
