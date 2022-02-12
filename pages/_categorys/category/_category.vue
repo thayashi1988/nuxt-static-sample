@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-main :title="returnHeading" :sub-title-show="false">
+    <the-main :title="categoryHeading" :sub-title-show="false">
       <section class="l-section">
         <div class="l-section-inner">
           <div class="l-grid-container">
@@ -19,7 +19,7 @@
               </li>
             </ul>
           </div>
-          <BtnBase to="/" data-width="middle">記事を一覧ページへ戻る</BtnBase>
+          <BtnBase to="/" data-width="middle">記事一覧ページへ戻る</BtnBase>
         </div>
         <!-- ./l-section-inner -->
       </section>
@@ -49,7 +49,6 @@ export default {
     const categoryArticleDatas = data.contents // 該当カテゴリだけのデータ
 
     const categoryArticleArray = []
-
     // 記事データを最初のテキストのみに整形し配列に格納
     categoryArticleDatas.forEach((element) => {
       const $ = cheerio.load(element.body[0].rich)
@@ -68,27 +67,24 @@ export default {
       categoryCount,
     }
   },
-  data() {
-    return {}
-  },
   computed: {
-    returnHeading() {
+    categoryHeading() {
       return `カテゴリ一覧 ${this.pageCategoryParams} （${this.categoryCount}件）`
     },
   },
   head() {
     return {
-      title: `${this.returnHeading}`,
+      title: `${this.categoryHeading}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.returnHeading}のカテゴリ一覧です。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
+          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.categoryHeading}のカテゴリ一覧です。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.returnHeading}のカテゴリ一覧です。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
+          content: `沖縄在住Webコーダーのぱくもぐブログ兼ポートフォリオサイト、${this.categoryHeading}のカテゴリ一覧です。これまでのHTML、CSS、javascriptの経験・実績、日々の暮らしなどを紹介します。`,
         },
         {
           hid: 'og:type',
@@ -98,7 +94,7 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${this.returnHeading}`,
+          content: `${this.categoryHeading}`,
         },
       ],
     }
