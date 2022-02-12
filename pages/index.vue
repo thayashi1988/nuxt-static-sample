@@ -15,7 +15,7 @@
                 data-padding="true"
                 data-padding-sp="false"
               >
-                <card :article-data="article" btn-txt="記事を見る"></card>
+                <card :article-data="article"></card>
               </li>
             </ul>
           </div>
