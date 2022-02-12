@@ -21,7 +21,7 @@
       </card-date>
       <heading-2 data-type="cardttl">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <nuxt-link :to="articleData.id" class="m-card-ttl" v-html="articleHeading"></nuxt-link>
+        <nuxt-link :to="`/articles/article/${articleData.id}`" class="m-card-ttl" v-html="articleHeading"></nuxt-link>
       </heading-2>
       <!-- eslint-disable-next-line vue/no-v-html-->
       <!-- <div class="m-card-txt" v-html="articleData.body"></div> -->
