@@ -96,11 +96,18 @@ export default {
     trailingSlash: false,
     middleware: 'redirect',
     extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'articles',
-        path: '/articles/:slug',
-        component: resolve(__dirname, 'pages/index.vue'),
-      })
+      routes.push(
+        {
+          name: 'articles',
+          path: '/articles/:slug',
+          component: resolve(__dirname, 'pages/index.vue'),
+        },
+        {
+          name: 'categorys',
+          path: '/categorys/category/:slug',
+          component: resolve(__dirname, 'pages/index.vue'),
+        }
+      )
     },
     // base: '/nuxt-static-sample/', //元の記述
     // extendRoutes(routes, resolve) {//ページが存在しない場合のリダイレクトの設定
