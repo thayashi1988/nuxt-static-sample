@@ -63,27 +63,27 @@ export default {
 </script>
 <style>
 .visual-home {
-  background-image: url('~@/assets/img/bg_main.jpg');
+  background-image: url('~@/assets/img/bg/bg_main.jpg');
   min-height: 75vh;
 }
 .visual-concept {
-  background-image: url('~@/assets/img/bg_main.jpg');
+  background-image: url('~@/assets/img/bg/bg_main.jpg');
   min-height: 40vh;
 }
 .visual-shop {
-  background-image: url('~@/assets/img/bg_main.jpg');
+  background-image: url('~@/assets/img/bg/bg_main.jpg');
   min-height: 40vh;
 }
 .visual-menu {
-  background-image: url('~@/assets/img/bg_main.jpg');
+  background-image: url('~@/assets/img/bg/bg_main.jpg');
   min-height: 40vh;
 }
 .visual-information {
-  background-image: url('~@/assets/img/bg_main.jpg');
+  background-image: url('~@/assets/img/bg/bg_main.jpg');
   min-height: 40vh;
 }
 .visual-error {
-  background-image: url('~@/assets/img/bg_main.jpg');
+  background-image: url('~@/assets/img/bg/bg_main.jpg');
   min-height: 40vh;
 }
 </style>

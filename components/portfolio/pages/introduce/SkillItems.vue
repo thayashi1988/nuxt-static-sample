@@ -8,7 +8,7 @@
     >
       <p class="m-progress-txt">{{ skillData.skillName }}</p>
       <p class="m-progress-ttl">
-        <img :src="skillData.skillIconPath" :alt="skillData.skillName" />
+        <img :src="skillData.skillIconPath" :alt="skillData.skillName" width="50" height="50" />
       </p>
       <p class="m-progress-value">{{ skillData.skillValue }}</p>
     </div>
