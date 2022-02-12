@@ -429,6 +429,20 @@ sns
   @include mediaQuery(max, 0, 768) {
     margin-top: 20px;
   }
+  &-twiiter {
+    svg {
+      path {
+        color: #1d9bf0;
+      }
+    }
+  }
+  &-facebook {
+    svg {
+      path {
+        color: #1877f2;
+      }
+    }
+  }
 }
 
 /*///////////////////////
