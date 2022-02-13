@@ -16,7 +16,7 @@
                         itemprop="headline"
                         v-html="articleHeadingPreview"
                       ></h2>
-                      <div class="m-card-html" v-html="cmsData"></div>
+                      <div class="m-card-html" v-html="parseArticle"></div>
                       <card-btn class="" to="/" data-width="middle">記事一覧に戻る</card-btn>
                     </div>
                   </div>
@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       currentArticle: {},
-      cmsData: '',
+      parseArticle: '',
       tocData: [],
       previeUrl: '',
       heading1: '',
@@ -98,24 +98,29 @@ export default {
   },
   async created() {
     const query = this.$route.query
-    // console.log('query:', query)
     if (query.id === undefined || query.draftKey === undefined) {
       return
     }
     // コンテンツID + ドラフトキーでアクセス
     // http://localhost:9000/draft/draft?id=5f5b83g0y&draftKey=68f_OI4mB
     // blog/5f5b83g0y?draftKey=68f_OI4mB
-    const getData = await axios.get(`/.netlify/functions/preview?id=${query.id}&draftKey=${query.draftKey}`)
+    const queryParamsCategory = {
+      id: query.id, // 記事取得件数
+      draftKey: query.draftKey, // カテゴリーのみ取得
+    }
+    const { data: getData } = await axios.get(`/.netlify/functions/preview`, {
+      params: queryParamsCategory,
+    })
     console.log('getData:', getData)
-    const allArticelsData = getData.data
+    const currentArticelsData = getData
 
     // 記事データにモジュールクラスをつける処理
-    const blogTxt = allArticelsData.body
-    let result = ''
+    const articleBody = currentArticelsData.body
+    let parseArticleDatas = ''
     const cmsDataArray = []
-    let toc = []
+    let tocDatas = []
 
-    blogTxt.forEach((elem) => {
+    articleBody.forEach((elem) => {
       // リッチエディタで入稿の場合HTMLをパースし配列に格納する
       if (elem.fieldId === 'rich') {
         const $ = cheerio.load(elem.rich)
@@ -151,23 +156,23 @@ export default {
           name: data.name,
         }))
         // rich、テキストどちらの入稿もconcatで一つの配列にする。
-        toc = toc.concat(tocArray)
+        tocDatas = tocDatas.concat(tocArray)
 
-        result = $('body').html()
-        cmsDataArray.push(result)
+        parseArticleDatas = $('body').html()
+        cmsDataArray.push(parseArticleDatas)
         // HTMLで入稿の場合、そのまま配列に格納する
       } else {
         cmsDataArray.push(elem.html)
       }
     })
 
-    this.currentArticle = allArticelsData || ''
-    this.parseArticleData = result || ''
-    this.cmsData = cmsDataArray.join('\n')
-    this.tocData = toc || ''
-    this.heading = allArticelsData.title || ''
-    this.heading1 = allArticelsData.title || ''
-    this.articleHeading = allArticelsData.title || ''
+    this.currentArticle = currentArticelsData || ''
+    this.parseArticleData = parseArticleDatas || ''
+    this.parseArticle = cmsDataArray.join('\n')
+    this.tocData = tocDatas || ''
+    this.heading = currentArticelsData.title || ''
+    this.heading1 = currentArticelsData.title || ''
+    this.articleHeading = currentArticelsData.title || ''
   },
   head() {
     return {
