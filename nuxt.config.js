@@ -1,6 +1,6 @@
 import axios from 'axios'
 const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
-
+const sitemapLimitCount = 50 // サイトマップを生成する際の最大記事数
 export default {
   // 200.htmlを404.htmlに変更
   generate: {
@@ -175,7 +175,7 @@ export default {
     // generate: true,
     routes(callback) {
       axios
-        .get(API_URL + '/blog', {
+        .get(API_URL + `/blog?limit=${sitemapLimitCount}`, {
           headers: { 'X-API-KEY': API_KEY },
         })
         .then((response) => {
