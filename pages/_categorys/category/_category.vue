@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-main :title="categoryHeading" :sub-title-show="false">
+    <the-main :title="breakHeading" :sub-title-show="false">
       <section class="l-section">
         <div class="l-section-inner">
           <div class="l-grid-container">
@@ -82,6 +82,9 @@ export default {
   computed: {
     categoryHeading() {
       return `カテゴリ一覧 ${this.pageCategoryParam} （全${this.categoryCount}件）`
+    },
+    breakHeading() {
+      return `カテゴリ一覧<br>${this.pageCategoryParam} （全${this.categoryCount}件）`
     },
   },
   head() {
