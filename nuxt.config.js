@@ -1,4 +1,5 @@
 import axios from 'axios'
+const api = axios.create()
 const { API_KEY, API_URL, GA_ID_UA, GA_ID_G } = process.env
 const sitemapLimitCount = 50 // サイトマップを生成する際の最大記事数
 export default {
@@ -174,22 +175,38 @@ export default {
     trailingSlash: false, // 追加
     // generate: true,
     routes(callback) {
+      // サイトマップに動的ルーティングを設定するためにAPI取得
       axios
-        .get(API_URL + `/blog?limit=${sitemapLimitCount}`, {
-          headers: { 'X-API-KEY': API_KEY },
-        })
-        .then((response) => {
-          const articles = response.data
-          // console.log('articles:', articles)
-          const routes = articles.contents.map((article) => {
-            // console.log('articleaaaaaaaaa:', article)
-            return 'articles/article/' + article.id
+        .all([
+          api.get(`${API_URL}/blog?limit=${sitemapLimitCount}`, {
+            headers: { 'X-API-KEY': API_KEY },
+          }),
+          api.get(`${API_URL}/blog?limit=${sitemapLimitCount}&fields=category`, {
+            headers: { 'X-API-KEY': API_KEY },
+          }),
+        ])
+        .then(
+          // サイトマップに設定するURLを返す処理
+          axios.spread((articles, categorys) => {
+            // 記事URL
+            const routeArticleList = articles.data.contents.map((article) => {
+              return `articles/article/${article.id}`
+            })
+
+            // カテゴリURL
+            const categoryArray = categorys.data.contents.map((category) => {
+              return category.category[0]
+            })
+            const categoryDuplicateDelete = [...new Set(categoryArray)]
+            const routeCategoryList = categoryDuplicateDelete.map((category) => {
+              return `categorys/category/${category}`
+            })
+            callback(null, routeArticleList.concat(routeCategoryList))
           })
-          callback(null, routes)
-        })
+        )
         .catch(callback)
     },
-    exclude: ['/draft/draft'],
+    exclude: ['/draft/draft', '/contact/thanks'],
   },
   axios: {},
   // Build Configuration (https://go.nuxtjs.dev/config-build)
