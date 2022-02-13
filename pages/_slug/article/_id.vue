@@ -81,10 +81,12 @@ import 'highlight.js/styles/vs2015.css'
 export default {
   async asyncData({ $config, params, error }) {
     try {
+      const searchCount = 50
       const queryParams = {
-        limit: 100, // 記事取得件数
+        limit: searchCount, // 記事取得件数
       }
-      // 一旦100件の記事を取得
+
+      // 一旦50件の記事を取得
       const { data: getData } = await axios.get(`${$config.apiUrl}/blog`, {
         params: queryParams,
         headers: { 'X-API-KEY': $config.apiKey },
@@ -92,23 +94,25 @@ export default {
       const allArticelsData = getData.contents
 
       const queryParamsCategory = {
-        limit: 100, // 記事取得件数
+        limit: searchCount, // 記事取得件数
         fields: 'category', // カテゴリーのみ取得
       }
-      // カテゴリーだけを取得
-      const { data: allCategoryData } = await axios.get(`${$config.apiUrl}/blog`, {
-        prams: queryParamsCategory,
+
+      // カテゴリーだけを取得（ここだけaxiosのpramsが効かない。。）
+      const { data: getCategoryData } = await axios.get(`${$config.apiUrl}/blog?limit=50&fields=category`, {
+        // prams: queryParamsCategory,
         headers: { 'X-API-KEY': $config.apiKey },
       })
 
       // カテゴリ一覧の連想配列を生成
-      const categoryArrayInObj = allCategoryData.contents
+      const categoryArrayInObj = getCategoryData.contents
 
       // カテゴリ一覧の連想配列からカテゴリーだけの配列に修正
       const categoryArray = []
       categoryArrayInObj.forEach((elem) => {
         categoryArray.push(elem.category[0])
       })
+
       // categoryArrayで重複している分を削除し配列にする
       const categoryDuplicateDelete = [...new Set(categoryArray)]
 
