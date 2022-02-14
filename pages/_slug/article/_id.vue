@@ -104,13 +104,9 @@ export default {
         headers: { 'X-API-KEY': $config.apiKey },
       })
 
-      // カテゴリ一覧の連想配列を生成
-      const categoryArrayInObj = getCategoryData.contents
-
       // カテゴリ一覧の連想配列からカテゴリーだけの配列に修正
-      const categoryArray = []
-      categoryArrayInObj.forEach((elem) => {
-        categoryArray.push(elem.category[0])
+      const categoryArray = getCategoryData.contents.map((category) => {
+        return category.category[0]
       })
 
       // categoryArrayで重複している分を削除し配列にする
@@ -237,7 +233,6 @@ export default {
       return {
         latestArticles: latestArticleData,
         currentArticle: currentArticleData,
-        // parseArticle: parseArticleData,
         parseArticle: cmsDataArray.join('\n'),
         articleNextPrev: articleNextPrevDataArray,
         nextFlag: articleNextFlag,
