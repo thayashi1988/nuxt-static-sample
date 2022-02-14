@@ -10,6 +10,9 @@
         </the-hamburger-menu>
         <the-nav :layer-toggle-class="menuTrigger" @menuCloseTrrigerGnavi="closeHamburgerMenu"></the-nav>
       </div>
+      <div class="l-header-col">
+        <the-dark-mode-switch />
+      </div>
     </div>
     <!-- ./l-header-inner -->
   </header>

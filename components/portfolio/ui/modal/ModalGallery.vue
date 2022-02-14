@@ -104,19 +104,21 @@ export default {
       document.querySelector('.l-header').style.width = `100vw`
     },
     bodyFixedOff() {
-      document.querySelector('.l-header').style.width = ``
-      const backToPosition = parseInt(document.body.style.top) * -1
-      const bodyFixedRemoveStyles = {
-        paddingRight: ``,
-        position: '',
-        top: ``,
-        overflow: '',
-        width: '',
-      }
-      Object.keys(bodyFixedRemoveStyles).forEach((key) => {
-        document.body.style[key] = bodyFixedRemoveStyles[key]
-      })
-      window.scrollTo(0, backToPosition)
+      setTimeout(() => {
+        document.querySelector('.l-header').style.width = ``
+        const backToPosition = parseInt(document.body.style.top) * -1
+        const bodyFixedRemoveStyles = {
+          paddingRight: ``,
+          position: '',
+          top: ``,
+          overflow: '',
+          width: '',
+        }
+        Object.keys(bodyFixedRemoveStyles).forEach((key) => {
+          document.body.style[key] = bodyFixedRemoveStyles[key]
+        })
+        window.scrollTo(0, backToPosition)
+      }, 300)
     },
     onModalTriggerClose() {
       const close = false
