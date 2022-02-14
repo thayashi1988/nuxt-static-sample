@@ -1,18 +1,21 @@
 //variables
-@use './_partial/_variable/variables';
+@use './_partial/_variable/_variables';
 
 //mixin
-@use './_partial/_mixin/mixin';
+@use './_partial/_mixin/_mixin';
 
 //base
-@use './_partial/_base/reset';
-@use './_partial/_base/base';
+@use './_partial/_base/_reset';
+@use './_partial/_base/_base';
 
 //layout
-@use './_partial/_layout/layout';
+@use './_partial/_layout/_layout';
 
 //animation
-@use './_partial/_animation/animation';
+@use './_partial/_animation/_animation';
 
 //ui
-@use './_partial/_ui/module';
+@use './_partial/_ui/_module';
+
+//darkmode
+@use './_partial/_darkmode/_darkmode';
