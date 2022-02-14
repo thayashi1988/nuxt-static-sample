@@ -257,15 +257,55 @@ export default {
     return this.addClassData
   },
   methods: {
+    bodyFixedOn() {
+      const scrollPosition = window.pageYOffset
+      const scrollbarWidth = window.innerWidth - document.body.clientWidth
+      const bodyFixedStyles = {
+        paddingRight: scrollbarWidth !== 0 ? `${scrollbarWidth}px` : '',
+        position: 'fixed',
+        top: `-${scrollPosition}px`,
+        overflow: 'hidden',
+        width: '100vw',
+      }
+      Object.keys(bodyFixedStyles).forEach((key) => {
+        document.body.style[key] = bodyFixedStyles[key]
+      })
+      document.querySelector('.l-header').style.width = `100vw`
+    },
+    bodyFixedOff() {
+      document.querySelector('.l-header').style.width = ``
+      const backToPosition = parseInt(document.body.style.top) * -1
+      const bodyFixedRemoveStyles = {
+        paddingRight: ``,
+        position: '',
+        top: ``,
+        overflow: '',
+        width: '',
+      }
+      Object.keys(bodyFixedRemoveStyles).forEach((key) => {
+        document.body.style[key] = bodyFixedRemoveStyles[key]
+      })
+      window.scrollTo(0, backToPosition)
+    },
     modalOpen(key) {
       this.show = true
       this.modalId = key
+      this.bodyFixedOn()
+      console.log('open')
     },
     modalClose(close) {
       this.show = close
+      setTimeout(() => {
+        this.bodyFixedOff()
+      }, 300)
+      console.log('close')
     },
     modalLayerClose() {
       this.show = false
+      setTimeout(() => {
+        this.bodyFixedOff()
+      }, 300)
+      console.log('layer close')
     },
   },
   head() {
