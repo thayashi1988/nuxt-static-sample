@@ -5,9 +5,10 @@
       <heading-2 class="m-mt-0" data-type="article" itemprop="headline" v-html="articleHeading" :br="true" />
       <card-date
         :up-date-boolean="currentArticle.date !== currentArticle.updatedAt"
-        :tag="currentArticle.category[0]"
         :attr-publish-date="publishDateFormated"
         :attr-up-date="upDateFormated"
+        :tag="currentArticle.category[0]"
+        card-tag-cls="m-label-small"
       >
         <template #date>
           {{ currentArticle.date | formatDate }}
