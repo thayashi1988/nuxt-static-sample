@@ -8,7 +8,7 @@
       更新：
       <slot name="upDate">{{ upDate }}</slot>
     </time>
-    <card-tag v-if="tagShow" :tag-name="tag"></card-tag>
+    <card-tag v-if="tagShow" :tag-name="tag" :cls="cardTagCls" />
   </p>
 </template>
 <script>
@@ -42,6 +42,10 @@ export default {
     tagShow: {
       type: Boolean,
       default: true,
+    },
+    cardTagCls: {
+      type: String,
+      default: '',
     },
   },
 }
