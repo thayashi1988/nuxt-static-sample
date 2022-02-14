@@ -15,7 +15,7 @@
                 data-padding="true"
                 data-padding-sp="false"
               >
-                <card :article-data="article"></card>
+                <card :article-data="article" />
               </li>
             </ul>
           </div>
