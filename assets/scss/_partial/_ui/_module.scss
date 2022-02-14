@@ -332,27 +332,33 @@ label
 ///////////////////////*/
 .m-label {
   display: inline-flex;
-  align-items: center;
-  font-weight: normal;
+  align-items: flex-end;
   @include font-size(12);
   // border: 1px solid var.$accent;
   // padding: 0 10px;
-  margin-right: 10px;
-  margin-bottom: 5px;
+  // margin-right: 10px;
+  // margin-bottom: 5px;
   &::before {
     content: '';
+    flex: 1;
     display: inline-block;
     width: 15px;
     height: 15px;
-    background: url(#{var.$icon_path}icon_tag.svg) no-repeat;
+    background: url(#{var.$icon_path}icon_tag.svg) no-repeat center center;
     background-size: contain;
-    margin-right: 5px;
+    margin-right: 10px;
   }
   a {
     display: block;
     font-weight: bold;
-    @include font-size(12);
-    padding: 0 10px;
+    @include font-size(14);
+    text-decoration: underline;
+    // padding: 0 10px;
+  }
+  &-small {
+    a {
+      @include font-size(12);
+    }
   }
 }
 
@@ -722,6 +728,7 @@ card
   &-type {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     font-weight: bold;
     margin-bottom: 20px;
   }
@@ -731,6 +738,7 @@ card
     color: #333;
     display: inline-block;
     margin-right: 15px;
+    margin-bottom: 5px;
     &-update {
       font-weight: bold;
     }
@@ -1238,7 +1246,7 @@ article
       padding: 10px;
     }
     &-item {
-      width: calc(100% - 20px);
+      width: calc(100% / 2 - 20px);
       @include mediaQuery(max, 0, 768) {
         width: 100%;
       }

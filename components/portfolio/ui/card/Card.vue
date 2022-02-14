@@ -10,7 +10,8 @@
         :up-date-boolean="articleData.date !== articleData.updatedAt"
         :attr-publish-date="publishDateFormated"
         :attr-up-date="upDateFormated"
-        :tag-show="false"
+        :tag="articleData.category[0]"
+        card-tag-cls="m-label-small"
       >
         <template #date>
           {{ articleData.date | formatDate }}
