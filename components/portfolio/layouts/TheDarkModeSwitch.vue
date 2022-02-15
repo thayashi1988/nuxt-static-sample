@@ -10,11 +10,11 @@
         tabindex="0"
         @change="handleSwitchDarkmode"
       />
-      <label class="js-toggle-darmode-label" for="toggleMode"></label>
+      <label class="js-toggle-darmode-label" for="toggleMode">
+        <span class="js-toggle-darmode-inner"></span>
+        <span class="js-toggle-darmode-switch"></span>
+      </label>
     </div>
-    <p class="js-toggle-darmode-txt">
-      <span class="m-hide-sp">今は、、<br /></span>{{ toggleDarkmode ? 'だーくもーど' : 'らいともーど' }}
-    </p>
   </div>
 </template>
 
