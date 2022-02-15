@@ -11,5 +11,10 @@ export default {
       heading1Sub: 'お問い合わせありがとうございました。返信までしばらくお待ち下さい、',
     }
   },
+  head() {
+    return {
+      meta: [{ hid: 'robots', name: 'robots', content: 'noindex' }],
+    }
+  },
 }
 </script>
