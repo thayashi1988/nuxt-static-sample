@@ -194,6 +194,11 @@ export default {
           property: 'og:title',
           content: `${this.headingPreview}`,
         },
+        {
+          hid: 'robots',
+          property: 'robots',
+          content: `noindex`,
+        },
       ],
     }
   },
