@@ -44,33 +44,74 @@ darmodeswitch
     &-darmode {
       $this: &;
       position: relative;
-      width: 30px;
+      width: 70px;
+      height: 25px;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       &-label {
         display: block;
+        height: 25px;
         overflow: hidden;
         cursor: pointer;
-        height: 8px;
-        padding: 0;
-        line-height: 8px;
-        border: 0px solid #ffffff;
-        border-radius: 15px;
-        background-color: #9e9e9e;
-        &::before {
-          content: '';
+        border: 2px solid #aaa;
+        border-radius: 20px;
+        // &::before {
+        //   content: '';
+        //   display: block;
+        //   width: 15px;
+        //   margin: -3.5px;
+        //   background: #ffffff;
+        //   position: absolute;
+        //   top: 0;
+        //   bottom: 0;
+        //   right: 18px;
+        //   border-radius: 15px;
+        //   box-shadow: 0 6px 12px 0px #757575;
+        // }
+      }
+      &-inner {
+        display: block;
+        width: 200%;
+        margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+        &::before,
+        &::after {
           display: block;
-          width: 15px;
-          margin: -3.5px;
-          background: #ffffff;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: 18px;
-          border-radius: 15px;
-          box-shadow: 0 6px 12px 0px #757575;
+          float: left;
+          width: 50%;
+          height: 25px;
+          padding: 0;
+          line-height: 21px;
+          font-size: 12px;
+          color: #fff;
+          font-weight: bold;
         }
+        &::before {
+          content: 'ON';
+          color: #fff;
+          background-color: #34a7c1;
+          padding-left: 10px;
+        }
+        &::after {
+          content: 'OFF';
+          text-align: right;
+          color: #333;
+          background-color: #fff;
+          padding-right: 10px;
+        }
+      }
+      &-switch {
+        display: block;
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        position: absolute;
+        top: calc(50% - 7px);
+        right: 68%;
+        border: 2px solid #aaa;
+        border-radius: 50%;
+        transition: all 0.3s ease-in;
       }
       &-checkbox {
         position: absolute;
@@ -81,6 +122,12 @@ darmodeswitch
             background-color: #42a5f5;
             &::before {
               background-color: #42a5f5;
+            }
+            .js-toggle-darmode-inner {
+              margin-left: 0;
+            }
+            .js-toggle-darmode-switch {
+              right: 8px;
             }
           }
           & + #{$this}-inner {
@@ -95,10 +142,10 @@ darmodeswitch
           }
         }
       }
-      &-txt {
-        @include font-size(12);
-        margin-top: 10px;
-      }
+      // &-txt {
+      //   @include font-size(12);
+      //   margin-top: 10px;
+      // }
     }
   }
 }
