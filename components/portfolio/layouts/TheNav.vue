@@ -6,6 +6,9 @@
           {{ item.title }}
         </nuxt-link>
       </li>
+      <li class="m-nav-switch">
+        <the-dark-mode-switch />
+      </li>
     </ul>
   </nav>
 </template>
