@@ -29,15 +29,16 @@ header
     flex: 0 1 auto;
     margin-right: 30px;
     &:nth-child(2) {
-      flex: 1 0 auto;
+      // flex: 1 0 auto;
       @include mediaQuery(max, 0, 768) {
         // position: relative;
       }
     }
     &:last-child {
+      flex: 1 0 auto;
       margin-right: 0;
       @include mediaQuery(max, 0, 768) {
-        display: none;
+        // display: none;
       }
     }
   }
