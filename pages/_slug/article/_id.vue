@@ -36,7 +36,7 @@
         <aside class="l-side">
           <the-side-profile>
             <p class="m-box-txt">
-              沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/javaScriptに関することや、日常をこのぱくもぐブログで発信していきいます！
+              沖縄で活動するマークアップエンジニアです。<br />HTML/CSS/JavaScriptに関することや、日常をこのぱくもぐブログで発信していきいます！
             </p>
           </the-side-profile>
           <the-side-latest>
