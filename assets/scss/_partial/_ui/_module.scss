@@ -312,6 +312,7 @@ heading
 txt
 ///////////////////////*/
 .m-txt {
+  line-height: 1.8;
   @include mediaQuery(max, 0, 768) {
     @include sizeVw(mb, 30);
     // margin-bottom: (30 / 768) * 100vw;

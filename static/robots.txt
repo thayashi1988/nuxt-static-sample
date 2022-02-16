@@ -1,3 +1,7 @@
 User-agent: *
 
+Disallow: /articles/2
+Disallow: /articles/3
+Disallow: /articles/4
+
 Sitemap: https://pakumogu.xyz/sitemap.xml
